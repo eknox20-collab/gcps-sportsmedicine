@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#002855">
+<title>GCPS Health Sciences — Sports Medicine EOPA 701</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   GCPS HEALTH SCIENCES — SPORTS MEDICINE EOPA 701
+   Design: Confident academic · School pride + student energy
+   Fonts: Fraunces (display) + Outfit (body)
+   Colors: GCPS navy/red + clean white + vivid domain colors
+═══════════════════════════════════════════════════════════ */
+:root {
+  --navy:   #002855;
+  --navy2:  #001a3a;
+  --red:    #cc2529;
+  --red2:   #a81e21;
+  --gold:   #f5a623;
+  --bg:     #f4f5f7;
+  --surface:#ffffff;
+  --border: #e0e2e8;
+  --text:   #111827;
+  --text2:  #4b5563;
+  --text3:  #9ca3af;
+  --correct:#15803d;
+  --wrong:  #b91c1c;
+  --r:      10px;
+  --sat:    env(safe-area-inset-top,0px);
+  --sab:    env(safe-area-inset-bottom,0px);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  font-family:'Outfit',sans-serif;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+
+/* ── UTILITIES ── */
+.hidden{display:none!important}
+.page{min-height:100vh}
+
+/* ── TOPBAR ── */
+.topbar{
+  background:var(--navy2);
+  border-bottom:3px solid var(--red);
+  padding:0 20px;
+  display:flex;align-items:center;
+  height:58px;position:sticky;top:0;z-index:200;
+  gap:12px;
+}
+.tb-logo{
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;font-weight:900;color:#fff;
+  line-height:1.2;flex-shrink:0;
+}
+.tb-logo span{color:var(--gold);font-style:italic;}
+.tb-sub{
+  font-size:10px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.4);
+  border-left:1px solid rgba(255,255,255,.15);
+  padding-left:12px;margin-left:2px;
+  display:none;
+}
+@media(min-width:480px){.tb-sub{display:block}}
+.tb-spacer{flex:1}
+.tb-nav{display:flex;gap:4px}
+.tb-btn{
+  font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 13px;border-radius:6px;border:none;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.tb-btn:hover{background:rgba(255,255,255,.16);color:#fff}
+.tb-btn.active{background:var(--red);color:#fff}
+
+/* ── HERO ── */
+.hero{
+  background:var(--navy);
+  padding:56px 20px 52px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(204,37,41,.15) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 20%,rgba(245,166,35,.08) 0%,transparent 50%),
+    repeating-linear-gradient(60deg,transparent,transparent 80px,rgba(255,255,255,.012) 80px,rgba(255,255,255,.012) 81px);
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:16px;position:relative;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';width:28px;height:1px;background:rgba(255,255,255,.2);
+}
+.hero-title{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(2.4rem,7vw,4.2rem);color:#fff;
+  line-height:1.05;position:relative;margin-bottom:10px;
+  letter-spacing:-.02em;
+}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{
+  font-size:clamp(14px,2.5vw,17px);color:rgba(255,255,255,.65);
+  max-width:540px;margin:0 auto 36px;line-height:1.7;position:relative;
+}
+.hero-actions{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  position:relative;
+}
+.hero-btn{
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  letter-spacing:.04em;padding:14px 28px;border-radius:50px;
+  cursor:pointer;transition:all .18s;border:none;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-btn.primary{
+  background:var(--red);color:#fff;
+  box-shadow:0 4px 0 var(--red2),0 8px 24px rgba(204,37,41,.35);
+}
+.hero-btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--red2),0 12px 32px rgba(204,37,41,.45)}
+.hero-btn.primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--red2)}
+.hero-btn.secondary{
+  background:rgba(255,255,255,.1);color:#fff;
+  border:1.5px solid rgba(255,255,255,.2);
+}
+.hero-btn.secondary:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35)}
+.hero-scroll{
+  position:relative;margin-top:48px;
+  display:flex;justify-content:center;align-items:center;gap:10px;
+  animation:bounce 2s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.hero-scroll span{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:52px 20px;max-width:900px;margin:0 auto}
+.section-label{
+  font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);margin-bottom:8px;
+}
+.section-title{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(1.6rem,4vw,2.4rem);color:var(--navy);
+  line-height:1.15;margin-bottom:10px;
+}
+.section-sub{font-size:14px;color:var(--text2);max-width:520px;line-height:1.65;margin-bottom:28px}
+
+/* ── HOW IT WORKS ── */
+.steps-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.step-card{
+  background:var(--surface);border:2px solid var(--border);
+  border-radius:var(--r);padding:20px 18px;
+  position:relative;transition:all .18s;
+  border-top:3px solid var(--navy);
+}
+.step-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.step-num{
+  font-family:'Fraunces',serif;font-size:2rem;font-weight:900;
+  color:var(--border);position:absolute;top:16px;right:16px;line-height:1;
+}
+.step-icon{font-size:1.8rem;margin-bottom:10px}
+.step-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.step-desc{font-size:12.5px;color:var(--text2);line-height:1.55}
+
+/* ── DOMAIN OVERVIEW ── */
+.domains-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:9px;
+}
+.domain-card{
+  background:var(--surface);border:2px solid var(--border);
+  border-top:4px solid var(--dc,var(--navy));
+  border-radius:var(--r);padding:12px 11px;
+  cursor:pointer;transition:all .16s;text-align:center;
+}
+.domain-card:hover{
+  border-color:var(--dc,var(--navy));
+  transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.1);
+}
+.dc-pct{
+  font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;
+  color:var(--dc,var(--navy));line-height:1;margin-bottom:3px;
+}
+.dc-code{
+  font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--dc,var(--navy));margin-bottom:3px;
+}
+.dc-name{font-size:11px;font-weight:600;color:var(--text2);line-height:1.3}
+
+/* ── CTA BAND ── */
+.cta-band{
+  background:var(--navy);padding:48px 20px;text-align:center;
+}
+.cta-band h2{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(1.8rem,5vw,2.8rem);color:#fff;margin-bottom:10px;
+}
+.cta-band p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto}
+.cta-btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-btn{
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:13px 26px;border-radius:50px;cursor:pointer;
+  transition:all .15s;border:none;display:inline-flex;align-items:center;gap:7px;
+}
+.cta-btn.a{background:var(--red);color:#fff;box-shadow:0 3px 0 var(--red2)}
+.cta-btn.a:hover{transform:translateY(-1px)}
+.cta-btn.a:active{transform:translateY(2px);box-shadow:none}
+.cta-btn.b{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.2)}
+.cta-btn.b:hover{background:rgba(255,255,255,.18)}
+
+/* ══════════════════════════════════════════
+   TEST ENGINE (shared by both tests)
+══════════════════════════════════════════ */
+#test-view{
+  max-width:740px;margin:0 auto;
+  padding:20px 16px calc(var(--sab)+24px);
+}
+
+/* Test header */
+.test-hdr{
+  background:var(--navy);color:#fff;
+  border-radius:12px;padding:18px 20px;
+  margin-bottom:18px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+}
+.th-left{}
+.th-mode{
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:4px;
+}
+.th-title{
+  font-family:'Fraunces',serif;font-weight:700;
+  font-size:1.15rem;color:#fff;line-height:1.2;margin-bottom:6px;
+}
+.th-meta{font-size:12px;color:rgba(255,255,255,.55);display:flex;gap:12px;flex-wrap:wrap}
+.th-right{flex-shrink:0;text-align:right}
+.th-timer{
+  font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.th-timer.warn{color:#ff6b6b;animation:timerPulse .6s ease-in-out infinite}
+@keyframes timerPulse{0%,100%{opacity:1}50%{opacity:.5}}
+.th-timer-lbl{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* Progress bar */
+.test-progress{margin-bottom:16px}
+.tp-info{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px;
+}
+.tp-bar{height:8px;background:var(--border);border-radius:50px;overflow:hidden}
+.tp-fill{
+  height:100%;border-radius:50px;
+  background:linear-gradient(90deg,var(--navy),var(--red));
+  transition:width .4s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* DOK badge */
+.dok-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border-radius:50px;padding:3px 10px;margin-bottom:10px;
+}
+.dok-1{background:rgba(21,128,61,.12);color:#15803d;border:1.5px solid rgba(21,128,61,.25)}
+.dok-2{background:rgba(245,166,35,.12);color:#92620a;border:1.5px solid rgba(245,166,35,.3)}
+.dok-3{background:rgba(204,37,41,.1);color:var(--red);border:1.5px solid rgba(204,37,41,.2)}
+.dok-labels{DOK 1: Recall · DOK 2: Application · DOK 3: Analysis}
+
+/* Question domain tag */
+.q-domain-tag{
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:12px;
+  color:#fff;
+}
+
+/* Question card */
+.q-card{
+  background:var(--surface);border:2px solid var(--border);
+  border-radius:12px;padding:20px;margin-bottom:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+.q-num{
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:8px;
+}
+.q-text{
+  font-family:'Outfit',sans-serif;font-size:clamp(15px,3.5vw,17px);
+  font-weight:600;color:var(--text);line-height:1.55;
+}
+
+/* Answer choices */
+.ans-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.ans-btn{
+  display:flex;align-items:center;gap:0;
+  border:2px solid var(--border);border-radius:9px;
+  background:var(--surface);
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;
+  color:var(--text2);cursor:pointer;transition:all .14s;
+  text-align:left;width:100%;overflow:hidden;min-height:52px;
+  -webkit-tap-highlight-color:transparent;
+}
+.ans-btn:hover:not(:disabled):not(.c):not(.w){
+  background:#f0f4ff;border-color:var(--navy);color:var(--navy);
+  transform:translateX(3px);
+}
+.ans-btn.sel{background:#eff6ff;border-color:#2563eb;color:#1d4ed8}
+.ans-btn.c{background:#f0fdf4;border-color:var(--correct);color:var(--correct);animation:cFlash .5s ease 2}
+.ans-btn.w{background:#fef2f2;border-color:var(--wrong);animation:wShake .4s ease}
+.ans-btn:disabled:not(.c):not(.w){cursor:default;opacity:.75}
+@keyframes cFlash{0%,100%{background:#f0fdf4}50%{background:#dcfce7}}
+@keyframes wShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.ans-letter{
+  width:44px;min-height:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:var(--text3);
+  background:#f9fafb;border-right:2px solid var(--border);
+  flex-shrink:0;transition:all .14s;
+}
+.ans-btn.sel .ans-letter{color:#2563eb;background:#dbeafe}
+.ans-btn.c .ans-letter{background:var(--correct);color:#fff;border-color:var(--correct)}
+.ans-btn.w .ans-letter{background:var(--wrong);color:#fff;border-color:var(--wrong)}
+.ans-text{padding:10px 13px;flex:1;line-height:1.4}
+.correct-check{margin-right:10px;font-size:14px;color:var(--correct)}
+
+/* Rationale */
+.rationale-box{
+  border-radius:8px;padding:12px 14px;
+  font-size:13px;line-height:1.65;color:var(--text2);
+  margin-bottom:12px;display:none;
+}
+.rationale-box.show{display:block;animation:fadeUp .3s ease}
+.rationale-box.ok{
+  background:#f0fdf4;border:2px solid rgba(21,128,61,.2);
+  border-left:4px solid var(--correct);
+}
+.rationale-box.ok::before{
+  content:'✓ Correct — Rationale';
+  display:block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--correct);margin-bottom:5px;
+}
+.rationale-box.bad{
+  background:#fef2f2;border:2px solid rgba(185,28,28,.15);
+  border-left:4px solid var(--wrong);
+}
+.rationale-box.bad::before{
+  content:'✗ Incorrect — Rationale';
+  display:block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--wrong);margin-bottom:5px;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Controls */
+.ctrl-row{display:flex;align-items:center;gap:8px}
+.ctrl-fb{flex:1;font-size:12px;font-weight:600;color:var(--text3)}
+.ctrl-fb.ok{color:var(--correct)}.ctrl-fb.bad{color:var(--wrong)}
+.ctrl-btn{
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:10px 18px;border-radius:50px;cursor:pointer;
+  transition:all .14s;white-space:nowrap;border:2px solid var(--border);
+  background:var(--surface);color:var(--text2);
+  -webkit-tap-highlight-color:transparent;
+}
+.ctrl-btn:hover:not(:disabled){border-color:var(--navy);color:var(--navy)}
+.ctrl-btn:active{transform:scale(.96)}
+.ctrl-btn:disabled{opacity:.3;cursor:default}
+.ctrl-btn.primary{
+  background:var(--navy);border-color:var(--navy);color:#fff;
+  box-shadow:0 3px 0 var(--navy2);
+}
+.ctrl-btn.primary:active{transform:translateY(2px);box-shadow:none}
+
+/* ══ RESULTS SCREEN ══ */
+.results-screen{max-width:740px;margin:0 auto;padding:20px 16px calc(var(--sab)+40px)}
+
+/* Score hero */
+.score-hero{
+  background:var(--navy);border-radius:16px;padding:32px 24px;
+  text-align:center;margin-bottom:20px;position:relative;overflow:hidden;
+}
+.score-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(204,37,41,.2) 0%,transparent 60%);
+  pointer-events:none;
+}
+.sh-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.sh-score{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(3rem,10vw,5rem);color:#fff;line-height:1;margin-bottom:6px;
+  position:relative;
+}
+.sh-score span{color:var(--gold)}
+.sh-pct{font-size:1.2rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:12px}
+.sh-grade{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 20px;border-radius:50px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  position:relative;
+}
+.sh-grade.pass{background:rgba(21,128,61,.2);color:#4ade80;border:1.5px solid rgba(74,222,128,.3)}
+.sh-grade.warn{background:rgba(245,166,35,.15);color:#fbbf24;border:1.5px solid rgba(251,191,36,.3)}
+.sh-grade.fail{background:rgba(239,68,68,.15);color:#f87171;border:1.5px solid rgba(248,113,113,.3)}
+
+/* Stats row */
+.stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;
+}
+@media(min-width:500px){.stats-row{grid-template-columns:repeat(6,1fr)}}
+.stat-card{
+  background:var(--surface);border:2px solid var(--border);
+  border-radius:var(--r);padding:13px 10px;text-align:center;
+}
+.sc-val{
+  font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;
+  color:var(--navy);line-height:1;margin-bottom:3px;
+}
+.sc-lbl{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.06em;text-transform:uppercase}
+
+/* DOK breakdown */
+.dok-section{
+  background:var(--surface);border:2px solid var(--border);
+  border-radius:12px;padding:18px 18px;margin-bottom:16px;
+}
+.ds-title{
+  font-family:'Fraunces',serif;font-weight:700;font-size:1rem;
+  color:var(--navy);margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.dok-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.dok-row:last-child{margin-bottom:0}
+.dr-label{
+  font-size:11px;font-weight:700;letter-spacing:.08em;min-width:60px;
+}
+.dr-track{flex:1;height:14px;background:var(--bg);border-radius:50px;overflow:hidden;border:1.5px solid var(--border)}
+.dr-fill{height:100%;border-radius:50px;transition:width .8s cubic-bezier(.34,1.56,.64,1)}
+.dr-score{font-size:12px;font-weight:700;color:var(--text2);min-width:48px;text-align:right}
+
+/* Domain breakdown */
+.domain-results{
+  background:var(--surface);border:2px solid var(--border);
+  border-radius:12px;padding:18px;margin-bottom:16px;
+}
+.domain-result-row{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 0;border-bottom:1px solid var(--border);
+}
+.domain-result-row:last-child{border:none}
+.drr-code{
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  width:40px;flex-shrink:0;
+}
+.drr-name{flex:1;font-size:12px;font-weight:600;color:var(--text2)}
+.drr-bar-wrap{width:100px;flex-shrink:0}
+.drr-bar{height:8px;border-radius:50px;overflow:hidden;background:var(--bg);border:1px solid var(--border)}
+.drr-fill{height:100%;border-radius:50px;transition:width .6s ease}
+.drr-score{
+  font-size:12px;font-weight:700;min-width:44px;text-align:right;
+  font-family:'Outfit',monospace;
+}
+
+/* Recommendations */
+.reco-section{
+  background:#fffbeb;border:2px solid rgba(245,166,35,.3);
+  border-left:4px solid var(--gold);
+  border-radius:12px;padding:18px;margin-bottom:20px;
+}
+.reco-title{
+  font-family:'Fraunces',serif;font-weight:700;font-size:1rem;
+  color:var(--navy);margin-bottom:12px;
+  display:flex;align-items:center;gap:7px;
+}
+.reco-item{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:13px;color:var(--text);line-height:1.5;
+  margin-bottom:8px;
+}
+.reco-item::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* Action buttons */
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.ra-btn{
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:13px 24px;border-radius:50px;cursor:pointer;
+  transition:all .15s;border:2px solid var(--border);
+  background:var(--surface);color:var(--text2);
+}
+.ra-btn:hover{border-color:var(--navy);color:var(--navy)}
+.ra-btn.primary{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 3px 0 var(--navy2)}
+.ra-btn.primary:active{transform:translateY(2px);box-shadow:none}
+
+/* ══ DIAGNOSTIC RESULTS ══ */
+.diag-map{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;
+  margin-bottom:20px;
+}
+.diag-domain-card{
+  border-radius:var(--r);padding:14px 12px;text-align:center;
+  border:2px solid var(--border);background:var(--surface);
+  position:relative;overflow:hidden;
+  transition:all .2s;
+}
+.diag-domain-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--dc,var(--navy));
+}
+.ddc-icon{font-size:1.4rem;margin-bottom:5px}
+.ddc-code{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dc,var(--navy));margin-bottom:3px}
+.ddc-name{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:8px;line-height:1.3}
+.ddc-score{
+  font-family:'Fraunces',serif;font-weight:900;font-size:1.6rem;
+  line-height:1;margin-bottom:2px;
+}
+.ddc-bar{height:6px;background:var(--bg);border-radius:50px;overflow:hidden;margin-bottom:5px;border:1px solid var(--border)}
+.ddc-fill{height:100%;border-radius:50px;transition:width .8s ease}
+.ddc-status{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.ddc-status.strong{color:var(--correct)}
+.ddc-status.review{color:var(--gold)}
+.ddc-status.focus{color:var(--wrong)}
+
+/* ══ MISC ══ */
+.screen-flash{
+  position:fixed;inset:0;z-index:1000;pointer-events:none;
+  opacity:0;transition:opacity .3s;
+}
+.screen-flash.ok{background:rgba(21,128,61,.12)}
+.screen-flash.bad{background:rgba(185,28,28,.12)}
+
+/* Confetti */
+.cf{
+  position:fixed;top:-12px;z-index:900;pointer-events:none;
+  animation:cfFall linear forwards;
+}
+@keyframes cfFall{
+  0%{transform:translateY(0)rotate(0);opacity:1}
+  100%{transform:translateY(110dvh)rotate(540deg);opacity:0}
+}
+
+/* Divider */
+.divider{
+  height:1px;background:var(--border);
+  margin:0;
+}
+
+/* Footer */
+.site-footer{
+  background:var(--navy2);color:rgba(255,255,255,.4);
+  padding:28px 20px;text-align:center;
+  font-size:12px;font-weight:500;line-height:1.7;
+}
+.sf-brand{
+  font-family:'Fraunces',serif;font-size:.95rem;
+  color:rgba(255,255,255,.7);font-weight:700;margin-bottom:4px;
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN FLASH -->
+<div class="screen-flash" id="sf"></div>
+
+<!-- ═══════════ TOPBAR ═══════════ -->
+<header class="topbar">
+  <div class="tb-logo">GCPS <span>Health</span><br>Sciences</div>
+  <div class="tb-sub">Sports Medicine EOPA 701</div>
+  <div class="tb-spacer"></div>
+  <nav class="tb-nav">
+    <button class="tb-btn active" onclick="showSection('home')">Home</button>
+    <button class="tb-btn" onclick="startDiagnostic()">Diagnostic</button>
+    <button class="tb-btn" onclick="startPractice()">Practice Test</button>
+  </nav>
+</header>
+
+<!-- ═══════════ HOME PAGE ═══════════ -->
+<div id="page-home" class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Gwinnett County Public Schools · Health Sciences</div>
+    <h1 class="hero-title">Sports <em>Medicine</em><br>EOPA Exam 701</h1>
+    <p class="hero-sub">Prepare for your End-of-Pathway Assessment with an adaptive diagnostic, a 60-question practice test, and domain-by-domain feedback — all built for Gwinnett County Health Sciences students.</p>
+    <div class="hero-actions">
+      <button class="hero-btn primary" onclick="startDiagnostic()">🎯 Take Diagnostic Test</button>
+      <button class="hero-btn secondary" onclick="startPractice()">📝 60-Question Practice</button>
+    </div>
+    <div class="hero-scroll"><span>Scroll to explore</span> ↓</div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Three steps to EOPA ready</h2>
+    <p class="section-sub">Start with the diagnostic to see exactly where you stand, then use the practice test and your study materials to fill the gaps.</p>
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">🎯</div>
+        <div class="step-title">Take the Diagnostic</div>
+        <div class="step-desc">24 questions spanning all 12 standards. Identifies your strongest and weakest domains instantly.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">📊</div>
+        <div class="step-title">See Your Results</div>
+        <div class="step-desc">Get a domain-by-domain score map with personalized study recommendations based on your performance.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">📝</div>
+        <div class="step-title">Practice by DOK Level</div>
+        <div class="step-desc">60 questions across DOK 1 (recall), DOK 2 (application), and DOK 3 (analysis) — just like the real EOPA.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon">🏆</div>
+        <div class="step-title">Track Your Progress</div>
+        <div class="step-desc">Review wrong answers with full rationale explanations, then retake until you hit 80%+ across all domains.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DOMAINS OVERVIEW -->
+  <div class="section">
+    <div class="section-label">Exam Coverage</div>
+    <h2 class="section-title">12 Standards · 100% of the EOPA</h2>
+    <p class="section-sub">Every standard is represented. Numbers show how much of the exam each domain covers — Standard 7 alone is worth 19%.</p>
+    <div class="domains-grid">
+<div class="domain-card" style="--dc:#4f46e5">
+  <div class="dc-pct">6%</div>
+  <div class="dc-code">FUND</div>
+  <div class="dc-name">Fundamentals</div>
+</div>
+<div class="domain-card" style="--dc:#7c3aed">
+  <div class="dc-pct">4%</div>
+  <div class="dc-code">PSYC</div>
+  <div class="dc-name">Sports Psychology</div>
+</div>
+<div class="domain-card" style="--dc:#dc2626">
+  <div class="dc-pct">12%</div>
+  <div class="dc-code">HEAL</div>
+  <div class="dc-name">Injury & Healing</div>
+</div>
+<div class="domain-card" style="--dc:#ea580c">
+  <div class="dc-pct">8%</div>
+  <div class="dc-code">HEAD</div>
+  <div class="dc-name">Head & Neck</div>
+</div>
+<div class="domain-card" style="--dc:#ca8a04">
+  <div class="dc-pct">4%</div>
+  <div class="dc-code">NUTR</div>
+  <div class="dc-name">Sports Nutrition</div>
+</div>
+<div class="domain-card" style="--dc:#16a34a">
+  <div class="dc-pct">4%</div>
+  <div class="dc-code">BODY</div>
+  <div class="dc-name">Body Composition</div>
+</div>
+<div class="domain-card" style="--dc:#0369a1">
+  <div class="dc-pct">19%</div>
+  <div class="dc-code">LOEX</div>
+  <div class="dc-name">Lower Extremity</div>
+</div>
+<div class="domain-card" style="--dc:#0891b2">
+  <div class="dc-pct">8%</div>
+  <div class="dc-code">PERF</div>
+  <div class="dc-name">Performance</div>
+</div>
+<div class="domain-card" style="--dc:#7e22ce">
+  <div class="dc-pct">8%</div>
+  <div class="dc-code">STRN</div>
+  <div class="dc-name">Strength & Ergogenic</div>
+</div>
+<div class="domain-card" style="--dc:#be185d">
+  <div class="dc-pct">9%</div>
+  <div class="dc-code">UPEX</div>
+  <div class="dc-name">Upper Extremity</div>
+</div>
+<div class="domain-card" style="--dc:#15803d">
+  <div class="dc-pct">9%</div>
+  <div class="dc-code">INJR</div>
+  <div class="dc-name">First Aid</div>
+</div>
+<div class="domain-card" style="--dc:#0e7490">
+  <div class="dc-pct">9%</div>
+  <div class="dc-code">REHB</div>
+  <div class="dc-name">Rehabilitation</div>
+</div>
+    </div>
+  </div>
+
+  <!-- DOK EXPLAINER -->
+  <div style="background:var(--navy);padding:48px 20px">
+    <div class="section" style="padding:0">
+      <div class="section-label" style="color:var(--gold)">Understanding DOK Levels</div>
+      <h2 class="section-title" style="color:#fff">What are Depth of Knowledge levels?</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px">
+        <div style="background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.1);border-top:4px solid #15803d;border-radius:10px;padding:20px 18px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4ade80;margin-bottom:6px">DOK Level 1</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:8px">Recall &amp; Reproduce</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6">Recall facts, definitions, and basic concepts. <em>What is RICE? What does ACL stand for?</em></div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.1);border-top:4px solid #f5a623;border-radius:10px;padding:20px 18px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fbbf24;margin-bottom:6px">DOK Level 2</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:8px">Skills &amp; Concepts</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6">Apply knowledge, compare, explain how/why. <em>Why does cryotherapy reduce swelling?</em></div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.1);border-top:4px solid #cc2529;border-radius:10px;padding:20px 18px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#f87171;margin-bottom:6px">DOK Level 3</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:8px">Strategic Thinking</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6">Analyze, evaluate, apply to scenarios. <em>Which assessment finding BEST indicates a Grade III sprain?</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <h2>Ready to find out where you stand?</h2>
+    <p>Take the 24-question diagnostic and get your personalized domain report in under 10 minutes.</p>
+    <div class="cta-btn-row">
+      <button class="cta-btn a" onclick="startDiagnostic()">🎯 Start Diagnostic</button>
+      <button class="cta-btn b" onclick="startPractice()">📝 Jump to Practice Test</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="sf-brand">Gwinnett County Public Schools — Health Sciences</div>
+    Sports Medicine EOPA 701 Exam Preparation &nbsp;·&nbsp; For educational use only
+  </footer>
+
+</div><!-- end page-home -->
+
+<!-- ═══════════ TEST ENGINE ═══════════ -->
+<div id="page-test" class="page hidden">
+  <div id="test-view">
+
+    <!-- Test header -->
+    <div class="test-hdr" id="test-hdr">
+      <div class="th-left">
+        <div class="th-mode" id="th-mode">Practice Test</div>
+        <div class="th-title" id="th-title">Sports Medicine EOPA 701</div>
+        <div class="th-meta">
+          <span id="th-meta-q">Question 1 of 60</span>
+          <span id="th-meta-dok">DOK 1</span>
+          <span id="th-meta-std">—</span>
+        </div>
+      </div>
+      <div class="th-right">
+        <div class="th-timer" id="th-timer">00:00</div>
+        <div class="th-timer-lbl">elapsed</div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="test-progress">
+      <div class="tp-info">
+        <span id="tp-label">Question 1 of 60</span>
+        <span id="tp-score">0 correct</span>
+      </div>
+      <div class="tp-bar"><div class="tp-fill" id="tp-fill" style="width:0%"></div></div>
+    </div>
+
+    <!-- Question area -->
+    <div id="q-area"></div>
+
+  </div>
+</div><!-- end page-test -->
+
+<!-- ═══════════ RESULTS ═══════════ -->
+<div id="page-results" class="page hidden">
+  <div class="results-screen" id="results-screen"></div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────
+const PRACTICE_60 = [{"q":"Referred pain is BEST described as:","opts":["Pain perceived at a location distant from the actual site of injury or pathology","Pain that increases proportionally with greater tissue damage","Pain localized precisely at the injury site only","Pain that resolves immediately when the injury is treated"],"ans":0,"expl":"Referred pain = the brain misinterprets the origin of the pain signal. Classic example: cardiac pain referred to left arm/jaw. Important in athletic assessment — pain location ≠ injury location.","dok":3,"std":"std4"},{"q":"Bulimia Nervosa differs from Anorexia in that Bulimia involves:","opts":["Recurrent cycles of BINGE eating followed by compensatory behaviors (purging, fasting, excessive exercise) — body weight may appear normal","Exclusively severe food restriction without any bingeing episodes","Obsessive focus on gaining muscle rather than losing fat","Only occurring in athletes with very low body weight"],"ans":0,"expl":"Bulimia: binge (large amount, loss of control) → purge (self-induced vomiting, laxatives, over-exercise). Body weight often normal-range. Signs: dental erosion, Russell's sign (knuckle calluses), parotid enlargement.","dok":3,"std":"std6"},{"q":"During prophylactic ankle taping, which taping component runs from the anchor UNDER the heel and up to the anchor on the other side?","opts":["Stirrup","Horseshoe","Heel lock","Checkrein/fan"],"ans":0,"expl":"Stirrups = U-shaped strips going under the heel from medial anchor to lateral anchor. They are the main structural component of ankle taping.","dok":2,"std":"std7"},{"q":"Abduction of the arm at the shoulder means:","opts":["Moving the arm AWAY from the midline of the body","Moving the arm TOWARD the midline of the body","Rotating the arm inward toward the body","Moving the arm forward in the sagittal plane (flexion)"],"ans":0,"expl":"ABduction = Away from the body's midline. ADduction = ADD it back toward midline. The deltoid (primarily supraspinatus 0-15°) performs arm abduction.","dok":1,"std":"std10"},{"q":"During exercise, the MOST critical nutrient for regulating body temperature is:","opts":["Water — through sweating and evaporative cooling","Sodium — primary electrolyte in sweat","Carbohydrates — fuel for thermoregulatory processes","Potassium — regulates cellular fluid balance"],"ans":0,"expl":"Water enables sweating (evaporative cooling = primary heat loss mechanism). Even 2% dehydration impairs performance. 3-5% = significant impairment. >7% = heat illness risk. Hydration is the #1 ergogenic aid.","dok":3,"std":"std5"},{"q":"The return-to-play protocol for concussion requires:","opts":["A stepwise, symptom-free progression through activity levels before full return, cleared by a physician","Immediate return once headache resolves, typically within 24 hours","Two weeks of rest regardless of symptom resolution","Return to play when the athlete subjectively feels ready"],"ans":0,"expl":"Return to Play (RTP) protocol: 6 steps from complete rest to full contact practice. Each step = 24 hours minimum. ANY symptom return = back to previous step. Physician clearance required.","dok":1,"std":"std4"},{"q":"In risk management for athletic settings, which activity type carries the HIGHEST risk of injury?","opts":["Collision sports (football, hockey, rugby) where direct body-to-body contact is the nature of the sport","Non-contact sports like golf or bowling","Limited contact sports like baseball or volleyball","Individual precision sports like archery or shooting"],"ans":0,"expl":"Risk classification: Collision (highest risk) → Contact → Limited Contact → Non-contact. This classification guides liability, insurance requirements, and medical coverage decisions.","dok":1,"std":"std1"},{"q":"The patella is embedded within which structure?","opts":["The quadriceps/patellar tendon mechanism","The ACL complex at the tibial plateau","The iliotibial (IT) band on the lateral knee","The medial retinaculum of the knee"],"ans":0,"expl":"The patella is a sesamoid bone within the quadriceps tendon. It increases the mechanical advantage of the quad during knee extension.","dok":1,"std":"std7"},{"q":"The Q-angle is relevant to patellofemoral pain syndrome because:","opts":["A larger Q-angle increases lateral patellar tracking forces, predisposing to injury","A smaller Q-angle causes medial patellar compression","The Q-angle measures hamstring flexibility","A normal Q-angle indicates ACL laxity"],"ans":0,"expl":"Q-angle = angle of pull of the quadriceps. Females typically have larger Q-angles due to wider hips, increasing patellofemoral stress.","dok":1,"std":"std7"},{"q":"An inversion ankle sprain most commonly injures which ligament FIRST?","opts":["Anterior Talofibular Ligament (ATF)","Deltoid Ligament","Posterior Cruciate Ligament (PCL)","Calcaneofibular Ligament (CFL)"],"ans":0,"expl":"The ATF is the weakest lateral ankle ligament and is the MOST commonly sprained. Inversion + plantarflexion = classic mechanism.","dok":3,"std":"std7"},{"q":"A subdural hematoma involves bleeding:","opts":["Between the dura mater and the surface of the brain (subdural space)","Above the dura mater (epidural space — between skull and dura)","Within the brain tissue itself (intracerebral)","In the subarachnoid space between the arachnoid and pia mater"],"ans":0,"expl":"Sub = below. Subdural = below the dura mater. Epidural = above/outside the dura (typically arterial, rapid). Subdural = typically venous, slower accumulation.","dok":2,"std":"std4"},{"q":"The R.I.C.E. method for acute injury management stands for:","opts":["Rest, Ice, Compression, Elevation","Run, Ice, Cool, Examine","Rest, Immobilize, Compress, Exercise","Reduce, Ice, Compress, Elevate"],"ans":0,"expl":"R.I.C.E. = Rest (stop activity), Ice (vasoconstrict, reduce swelling), Compression (limit edema), Elevation (drain fluid via gravity). Applied immediately post-injury.","dok":1,"std":"std11"},{"q":"The glenoid labrum functions primarily to:","opts":["Deepen the glenoid fossa to improve glenohumeral joint stability","Protect the subacromial bursa from friction","Connect the clavicle to the acromion","Serve as the origin of the biceps short head"],"ans":0,"expl":"The labrum deepens the shallow glenoid by 50%, significantly improving joint congruency and shoulder stability. Tears → instability (Bankart lesion).","dok":2,"std":"std10"},{"q":"Rotator cuff injuries most commonly affect which muscle?","opts":["Supraspinatus — due to its location in the subacromial space","Subscapularis — due to internal rotation demand","Infraspinatus — due to external rotation overuse","Teres minor — due to its thin, vulnerable insertion"],"ans":0,"expl":"The supraspinatus passes through the subacromial space and is most vulnerable to impingement and degenerative tearing. Most common RTC tear.","dok":3,"std":"std10"},{"q":"Ballistic stretching differs from dynamic stretching in that ballistic:","opts":["Uses BOUNCING or jerking motions at end range — higher injury risk due to uncontrolled ballistic forces","Is controlled, sport-specific movement through range of motion at functional speed","Involves a partner applying progressive force to increase range","Is a static stretch maintained for 30+ seconds without movement"],"ans":0,"expl":"Ballistic = uncontrolled bouncing (activates muscle SPINDLES = stretch reflex → tighter muscle). Dynamic = controlled movement through range (preferred pre-exercise). PNF = contract-relax.","dok":3,"std":"std9"},{"q":"Overconfidence in an athlete is problematic because:","opts":["It leads to underestimating opponents, skipping preparation, and taking unnecessary risks — causing preventable errors","It consistently improves performance across all sport types","It is indistinguishable from true self-confidence based on ability","It only affects team sport athletes and not individual sport performers"],"ans":0,"expl":"Optimal performance requires calibrated confidence — neither under- nor overconfident. Overconfidence → poor preparation, complacency, risk-taking. Self-confidence based on actual preparation and skill = performance enhancing.","dok":3,"std":"std2"},{"q":"HIPAA in sports medicine PRIMARILY protects:","opts":["The privacy of an athlete's protected health information (PHI)","The athletic trainer from lawsuits during emergency care","The school from equipment liability claims","The coach's ability to release injury status to media"],"ans":0,"expl":"HIPAA (Health Insurance Portability and Accountability Act) protects PHI — an athlete's health information cannot be shared without consent. Critical in athletic training rooms.","dok":1,"std":"std1"},{"q":"For a suspected spinal injury in an unconscious athlete, the PRIORITY is:","opts":["Maintain in-line spinal stabilization and monitor airway, breathing, circulation (ABCs)","Remove the helmet and face mask immediately to assess breathing","Log-roll the athlete onto their back to clear the airway","Apply traction to decompress the cervical spine"],"ans":0,"expl":"Cervical spine injuries = do NOT move. Maintain in-line stabilization throughout assessment. Only remove helmet if: cannot maintain airway, cannot assess breathing, CPR needed.","dok":1,"std":"std11"},{"q":"A second-degree (Grade II) injury is best described as:","opts":["Partial tear of tissue with moderate pain and some loss of function","Complete rupture of tissue with total loss of function","Microscopic tearing with mild pain and no loss of function","Bone fracture with associated soft tissue damage"],"ans":0,"expl":"Grade I = mild/microscopic. Grade II = partial tear, moderate. Grade III = complete rupture.","dok":3,"std":"std3"},{"q":"The Female Athlete Triad consists of:","opts":["Low energy availability (disordered eating) + menstrual dysfunction (amenorrhea) + low bone mineral density","Anemia + fatigue + stress fractures","Overtraining + dehydration + vitamin D deficiency","Low testosterone + depression + muscle atrophy"],"ans":0,"expl":"Female Athlete Triad: energy deficiency → hormonal disruption → bone loss. Interconnected conditions. Low energy can be intentional (eating disorder) or unintentional (inadequate intake for training load). Serious long-term bone health consequences.","dok":1,"std":"std6"},{"q":"Vasodilation occurs during the inflammatory phase PRIMARILY to:","opts":["Increase blood flow and deliver white blood cells to the injury site","Decrease pain by numbing the area","Remove scar tissue adhesions","Prevent secondary cell death immediately"],"ans":0,"expl":"Vasodilation opens blood vessels, flooding the injury with WBCs, oxygen, and nutrients needed for repair.","dok":2,"std":"std3"},{"q":"Plantar fasciitis is characterized by:","opts":["Sharp, stabbing heel pain that is WORST with the first steps in the morning","Lateral ankle pain following an inversion mechanism","Anterior knee pain that worsens with stair climbing","Diffuse calf pain during sustained running"],"ans":0,"expl":"Classic plantar fasciitis: pain at the plantar calcaneus (heel), worse with first morning steps, improves with movement, worsens after long activity.","dok":1,"std":"std7"},{"q":"Progressive muscle relaxation (PMR) as an anxiety management technique involves:","opts":["Systematically tensing and then releasing muscle groups throughout the body to reduce physical tension and anxiety","Running at progressively increasing speeds to build cardiovascular confidence","Gradually adding weight to a strength training program over time","A series of dynamic warm-up movements performed before competition"],"ans":0,"expl":"PMR: tense a muscle group maximally for 5-10 seconds → release completely → notice the contrast. Progressively move through the body. Reduces somatic anxiety and promotes body awareness.","dok":2,"std":"std2"},{"q":"Medial Tibial Stress Syndrome (shin splints) is best associated with:","opts":["Overuse, rapid increase in training volume, excessive pronation, and hard surfaces","A single traumatic impact to the tibia during collision","Ligament laxity at the subtalar joint causing instability","Nerve compression in the popliteal fossa"],"ans":0,"expl":"Shin splints = overuse injury. Risk factors: training volume spike, flat feet/overpronation, hard surfaces, poor footwear.","dok":2,"std":"std7"},{"q":"Wolff's Law states that:","opts":["Bone adapts its structure in response to the mechanical stresses placed upon it","Injured tissue always heals weaker than the original","Scar tissue is stronger than the original collagen","Muscles hypertrophy only under eccentric load"],"ans":0,"expl":"Wolff's Law: bone remodels its architecture based on the loads it experiences — the foundation of bone rehab.","dok":1,"std":"std3"},{"q":"Heat STROKE differs from heat EXHAUSTION in that heat stroke:","opts":["Features hot, DRY skin and altered mental status — it is a LIFE-THREATENING emergency","Features heavy sweating with normal core temperature","Is less serious and managed with rest and fluids only","Occurs only in humid environments"],"ans":0,"expl":"Heat stroke = thermoregulatory failure → CNS dysfunction. Hot DRY skin (sweating mechanism fails), core temp >104°F. CALL 911. Cold water immersion is treatment.","dok":3,"std":"std11"},{"q":"Which career requires a doctoral degree (MD or DO) and involves diagnosing/treating musculoskeletal injuries surgically?","opts":["Orthopedic Surgeon","Certified Athletic Trainer","Physical Therapist","Exercise Physiologist"],"ans":0,"expl":"Orthopedic Surgeon (MD or DO + surgical residency) specializes in surgical treatment of musculoskeletal conditions. A Physical Therapist requires a DPT (doctorate). An AT requires a master's degree.","dok":2,"std":"std1"},{"q":"Aerobic metabolism differs from anaerobic metabolism in that aerobic:","opts":["Uses oxygen to produce large amounts of ATP — sustainable for extended exercise at moderate intensity","Produces energy faster than aerobic but creates lactic acid — used for high-intensity short bursts","Relies exclusively on stored glycogen without any oxygen requirement","Produces the same amount of ATP per glucose molecule as anaerobic"],"ans":0,"expl":"Aerobic: O2 required → 36–38 ATP per glucose → sustained. Anaerobic (glycolysis): no O2 → 2 ATP per glucose → fast but brief → lactic acid accumulates → fatigue.","dok":3,"std":"std8"},{"q":"Which type of goal focuses on the PROCESS of performance rather than the outcome?","opts":["Process goals (e.g., 'Keep my elbow up during every throw today')","Outcome goals (e.g., 'Win the championship')","Performance goals (e.g., 'Throw the ball at 90 mph')","SMART goals (a framework that can apply to any goal type)"],"ans":0,"expl":"Goal types: Process (focus on execution technique), Performance (personal improvement metrics), Outcome (win/lose results). Process and performance goals are most within athlete control and most effective for improvement.","dok":1,"std":"std2"},{"q":"Which phase of healing involves fibroblast activity and collagen synthesis to form scar tissue?","opts":["Subacute (Repair & Regeneration) Phase","Acute (Inflammation) Phase","Remodeling (Maturation) Phase","Hemostasis Phase"],"ans":0,"expl":"Fibroblasts produce collagen during the Subacute/Repair phase (days 3–21). This creates the initial scar matrix.","dok":2,"std":"std3"},{"q":"An eccentric muscle contraction occurs when:","opts":["The muscle produces force while LENGTHENING (e.g., lowering a weight under control)","The muscle produces force while shortening (e.g., lifting a weight)","The muscle length stays the same while producing force","The muscle is fully relaxed between contractions"],"ans":0,"expl":"Eccentric = muscle lengthens under load. Example: biceps during lowering a dumbbell, quads going down stairs. Eccentric contractions produce the MOST force and cause MOST DOMS.","dok":2,"std":"std9"},{"q":"Which ankle movement involves the sole of the foot turning OUTWARD (away from midline)?","opts":["Eversion","Inversion","Dorsiflexion","Supination"],"ans":0,"expl":"Eversion = sole faces outward. Inversion = sole faces inward. Remember: EVERsion → EVERt outward. Inversion sprains are more common than eversion.","dok":2,"std":"std7"},{"q":"The ACL (Anterior Cruciate Ligament) primarily functions to prevent:","opts":["Anterior translation of the tibia on the femur","Posterior displacement of the tibia","Lateral (valgus) stress at the knee","Hyperextension of the hip"],"ans":0,"expl":"ACL = Anterior Cruciate Ligament. It resists anterior tibial translation (tibia sliding forward under femur). Most common serious knee injury in sports.","dok":2,"std":"std7"},{"q":"Tennis elbow (lateral epicondylitis) is caused by:","opts":["Overuse inflammation of the wrist EXTENSOR tendons at the lateral epicondyle","Overuse inflammation of the wrist FLEXOR tendons at the medial epicondyle","Acute fracture of the lateral epicondyle","Ulnar nerve compression at the cubital tunnel"],"ans":0,"expl":"Lateral epicondylitis = wrist extensors. Medial epicondylitis (Little Leaguer's elbow) = wrist flexors/pronators. 'LEFF' — Lateral Epicondyle = Flexion opposite Follows.","dok":2,"std":"std10"},{"q":"Which type of fracture involves the bone shattering into three or more fragments?","opts":["Comminuted","Spiral","Transverse","Longitudinal"],"ans":0,"expl":"Comminuted = 'crushed' — multiple fragments. Spiral = twisting force. Transverse = straight across the shaft.","dok":2,"std":"std3"},{"q":"Which macronutrient provides 4 kcal per gram AND is the body's preferred and primary fuel source during exercise?","opts":["Carbohydrates — stored as glycogen in muscle and liver","Fats — stored as triglycerides in adipose tissue","Proteins — made of amino acid chains","Vitamins — required in small amounts for metabolic reactions"],"ans":0,"expl":"Carbohydrates = 4 kcal/g. Proteins = 4 kcal/g. Fats = 9 kcal/g. Carbs are the primary fuel for high-intensity exercise. Glycogen depletion = 'hitting the wall.' Essential for sport performance.","dok":2,"std":"std5"},{"q":"The PRIMARY purpose of sports drinks during prolonged exercise (>60 min) is to:","opts":["Replace fluid, electrolytes (sodium/potassium), and carbohydrates lost through sweat and energy expenditure","Provide complete protein for muscle repair during activity","Suppress appetite to maintain weight during competition","Permanently increase blood volume and cardiovascular capacity"],"ans":0,"expl":"Sports drinks (6-8% CHO solution + electrolytes): optimal absorption rate, replace sweat losses, maintain blood glucose. Plain water sufficient for <60 min exercise. Electrolytes prevent hyponatremia in long events.","dok":2,"std":"std5"},{"q":"Carbohydrate loading is MOST beneficial for athletes competing in:","opts":["Endurance events lasting more than 90 minutes (marathon, triathlon, cycling road race)","Short sprint events under 30 seconds","Strength and power sports like weightlifting or throwing events","Flexibility-based activities like gymnastics or yoga"],"ans":0,"expl":"Carb loading maximizes glycogen stores. Only beneficial when glycogen will be depleted (>90 min continuous exercise). Involves tapering training + high-carb intake 3-4 days pre-event. Not useful for short events.","dok":1,"std":"std5"},{"q":"The Borg Scale of Perceived Exertion (RPE) is used to:","opts":["Subjectively rate exercise intensity based on how hard the effort FEELS, correlating with heart rate","Objectively measure blood lactate concentration during exercise","Calculate maximum heart rate and target training zones","Assess anaerobic threshold through ventilatory measurements"],"ans":0,"expl":"Borg RPE: 6 (no exertion) to 20 (maximal). RPE × 10 ≈ heart rate. Useful when heart rate monitoring unavailable. Valid, reliable tool for prescribing exercise intensity.","dok":1,"std":"std8"},{"q":"A 'burner' or 'stinger' injury in athletics is caused by:","opts":["Stretching or compression of the brachial plexus from neck lateral flexion away from the shoulder being depressed","Direct blow to the occiput causing concussion","Hyperflexion of the cervical spine causing spinal cord compression","Rotation injury to the C1-C2 junction"],"ans":0,"expl":"Stinger = neck laterally flexes AWAY while shoulder is DEPRESSED → brachial plexus is stretched. Results in burning/tingling radiating down the arm. Must be distinguished from cervical injury.","dok":2,"std":"std4"},{"q":"Fartlek training is BEST described as:","opts":["Unstructured interval training that varies speed and intensity spontaneously throughout a continuous run","Running at a fixed, constant pace for a predetermined distance","Alternating high-intensity intervals with complete rest periods","Circuit training combining cardiovascular and strength exercises"],"ans":0,"expl":"Fartlek (Swedish: 'speed play') = informal, spontaneous variation of intensity within a continuous run. Example: sprint to next tree, jog to corner, stride the hill. Great for developing aerobic AND anaerobic systems.","dok":3,"std":"std8"},{"q":"A glenohumeral dislocation most commonly occurs in which direction?","opts":["Anterior — the humeral head slides forward out of the glenoid","Posterior — the humeral head slides backward","Superior — under the acromion","Inferior — downward due to gravity and capsule laxity"],"ans":0,"expl":"95% of shoulder dislocations are ANTERIOR. Mechanism: arm abducted + externally rotated (e.g., tackling, falling on outstretched arm).","dok":3,"std":"std10"},{"q":"Which meniscus is MORE frequently injured and why?","opts":["The medial meniscus — it is firmly attached to the MCL and joint capsule, making it less mobile","The lateral meniscus — it is larger and bears more compressive load","The lateral meniscus — it is fused to the LCL and cannot move","Both are injured equally regardless of anatomy"],"ans":0,"expl":"Medial meniscus is more commonly torn because its attachment to the MCL restricts its movement, making it more vulnerable during valgus/rotation forces.","dok":2,"std":"std7"},{"q":"During a SOAP note, objective findings are BEST described as:","opts":["Measurable, observable data collected by the clinician (ROM, palpation findings, special tests)","Subjective pain ratings reported by the athlete","The clinician's diagnosis and clinical impression","The treatment plan and goals for recovery"],"ans":0,"expl":"SOAP: Subjective (what athlete says) → Objective (what you measure/observe) → Assessment (diagnosis) → Plan (treatment).","dok":3,"std":"std3"},{"q":"Little Leaguer's elbow (medial epicondylitis in youth) is caused by:","opts":["Repetitive valgus stress and medial traction forces during throwing","Lateral compression from repetitive backhand motions","Direct impact to the olecranon from falling","Radial head compression during carrying heavy loads"],"ans":0,"expl":"Repetitive throwing creates valgus stress → medial TRACTION on the growth plate (medial epicondyle apophysis) in skeletally immature athletes.","dok":2,"std":"std10"},{"q":"Turf toe is an injury to:","opts":["The metatarsophalangeal (MTP) joint of the great toe, typically from hyperextension","The plantar fascia at the calcaneal insertion","The peroneal tendons at the lateral ankle","The intermetatarsal bursae between the 2nd and 3rd toes"],"ans":0,"expl":"Turf toe = hyperextension sprain of the 1st MTP joint. Common in football/soccer on artificial turf. Can be career-altering if untreated.","dok":1,"std":"std7"},{"q":"In the sliding filament theory of muscle contraction, shortening of the sarcomere occurs when:","opts":["Actin (thin filaments) slide over myosin (thick filaments) toward the center of the sarcomere","Myosin filaments physically shorten in length during contraction","Both actin and myosin decrease in length simultaneously","ATP breaks the actin-myosin cross-bridge preventing further contraction"],"ans":0,"expl":"Sliding filament: myosin heads attach to actin → pull actin toward center → sarcomere shortens → MUSCLE CONTRACTS. The filaments themselves do NOT shorten — only their overlap increases.","dok":2,"std":"std9"},{"q":"Long-term cardiovascular adaptations to endurance training include:","opts":["Increased stroke volume, decreased resting heart rate (athlete's bradycardia), increased VO2max, cardiac hypertrophy","Increased resting heart rate and decreased stroke volume","Reduced cardiac output at maximal exercise","Decreased blood volume and capillary density"],"ans":0,"expl":"Chronic endurance training: heart enlarges (eccentric hypertrophy), SV↑, resting HR↓ (sometimes <40 bpm in elite athletes), plasma volume↑, mitochondrial density↑, VO2max↑.","dok":1,"std":"std8"},{"q":"Dorsiflexion of the ankle refers to:","opts":["Moving the dorsum (top) of the foot toward the shin","Pointing the toes downward (plantarflexion)","Turning the sole of the foot inward (inversion)","Turning the sole of the foot outward (eversion)"],"ans":0,"expl":"Dorsi = dorsum/top. Dorsiflexion brings the foot toward the shin. Think: walking uphill. Opposite = plantarflexion (pointing toes).","dok":2,"std":"std7"},{"q":"Burnout in athletes differs from staleness in that burnout:","opts":["Is a chronic state of emotional and physical exhaustion involving withdrawal from the sport — often permanent unless major changes occur","Is a temporary performance decline that fully resolves with a brief rest period","Only affects professional athletes under contract pressure","Is caused exclusively by physical overtraining without any psychological component"],"ans":0,"expl":"Staleness = temporary performance plateau (resolved with rest/variety). Burnout = deep exhaustion + depersonalization + reduced accomplishment — often requires major intervention, time off, or career re-evaluation.","dok":3,"std":"std2"},{"q":"An acromioclavicular (AC) joint separation is graded based on:","opts":["The degree of tearing of the AC and coracoclavicular ligaments","The amount of glenohumeral capsule damage","The number of rotator cuff tendons involved","The presence or absence of a glenoid labrum tear"],"ans":0,"expl":"AC separation grades I-VI based on ligament integrity: Grade I = AC ligament sprain only. Grade III = CC ligament torn + clavicle elevated. Grade VI = rare, severe.","dok":1,"std":"std10"},{"q":"Type I (slow-twitch) muscle fibers are best suited for:","opts":["Prolonged, low-intensity endurance activities (marathon, swimming) due to high oxidative capacity and fatigue resistance","Explosive, maximal force activities (sprinting, weightlifting)","Short anaerobic bursts requiring maximum power output","Activities requiring maximum speed over 10 seconds or less"],"ans":0,"expl":"Type I = slow, oxidative, red, fatigue RESISTANT. Type II = fast, glycolytic, white, fatigue QUICKLY. Type IIa = intermediate. Fiber type distribution is largely genetic.","dok":1,"std":"std9"},{"q":"Periodization in athletic training refers to:","opts":["Systematic variation of training volume, intensity, and specificity across defined time periods to optimize performance and prevent overtraining","The process of resting between sets during strength training","Measuring athletic performance improvements over a training season","Dividing a practice session into warm-up, training, and cool-down segments"],"ans":0,"expl":"Periodization: Macrocycle (year) → Mesocycles (months) → Microcycles (weeks). Includes preparation, competition, and transition phases. Prevents staleness, peaks performance strategically.","dok":2,"std":"std8"},{"q":"Immediate effects of exercise on the cardiovascular system include:","opts":["Increased heart rate, increased stroke volume, increased cardiac output, and vasodilation to working muscles","Decreased heart rate and increased blood pressure only","Reduced stroke volume to conserve cardiac energy","No changes until 10+ minutes of sustained exercise"],"ans":0,"expl":"Within seconds of exercise start: sympathetic NS → HR↑, SV↑, CO↑ (CO = HR×SV). Vasodilation in working muscles increases blood flow up to 20x. Ventilation increases immediately.","dok":1,"std":"std8"},{"q":"Visual imagery as a psychological performance technique involves:","opts":["Mentally rehearsing athletic skills and scenarios to strengthen neural pathways and improve execution","Watching video footage of an opponent's previous performances","Using mirrors during practice to monitor and correct technique","Visualizing an opponent's weaknesses to create competitive advantage"],"ans":0,"expl":"Mental imagery (visualization): creates or strengthens neurological motor patterns without physical movement. Used in rehabilitation AND performance. PETTLEP model guides effective imagery practice.","dok":2,"std":"std2"},{"q":"The clavicle fractures MOST commonly at:","opts":["The middle third of the shaft","The distal third near the AC joint","The medial third near the sternoclavicular joint","At the coracoclavicular ligament insertion"],"ans":0,"expl":"80% of clavicle fractures occur at the middle third — the weakest point. Mechanism: fall on outstretched hand (FOOSH) or direct blow.","dok":3,"std":"std10"},{"q":"Ecchymosis is the medical term for:","opts":["Bruising / discoloration from blood leaking into subcutaneous tissue","Swelling caused by excess fluid in joint space","Inflammation of a tendon sheath","Crackling sensation felt or heard during joint movement"],"ans":0,"expl":"Ecchymosis = bruising. Effusion = fluid in joint. Crepitus = crackling. Know these vocab terms for the EOPA!","dok":1,"std":"std3"},{"q":"When controlling EXTERNAL bleeding, the FIRST action should be:","opts":["Apply direct pressure with a sterile gauze pad to the wound","Apply a tourniquet proximal to the wound","Irrigate the wound with clean water","Elevate the extremity and apply ice"],"ans":0,"expl":"Direct pressure is always FIRST for external bleeding. Tourniquet = last resort for life-threatening, uncontrolled extremity bleeding. Pressure → pressure dressing → tourniquet.","dok":1,"std":"std11"},{"q":"A concussion is BEST defined as:","opts":["A traumatic brain injury caused by a blow or jolt to the head that alters brain function — no loss of consciousness required","A skull fracture with bleeding between the dura and the brain","Permanent brain damage from a single impact","Loss of consciousness lasting more than 60 seconds after head trauma"],"ans":0,"expl":"Concussion = functional brain injury, NOT structural. Loss of consciousness occurs in <10% of concussions. Any altered mental status (confusion, amnesia, slowed processing) = concussion.","dok":1,"std":"std4"},{"q":"Creatine supplementation works by:","opts":["Increasing phosphocreatine stores in muscle to rapidly regenerate ATP during short maximal efforts","Mimicking the effects of anabolic steroids on muscle protein synthesis","Reducing lactic acid production during aerobic exercise","Increasing red blood cell production similar to EPO"],"ans":0,"expl":"Creatine → phosphocreatine (PCr) stores. PCr donates phosphate to ADP → ATP regeneration (ATP-PCr system). Benefits: 3-15 sec maximal efforts (sprinting, lifting). One of few legal, evidence-based performance supplements.","dok":1,"std":"std9"}];
+const DIAG_24     = [{"q":"HIPAA in sports medicine PRIMARILY protects:","opts":["The privacy of an athlete's protected health information (PHI)","The athletic trainer from lawsuits during emergency care","The school from equipment liability claims","The coach's ability to release injury status to media"],"ans":0,"expl":"HIPAA (Health Insurance Portability and Accountability Act) protects PHI — an athlete's health information cannot be shared without consent. Critical in athletic training rooms.","dok":1,"std":"std1"},{"q":"Which career requires a doctoral degree (MD or DO) and involves diagnosing/treating musculoskeletal injuries surgically?","opts":["Orthopedic Surgeon","Certified Athletic Trainer","Physical Therapist","Exercise Physiologist"],"ans":0,"expl":"Orthopedic Surgeon (MD or DO + surgical residency) specializes in surgical treatment of musculoskeletal conditions. A Physical Therapist requires a DPT (doctorate). An AT requires a master's degree.","dok":2,"std":"std1"},{"q":"To prevent or treat staleness in an athlete, an effective intervention would be to:","opts":["Allow the athlete greater control over their training, reduce emotional demands, and introduce variety","Increase training volume and intensity to 'push through' the performance plateau","Require mandatory participation to maintain team commitment","Eliminate all rest days to maintain training momentum"],"ans":0,"expl":"Staleness interventions: variety in training, time off, athlete autonomy, reduced stressors, supportive environment. AVOID forcing continued high-intensity training — this worsens staleness and risks burnout.","dok":1,"std":"std2"},{"q":"Overconfidence in an athlete is problematic because:","opts":["It leads to underestimating opponents, skipping preparation, and taking unnecessary risks — causing preventable errors","It consistently improves performance across all sport types","It is indistinguishable from true self-confidence based on ability","It only affects team sport athletes and not individual sport performers"],"ans":0,"expl":"Optimal performance requires calibrated confidence — neither under- nor overconfident. Overconfidence → poor preparation, complacency, risk-taking. Self-confidence based on actual preparation and skill = performance enhancing.","dok":3,"std":"std2"},{"q":"HIPS stands for:","opts":["History, Inspection, Palpation, Special Tests","History, Imaging, Pain Assessment, Strength","Healing, Inspection, Pressure, Stabilization","History, Immobilization, Palpation, Surgery"],"ans":0,"expl":"HIPS = History → Inspection → Palpation → Special Tests. This is the standard on-field assessment framework.","dok":1,"std":"std3"},{"q":"Which type of fracture involves the bone shattering into three or more fragments?","opts":["Comminuted","Spiral","Transverse","Longitudinal"],"ans":0,"expl":"Comminuted = 'crushed' — multiple fragments. Spiral = twisting force. Transverse = straight across the shaft.","dok":2,"std":"std3"},{"q":"A concussion is BEST defined as:","opts":["A traumatic brain injury caused by a blow or jolt to the head that alters brain function — no loss of consciousness required","A skull fracture with bleeding between the dura and the brain","Permanent brain damage from a single impact","Loss of consciousness lasting more than 60 seconds after head trauma"],"ans":0,"expl":"Concussion = functional brain injury, NOT structural. Loss of consciousness occurs in <10% of concussions. Any altered mental status (confusion, amnesia, slowed processing) = concussion.","dok":1,"std":"std4"},{"q":"A subdural hematoma involves bleeding:","opts":["Between the dura mater and the surface of the brain (subdural space)","Above the dura mater (epidural space — between skull and dura)","Within the brain tissue itself (intracerebral)","In the subarachnoid space between the arachnoid and pia mater"],"ans":0,"expl":"Sub = below. Subdural = below the dura mater. Epidural = above/outside the dura (typically arterial, rapid). Subdural = typically venous, slower accumulation.","dok":2,"std":"std4"},{"q":"What is the recommended timing for a post-exercise recovery meal or snack?","opts":["Within 30–60 minutes after exercise — the 'anabolic window' for glycogen resynthesis and muscle protein synthesis","3–4 hours after exercise when digestion is optimal","Immediately during cool-down activities","Only at the next regular meal time regardless of exercise timing"],"ans":0,"expl":"Post-exercise nutrition window (30-60 min): 3:1 to 4:1 CHO:protein ratio optimal. Glycogen resynthesis rate is highest immediately post-exercise. Waiting > 2 hours significantly slows recovery.","dok":1,"std":"std5"},{"q":"Which macronutrient provides 4 kcal per gram AND is the body's preferred and primary fuel source during exercise?","opts":["Carbohydrates — stored as glycogen in muscle and liver","Fats — stored as triglycerides in adipose tissue","Proteins — made of amino acid chains","Vitamins — required in small amounts for metabolic reactions"],"ans":0,"expl":"Carbohydrates = 4 kcal/g. Proteins = 4 kcal/g. Fats = 9 kcal/g. Carbs are the primary fuel for high-intensity exercise. Glycogen depletion = 'hitting the wall.' Essential for sport performance.","dok":2,"std":"std5"},{"q":"Safe rates of weight loss for athletes are generally considered to be:","opts":["0.5–1.0 lb (0.25–0.5 kg) per week — preserving lean muscle mass while losing primarily fat","3–5 lbs per week using severe caloric restriction for rapid results","Weight loss should not be attempted during any competitive season","5+ lbs per week is acceptable for athletes who need to make weight for competition"],"ans":0,"expl":"Safe weight loss: 0.5-1 lb/week. Faster loss risks muscle loss, decreased performance, nutrient deficiency, and eating disorder development. Never aggressive weight cutting in-season without medical supervision.","dok":1,"std":"std6"},{"q":"Bulimia Nervosa differs from Anorexia in that Bulimia involves:","opts":["Recurrent cycles of BINGE eating followed by compensatory behaviors (purging, fasting, excessive exercise) — body weight may appear normal","Exclusively severe food restriction without any bingeing episodes","Obsessive focus on gaining muscle rather than losing fat","Only occurring in athletes with very low body weight"],"ans":0,"expl":"Bulimia: binge (large amount, loss of control) → purge (self-induced vomiting, laxatives, over-exercise). Body weight often normal-range. Signs: dental erosion, Russell's sign (knuckle calluses), parotid enlargement.","dok":3,"std":"std6"},{"q":"The Q-angle is relevant to patellofemoral pain syndrome because:","opts":["A larger Q-angle increases lateral patellar tracking forces, predisposing to injury","A smaller Q-angle causes medial patellar compression","The Q-angle measures hamstring flexibility","A normal Q-angle indicates ACL laxity"],"ans":0,"expl":"Q-angle = angle of pull of the quadriceps. Females typically have larger Q-angles due to wider hips, increasing patellofemoral stress.","dok":1,"std":"std7"},{"q":"Medial Tibial Stress Syndrome (shin splints) is best associated with:","opts":["Overuse, rapid increase in training volume, excessive pronation, and hard surfaces","A single traumatic impact to the tibia during collision","Ligament laxity at the subtalar joint causing instability","Nerve compression in the popliteal fossa"],"ans":0,"expl":"Shin splints = overuse injury. Risk factors: training volume spike, flat feet/overpronation, hard surfaces, poor footwear.","dok":2,"std":"std7"},{"q":"The Borg Scale of Perceived Exertion (RPE) is used to:","opts":["Subjectively rate exercise intensity based on how hard the effort FEELS, correlating with heart rate","Objectively measure blood lactate concentration during exercise","Calculate maximum heart rate and target training zones","Assess anaerobic threshold through ventilatory measurements"],"ans":0,"expl":"Borg RPE: 6 (no exertion) to 20 (maximal). RPE × 10 ≈ heart rate. Useful when heart rate monitoring unavailable. Valid, reliable tool for prescribing exercise intensity.","dok":1,"std":"std8"},{"q":"Aerobic metabolism differs from anaerobic metabolism in that aerobic:","opts":["Uses oxygen to produce large amounts of ATP — sustainable for extended exercise at moderate intensity","Produces energy faster than aerobic but creates lactic acid — used for high-intensity short bursts","Relies exclusively on stored glycogen without any oxygen requirement","Produces the same amount of ATP per glucose molecule as anaerobic"],"ans":0,"expl":"Aerobic: O2 required → 36–38 ATP per glucose → sustained. Anaerobic (glycolysis): no O2 → 2 ATP per glucose → fast but brief → lactic acid accumulates → fatigue.","dok":3,"std":"std8"},{"q":"Creatine supplementation works by:","opts":["Increasing phosphocreatine stores in muscle to rapidly regenerate ATP during short maximal efforts","Mimicking the effects of anabolic steroids on muscle protein synthesis","Reducing lactic acid production during aerobic exercise","Increasing red blood cell production similar to EPO"],"ans":0,"expl":"Creatine → phosphocreatine (PCr) stores. PCr donates phosphate to ADP → ATP regeneration (ATP-PCr system). Benefits: 3-15 sec maximal efforts (sprinting, lifting). One of few legal, evidence-based performance supplements.","dok":1,"std":"std9"},{"q":"Ballistic stretching differs from dynamic stretching in that ballistic:","opts":["Uses BOUNCING or jerking motions at end range — higher injury risk due to uncontrolled ballistic forces","Is controlled, sport-specific movement through range of motion at functional speed","Involves a partner applying progressive force to increase range","Is a static stretch maintained for 30+ seconds without movement"],"ans":0,"expl":"Ballistic = uncontrolled bouncing (activates muscle SPINDLES = stretch reflex → tighter muscle). Dynamic = controlled movement through range (preferred pre-exercise). PNF = contract-relax.","dok":3,"std":"std9"},{"q":"An acromioclavicular (AC) joint separation is graded based on:","opts":["The degree of tearing of the AC and coracoclavicular ligaments","The amount of glenohumeral capsule damage","The number of rotator cuff tendons involved","The presence or absence of a glenoid labrum tear"],"ans":0,"expl":"AC separation grades I-VI based on ligament integrity: Grade I = AC ligament sprain only. Grade III = CC ligament torn + clavicle elevated. Grade VI = rare, severe.","dok":1,"std":"std10"},{"q":"A glenohumeral dislocation most commonly occurs in which direction?","opts":["Anterior — the humeral head slides forward out of the glenoid","Posterior — the humeral head slides backward","Superior — under the acromion","Inferior — downward due to gravity and capsule laxity"],"ans":0,"expl":"95% of shoulder dislocations are ANTERIOR. Mechanism: arm abducted + externally rotated (e.g., tackling, falling on outstretched arm).","dok":3,"std":"std10"},{"q":"A contusion is BEST defined as:","opts":["A bruise from direct blow causing bleeding into underlying tissue without breaking the skin","A cut caused by a sharp object laceration","A partial tear of a ligament from joint stress","A complete rupture of a muscle or tendon"],"ans":0,"expl":"Contusion = bruise. Distinguish from: Laceration (cut through skin), Abrasion (skin scraped/abraded), Avulsion (skin/tissue torn away), Sprain (ligament), Strain (muscle/tendon).","dok":1,"std":"std11"},{"q":"Heat STROKE differs from heat EXHAUSTION in that heat stroke:","opts":["Features hot, DRY skin and altered mental status — it is a LIFE-THREATENING emergency","Features heavy sweating with normal core temperature","Is less serious and managed with rest and fluids only","Occurs only in humid environments"],"ans":0,"expl":"Heat stroke = thermoregulatory failure → CNS dysfunction. Hot DRY skin (sweating mechanism fails), core temp >104°F. CALL 911. Cold water immersion is treatment.","dok":3,"std":"std11"},{"q":"The Gate Control Theory of pain management proposes that:","opts":["Non-painful nerve input (like rubbing) can 'close the gate' on pain signals at the spinal cord level","Pain signals can only be blocked by pharmaceutical analgesics","All pain signals travel directly to the brain without modulation","Greater injury always equals proportionally greater perceived pain"],"ans":0,"expl":"Gate Control Theory (Melzack & Wall, 1965): Large-diameter fibers (touch/vibration) can inhibit transmission of small-diameter pain fibers at the dorsal horn 'gate.' Explains why rubbing an injury helps.","dok":1,"std":"std12"},{"q":"Phase I of rehabilitation primarily focuses on:","opts":["Controlling pain and swelling, maintaining cardiovascular fitness, and beginning range of motion","Return-to-sport with full functional and sport-specific activities","Maximum strength training and power development","Plyometric training and agility progressions"],"ans":0,"expl":"Phase I: PRICE, pain/swelling control, early ROM, maintain CV fitness. Phase II: Full ROM, strength/power. Phase III: Sport-specific, proprioception, return-to-sport.","dok":1,"std":"std12"}];
+const STD_META    = {"std1":{"label":"Standard 1","pct":6,"color":"#4f46e5","code":"FUND","name":"Fundamentals"},"std2":{"label":"Standard 2","pct":4,"color":"#7c3aed","code":"PSYC","name":"Sports Psychology"},"std3":{"label":"Standard 3","pct":12,"color":"#dc2626","code":"HEAL","name":"Injury & Healing"},"std4":{"label":"Standard 4","pct":8,"color":"#ea580c","code":"HEAD","name":"Head & Neck"},"std5":{"label":"Standard 5","pct":4,"color":"#ca8a04","code":"NUTR","name":"Sports Nutrition"},"std6":{"label":"Standard 6","pct":4,"color":"#16a34a","code":"BODY","name":"Body Composition"},"std7":{"label":"Standard 7","pct":19,"color":"#0369a1","code":"LOEX","name":"Lower Extremity"},"std8":{"label":"Standard 8","pct":8,"color":"#0891b2","code":"PERF","name":"Performance"},"std9":{"label":"Standard 9","pct":8,"color":"#7e22ce","code":"STRN","name":"Strength & Ergogenic"},"std10":{"label":"Standard 10","pct":9,"color":"#be185d","code":"UPEX","name":"Upper Extremity"},"std11":{"label":"Standard 11","pct":9,"color":"#15803d","code":"INJR","name":"First Aid"},"std12":{"label":"Standard 12","pct":9,"color":"#0e7490","code":"REHB","name":"Rehabilitation"}};
+const SC_DATA     = {"std1":{"title":"Fundamentals","pct":6,"color":"#6366f1","abbr":"FUND","concepts":["Primary sports medicine team members: Coach, Athlete, Parents, Team Physician, Certified Athletic Trainer (AT), Allied Health Professionals","Negligence requires 4 elements: Duty of care, Breach of duty, Damage/injury occurred, Proximate cause","HIPAA protects athlete Protected Health Information (PHI) — cannot share without consent","Preparticipation Physical Examination (PPE) identifies conditions that may disqualify or predispose to injury","Assumption of Risk: athletes accept inherent dangers of sport — does NOT cover staff negligence","Informed consent: patient understands risks, benefits, alternatives BEFORE agreeing to treatment","Good Samaritan Law: protects good-faith emergency responders from liability","Title IX (1972): prohibits sex discrimination in federally funded educational programs","Scope of practice: what an AT is legally permitted to do — defined by state practice acts","Emergency Action Plan (EAP): contacts, AED location, 911 protocol, roles, evacuation routes","Risk classification: Collision > Contact > Limited Contact > Non-contact","Standard of care: level of care a reasonable professional would provide in same circumstances"],"vocab":["Negligence","HIPAA","PPE","Assumption of Risk","Informed Consent","Good Samaritan","Title IX","Scope of Practice","EAP","Malpractice","Liability","Standard of Care","Battery","Omission","Commission"],"exam_tip":"Know all 4 elements of negligence and be able to distinguish between the different legal terms. The AT's scope of practice is a frequent test question."},"std2":{"title":"Sports Psychology","pct":4,"color":"#a855f7","abbr":"PSYC","concepts":["5 psychological phases after injury (DABDA): Denial → Anger → Bargaining → Depression → Acceptance","SMART goals: Specific, Measurable, Achievable, Relevant, Time-bound","Intrinsic motivation: internal drive (fun, mastery) vs Extrinsic: external rewards (trophies, praise)","Burnout vs Staleness: Burnout = chronic exhaustion + withdrawal; Staleness = temporary performance plateau","Progressive Muscle Relaxation (PMR): tense then release muscle groups to reduce anxiety","Visual imagery: mentally rehearsing skills to strengthen neural pathways — used in rehab AND performance","Overtraining interventions: time off, athlete autonomy, variety, reduced demands","Goal types: Process (technique) > Performance (personal PR) > Outcome (win/lose)"],"vocab":["DABDA","SMART Goals","Intrinsic Motivation","Extrinsic Motivation","Burnout","Staleness","PMR","Visual Imagery","Overtraining","Process Goals","Outcome Goals"],"exam_tip":"DABDA phases appear frequently — know the correct ORDER. Distinguish burnout (chronic, serious) from staleness (temporary, fixable with rest)."},"std3":{"title":"Injury & Healing Process","pct":12,"color":"#e11d48","abbr":"HEAL","concepts":["5 cardinal signs of inflammation (SHARP): Swelling, Heat, Altered function, Redness, Pain","3 healing phases: Acute/Inflammation (0–72hrs) → Subacute/Repair (3 days–3 weeks) → Remodeling (3 weeks–2 years)","Vasodilation in acute phase: increases blood flow, delivers WBCs, oxygen, and nutrients to injury","Hypoxia causes secondary cell death — why RICE is critical in first 72 hours","Subacute phase: fibroblasts produce collagen → scar tissue formation","Remodeling phase: collagen reorganizes along lines of mechanical stress (Wolff's Law)","Wolff's Law: bone/tissue adapts its structure to the mechanical stresses placed upon it","HIPS assessment: History → Inspection → Palpation → Special Tests","Injury grades: Grade I = microscopic/mild; Grade II = partial tear/moderate; Grade III = complete rupture","Fracture types: Greenstick (children), Comminuted (shattered), Spiral (twisting), Transverse (straight), Longitudinal","Anatomical planes: Sagittal (L/R), Frontal/Coronal (front/back), Transverse (upper/lower)","SOAP Note: Subjective → Objective → Assessment → Plan"],"vocab":["SHARP","Vasodilation","Hypoxia","Fibroblast","Collagen","Wolff's Law","HIPS","Ecchymosis","Effusion","Crepitus","Edema","Joint Laxity","Greenstick Fracture","Comminuted Fracture","SOAP Note"],"exam_tip":"This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and fracture types are guaranteed questions."},"std4":{"title":"Head & Neck Injuries","pct":8,"color":"#d97706","abbr":"HEAD","concepts":["Concussion = functional brain injury (NOT structural) — LOC occurs in <10% of cases","Subdural hematoma: bleeding BELOW the dura mater (venous, slower)","Epidural hematoma: bleeding ABOVE the dura mater (arterial, rapid) — 'talk and die' = EMERGENCY","Brachial plexus originates from C5–T1 (cervical 5 through thoracic 1)","Burner/Stinger: brachial plexus stretched when neck flexes away while shoulder depressed","NOCSAE: helmets must never be modified — voids certification and creates legal liability","SCM muscle: ipsilateral lateral flexion + contralateral rotation of head","Concussion RTP protocol: stepwise, symptom-free progression — physician clearance required","Skull bones: Frontal, Occipital, Parietal, Temporal, Mandible, Maxillae, Zygomatic, Nasal","Occipital bone contains the foramen magnum — where brainstem becomes spinal cord","Referred pain: perceived at location distant from actual injury site"],"vocab":["Concussion","Subdural Hematoma","Epidural Hematoma","Brachial Plexus","Burner/Stinger","NOCSAE","SCM","Amnesia","Foramen Magnum","Referred Pain","Innervate","Point Tenderness"],"exam_tip":"Know subdural vs epidural — which is arterial (epidural, fast, emergency) vs venous (subdural, slower). Brachial plexus C5-T1 appears often. The 'lucid interval' = epidural hematoma."},"std5":{"title":"Sports Nutrition","pct":4,"color":"#f59e0b","abbr":"NUTR","concepts":["Macronutrient calories: Carbohydrates = 4 kcal/g, Proteins = 4 kcal/g, Fats = 9 kcal/g","Carbohydrates = primary fuel for high-intensity exercise; stored as glycogen in muscle and liver","Hyponatremia: low blood sodium from OVERDRINKING plain water — not dehydration","Carbohydrate loading: beneficial only for endurance events >90 minutes","Pre-event meal: 3–4 hours before — high carb, low fat/fiber, moderate protein","Post-exercise window: within 30–60 minutes — 3:1 to 4:1 CHO:protein ratio","Sports drinks (6–8% CHO + electrolytes): replace fluid, electrolytes, carbs in events >60 min","Dehydration: even 2% body weight loss impairs performance significantly","Water = most critical nutrient for thermoregulation via sweating/evaporative cooling","Protein role: tissue repair, enzymes, hormones, immune function — NOT primary energy source"],"vocab":["Glycogen","Hyponatremia","Carbohydrate Loading","Electrolytes","Dehydration","kcal","Macronutrient","Pre-event Meal","Post-exercise Window","Sports Drink"],"exam_tip":"The 3 macronutrient calorie values (4-4-9) are guaranteed questions. Hyponatremia = too MUCH water, not too little. Carb loading only helps for events >90 minutes."},"std6":{"title":"Body Composition & Diseases","pct":4,"color":"#ec4899","abbr":"BODY","concepts":["Body composition methods: Hydrostatic (water displacement), BIA (electrical current), Skinfold calipers, Bod Pod (air displacement), DEXA (gold standard)","DEXA = gold standard: measures fat mass, lean mass, AND bone mineral density simultaneously","Hydrostatic: fat floats (less dense), muscle sinks (more dense) — Archimedes principle","BIA: fat impedes electrical current; affected by hydration status","Female Athlete Triad: Low energy availability + Menstrual dysfunction + Low bone mineral density","Anorexia Nervosa: restriction, fear of weight gain, distorted body image — highest psychiatric mortality","Bulimia Nervosa: binge → purge cycles; body weight often appears normal","Muscle Dysmorphia: obsessive belief body is too small/not muscular enough","Safe weight loss: 0.5–1.0 lb/week to preserve lean muscle mass","BMI = least accurate body composition method (doesn't distinguish muscle from fat)"],"vocab":["Hydrostatic Weighing","BIA","DEXA","Bod Pod","Skinfold Calipers","Female Athlete Triad","Anorexia Nervosa","Bulimia Nervosa","Muscle Dysmorphia","Body Composition","BMI"],"exam_tip":"Know what each body composition METHOD uses (water, electricity, air, X-ray). Female Athlete Triad = 3 interconnected conditions. DEXA is the gold standard — but hydrostatic was the traditional criterion method."},"std7":{"title":"Lower Extremity Injuries","pct":19,"color":"#7c3aed","abbr":"LOEX","concepts":["ACL: prevents ANTERIOR translation of tibia on femur — most common serious knee injury","Inversion ankle sprain: most commonly injures ATF (Anterior Talofibular) ligament FIRST","MCL tested with VALGUS stress (force toward midline); LCL tested with VARUS stress","Medial meniscus torn more often — attached to MCL, less mobile","Medial Tibial Stress Syndrome (shin splints): overuse, training volume spike, overpronation","Dorsiflexion = foot toward shin; Plantarflexion = pointing toes down","Eversion = sole outward; Inversion = sole inward","Plantar fasciitis: heel pain WORST with first morning steps","Turf toe: hyperextension sprain of 1st metatarsophalangeal (MTP) joint","Achilles tendon: joins gastrocnemius + soleus to calcaneus — largest tendon in body","Q-angle: larger angle (common in females) increases lateral patellar tracking forces","Prophylactic taping: Stirrups run under heel from anchor to anchor — primary structural component","Pre-wrap: protects skin only — does NOT provide support","Patella: sesamoid bone within quadriceps tendon — increases mechanical advantage","Lower extremity bones: Femur, Tibia, Fibula, Patella, Talus, Calcaneus, Metatarsals, Phalanges"],"vocab":["ACL","MCL","LCL","PCL","ATF","Deltoid Ligament","Meniscus","Valgus","Varus","Dorsiflexion","Plantarflexion","Eversion","Inversion","Stirrup","Pre-wrap","Q-angle","Turf Toe","MTSS","Plantar Fasciitis"],"exam_tip":"This is 19% of the exam — the LARGEST standard. ACL function, ATF as first ligament injured, valgus/varus stress tests, and taping terminology are tested repeatedly. Know your ankle movements cold."},"std8":{"title":"Performance Enhancement","pct":8,"color":"#2563eb","abbr":"PERF","concepts":["VO2max = maximum oxygen consumption during maximal exercise — gold standard of aerobic fitness","Cardiac output (CO) = Heart Rate (HR) × Stroke Volume (SV)","SPECIFICITY principle: body adapts specifically to the TYPE of stress placed on it (SAID)","Periodization: Macrocycle (year) → Mesocycles (months) → Microcycles (weeks)","Target Heart Rate: 60–85% of HRmax (HRmax = 220 − age)","Borg RPE Scale: 6 (no exertion) to 20 (maximal) — RPE × 10 ≈ heart rate","Fartlek training: unstructured spontaneous speed/intensity variation within continuous run","Aerobic: uses oxygen, 36–38 ATP/glucose, sustainable; Anaerobic: no oxygen, 2 ATP, brief, lactic acid","Long-term endurance adaptations: increased SV, decreased resting HR, increased VO2max","Conditioning principles: Adaptation, Overload, Specificity, Reversibility, Periodization"],"vocab":["VO2max","Cardiac Output","Stroke Volume","Periodization","Fartlek","Borg Scale","Target Heart Rate","Aerobic","Anaerobic","Overload","Reversibility","Specificity","Tidal Volume","Vital Capacity"],"exam_tip":"CO = HR × SV is a guaranteed formula question. Know the difference between aerobic (sustainable, O2, 36-38 ATP) and anaerobic (brief, no O2, 2 ATP, lactic acid). Fartlek = speed play in Swedish."},"std9":{"title":"Strength, Flexibility & Ergogenic Aids","pct":8,"color":"#8b5cf6","abbr":"STRN","concepts":["Sliding filament theory: myosin heads pull actin toward center → sarcomere shortens → muscle contracts","Eccentric contraction: muscle LENGTHENS under load (most force, most DOMS)","Concentric contraction: muscle shortens while producing force","Type I fibers (slow-twitch): oxidative, fatigue-resistant — endurance activities","Type II fibers (fast-twitch): glycolytic, fatigue quickly — power/sprint activities","PNF stretching: contract muscle BEFORE stretching → autogenic inhibition → greater ROM","Static stretching BEST after exercise when muscles are warm (may reduce power if done before)","Plyometrics: stretch-shortening cycle — eccentric pre-load → immediate concentric release = power","Creatine: increases phosphocreatine stores → rapid ATP regeneration for 3–15 sec maximal efforts","Anabolic steroids dangers: liver damage, LVH, hormonal disruption, premature growth plate closure","EPO/Blood doping: artificially increases RBCs → more O2 delivery; risk of thrombosis, stroke, death","Ballistic stretching: bouncing at end range (activates stretch reflex — AVOID); Dynamic = controlled"],"vocab":["Sarcomere","Actin","Myosin","Sliding Filament","Eccentric","Concentric","Isometric","Isokinetic","Type I Fiber","Type II Fiber","PNF","Plyometrics","Creatine","EPO","Anabolic Steroids","DOMS"],"exam_tip":"Sliding filament = actin slides over myosin (filaments don't shorten). PNF = contract THEN stretch. Distinguish static (after), dynamic (before), ballistic (avoid). Anabolic steroid dangers are a common test question."},"std10":{"title":"Upper Extremity Injuries","pct":9,"color":"#0891b2","abbr":"UPEX","concepts":["SITS rotator cuff: Supraspinatus (abduction), Infraspinatus (ext. rotation), Teres minor (ext. rotation), Subscapularis (int. rotation)","Supraspinatus most commonly injured RTC — passes through subacromial space","Shoulder impingement: supraspinatus tendon compressed under acromion during elevation","95% of shoulder dislocations = ANTERIOR (arm abducted + externally rotated)","AC separation graded by AC + coracoclavicular ligament integrity (Grade I–VI)","Clavicle fractures at middle third (80%) — weakest point; FOOSH mechanism","Lateral epicondylitis (tennis elbow): wrist EXTENSOR tendons at lateral epicondyle","Medial epicondylitis (Little Leaguer's): wrist FLEXOR/pronator tendons at medial epicondyle","Glenoid labrum: deepens glenoid fossa by 50% — tears cause instability (Bankart lesion)","Supination = palm UP (soup); Pronation = palm DOWN","Abduction = arm AWAY from midline; Adduction = toward midline","Upper extremity bones: Scapula, Clavicle, Humerus, Radius, Ulna, Carpals, Metacarpals, Phalanges"],"vocab":["SITS","Supraspinatus","Impingement","AC Joint","Glenohumeral","Glenoid Labrum","Bankart Lesion","Lateral Epicondylitis","Medial Epicondylitis","Supination","Pronation","Abduction","Adduction","FOOSH"],"exam_tip":"SITS mnemonic is a guaranteed question. Know lateral (extensor tendons) vs medial (flexor tendons) epicondylitis. Anterior dislocation = 95% of cases. Supination = palm UP."},"std11":{"title":"Common Injuries & First Aid","pct":9,"color":"#dc2626","abbr":"INJR","concepts":["RICE method: Rest, Ice, Compression, Elevation — applied immediately post-injury","Heat stroke: hot DRY skin + altered mental status = LIFE-THREATENING — call 911, cold water immersion","Heat exhaustion: heavy sweating, normal/elevated temp, weakness — rest, fluids, cooling","Shock signs: pale, cool, clammy skin; rapid weak pulse; confusion; low blood pressure","External bleeding: direct pressure FIRST → pressure dressing → tourniquet (last resort)","Fracture immobilization: splint joint ABOVE and joint BELOW the fracture — do NOT reduce","Crutch fitting: axillary pad 2 finger-widths below armpit; hand grip = elbow 15–20° flexion","Anaphylaxis: epinephrine (EpiPen) FIRST → call 911 → transport; antihistamines are adjunct only","MRSA: methicillin-resistant staph — spreads by contact; looks like spider bite; do NOT drain in field","Sprain = LIGAMENT injury; Strain = MUSCLE or TENDON injury","Spinal injury: maintain in-line stabilization — monitor ABCs; do NOT move unless airway compromised","Contusion = bruise (no skin break); Laceration = cut; Abrasion = skin scraped; Avulsion = torn away"],"vocab":["RICE","Heat Stroke","Heat Exhaustion","Shock","Anaphylaxis","MRSA","Sprain","Strain","Contusion","Laceration","Avulsion","Tourniquet","Cyanosis","Subluxation","Dislocation"],"exam_tip":"Sprain vs Strain is guaranteed every year. Heat STROKE = hot DRY skin (sweating stops). Fracture rule = joint ABOVE and BELOW. Direct pressure is ALWAYS first for bleeding."},"std12":{"title":"Rehabilitation & Modalities","pct":9,"color":"#059669","abbr":"REHB","concepts":["Gate Control Theory: non-painful input (rubbing) can close the 'gate' on pain signals at spinal cord","Phase I: control pain/swelling, maintain CV fitness, begin early ROM","Phase II: restore full ROM, strength/power/endurance, begin proprioception","Phase III: functional/sport-specific skills, balance, return-to-sport criteria met","SAID principle: Specific Adaptation to Imposed Demands — rehab must mirror sport demands","Cryotherapy: vasoconstriction → reduced blood flow/swelling; 20–30 minutes per session","Thermotherapy: vasodilation → increased blood flow — CONTRAINDICATED in acute phase (0–72 hrs)","Ultrasound: thermal (deep heating) + non-thermal (cavitation) effects on tissue","Manual therapy: massage, cupping, IASTM/scraping (Graston technique)","Compression wrap: start at metatarsal heads (most distal), work proximally — figure-8 pattern","Overload principle: progressively increase demands to drive adaptation","Common rehab mistakes: treating symptoms not cause, ignoring contralateral side, poor posture assessment"],"vocab":["Gate Control Theory","Phase I/II/III","SAID Principle","Cryotherapy","Thermotherapy","Ultrasound","IASTM","Proprioception","Modality","Analgesic","Contraindicate","Vasoconstrictor","Vasodilator","Overload"],"exam_tip":"Gate Control Theory appears on almost every EOPA. Know all 3 rehab PHASES and what each focuses on. Cryotherapy = 20–30 min MAX. SAID = specific adaptation — rehabilitation must be sport-specific."}};
+const STD_ORDER   = ["std1","std2","std3","std4","std5","std6","std7","std8","std9","std10","std11","std12"];
+const LETTERS     = ['A','B','C','D'];
+const DOK_LABELS  = {1:'DOK 1 — Recall',2:'DOK 2 — Application',3:'DOK 3 — Analysis'};
+
+// ── STATE ─────────────────────────────────────────────────────
+let MODE        = '';   // 'practice' | 'diagnostic'
+let CUR_CORRECT = 0;   // correct answer index for current question
+let CUR_STD     = '';  // standard for current question
+let CUR_EXPL    = '';  // explanation for current question
+let QUESTIONS   = [];
+let QI          = 0;
+let CORRECT     = 0;
+let SEL         = -1;
+let DONE_Q      = false;
+let TIMER_INT   = null;
+let ELAPSED_S   = 0;
+let RESULTS_DATA = {};
+
+// ── NAVIGATION ────────────────────────────────────────────────
+function showSection(name) {
+  ['page-home','page-test','page-results'].forEach(id => {
+    document.getElementById(id).classList.toggle('hidden', id !== 'page-' + name);
+  });
+  // Update topbar active state
+  document.querySelectorAll('.tb-btn').forEach(b => b.classList.remove('active'));
+  const map = {home:0, test:2, results:2};
+  const btns = document.querySelectorAll('.tb-btn');
+  if (name==='home' && btns[0]) btns[0].classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  stopTimer();
+  showSection('home');
+}
+
+// ── START TESTS ───────────────────────────────────────────────
+function startDiagnostic() {
+  MODE = 'diagnostic';
+  QUESTIONS = shuffle([...DIAG_24]);
+  beginTest();
+}
+
+function startPractice() {
+  MODE = 'practice';
+  QUESTIONS = shuffle([...PRACTICE_60]);
+  beginTest();
+}
+
+function beginTest() {
+  QI=0; CORRECT=0; SEL=-1; DONE_Q=false; ELAPSED_S=0;
+  RESULTS_DATA = {};
+  document.getElementById('th-mode').textContent  = MODE==='diagnostic' ? 'Diagnostic Test' : 'Practice Test';
+  document.getElementById('th-title').textContent = MODE==='diagnostic'
+    ? '24-Question Diagnostic — All Standards'
+    : '60-Question Practice Test — EOPA 701';
+  startTimer();
+  showSection('test');
+  loadQ();
+}
+
+// ── TIMER ─────────────────────────────────────────────────────
+function startTimer() {
+  stopTimer();
+  ELAPSED_S = 0;
+  TIMER_INT = setInterval(() => {
+    ELAPSED_S++;
+    const m = String(Math.floor(ELAPSED_S/60)).padStart(2,'0');
+    const s = String(ELAPSED_S%60).padStart(2,'0');
+    const el = document.getElementById('th-timer');
+    if (el) { el.textContent = m+':'+s; }
+  }, 1000);
+}
+function stopTimer() {
+  if (TIMER_INT) { clearInterval(TIMER_INT); TIMER_INT=null; }
+}
+
+// ── LOAD QUESTION ─────────────────────────────────────────────
+function loadQ() {
+  const total = QUESTIONS.length;
+  if (QI >= total) { showResults(); return; }
+
+  const q = QUESTIONS[QI];
+  SEL=-1; DONE_Q=false;
+  const pct = (QI/total)*100;
+  const m = STD_META[q.std];
+
+  // Header meta
+  document.getElementById('th-meta-q').textContent  = `Question ${QI+1} of ${total}`;
+  document.getElementById('th-meta-dok').textContent = DOK_LABELS[q.dok];
+  document.getElementById('th-meta-std').textContent = m ? m.code+' — '+m.name : '';
+
+  // Progress
+  document.getElementById('tp-label').textContent = `Question ${QI+1} of ${total}`;
+  document.getElementById('tp-score').textContent  = CORRECT+' correct';
+  document.getElementById('tp-fill').style.width   = pct+'%';
+
+  // DOK badge color class
+  const dokClass = 'dok-'+q.dok;
+  const domColor = m ? m.color : '#002855';
+
+  // Shuffle answer choices
+  const origAns = q.opts[q.ans];
+  const shuffled = [...q.opts].sort(()=>Math.random()-.5);
+  const correctIdx = shuffled.indexOf(origAns);
+  // Store globally so onclick doesn't need to pass unsafe strings
+  CUR_CORRECT = correctIdx;
+  CUR_STD     = q.std;
+  CUR_EXPL    = q.expl || '';
+
+  const optsHTML = shuffled.map((opt,i) => `
+    <button class="ans-btn" id="ab${i}" onclick="pick(${i})" data-idx="${i}">
+      <span class="ans-letter">${LETTERS[i]}</span>
+      <span class="ans-text">${opt}</span>
+    </button>`).join('');
+
+  document.getElementById('q-area').innerHTML = `
+    <span class="dok-badge ${dokClass}">${DOK_LABELS[q.dok]}</span>
+    <span class="q-domain-tag" style="background:${domColor};margin-left:6px">${m?m.code:'—'} · ${m?m.name:'—'}</span>
+    <div class="q-card" style="animation:fadeUp .25s ease">
+      <div class="q-num">Question ${QI+1} of ${total}</div>
+      <div class="q-text">${q.q}</div>
+    </div>
+    <div class="ans-grid">${optsHTML}</div>
+    <div class="rationale-box" id="rat-box"></div>
+    <div class="ctrl-row">
+      <div class="ctrl-fb" id="ctrl-fb">Select an answer to continue.</div>
+      <button class="ctrl-btn primary" id="btn-confirm" onclick="confirm_ans()" disabled>Confirm</button>
+      <button class="ctrl-btn" id="btn-next" onclick="nextQ()" style="display:none">Next ${QI+1<total?'→':'→ Results'}</button>
+    </div>`;
+
+  // Animate answer buttons
+  [0,1,2,3].forEach((i)=>{
+    const b = document.getElementById('ab'+i);
+    if (!b) return;
+    b.style.opacity='0'; b.style.transform='translateX(-10px)';
+    setTimeout(()=>{b.style.transition='opacity .22s ease,transform .22s ease';b.style.opacity='';b.style.transform='';}, 60+i*55);
+  });
+}
+
+// ── PICK ANSWER ───────────────────────────────────────────────
+function pick(i) {
+  if (DONE_Q) return;
+  [0,1,2,3].forEach(j=>{const b=document.getElementById('ab'+j);if(b)b.classList.remove('sel');});
+  const b = document.getElementById('ab'+i);
+  if (b) b.classList.add('sel');
+  SEL = i;
+  const cf = document.getElementById('btn-confirm');
+  if (cf) cf.disabled = false;
+  const fb = document.getElementById('ctrl-fb');
+  if (fb) fb.textContent = 'Press Confirm to lock in your answer.';
+}
+
+// Keyboard: A/B/C/D and Enter/Space
+document.addEventListener('keydown', e => {
+  if (document.getElementById('page-test').classList.contains('hidden')) return;
+  const tag = e.target.tagName;
+  if (tag==='INPUT'||tag==='TEXTAREA') return;
+  const m = {a:0,b:1,c:2,d:3,'1':0,'2':1,'3':2,'4':3};
+  const k = e.key.toLowerCase();
+  if (m[k]!==undefined && !DONE_Q) { pick(m[k]); return; }
+  if ((k==='enter'||k===' ') && !DONE_Q) {
+    const cf=document.getElementById('btn-confirm');
+    if (cf&&!cf.disabled) cf.click();
+    e.preventDefault();
+  } else if ((k==='enter'||k===' ') && DONE_Q) {
+    const nx=document.getElementById('btn-next');
+    if (nx&&nx.style.display!=='none') nx.click();
+    e.preventDefault();
+  }
+});
+
+// ── CONFIRM ANSWER ────────────────────────────────────────────
+function confirm_ans() {
+  if (SEL<0||DONE_Q) return;
+  DONE_Q = true;
+  const correctIdx = CUR_CORRECT;
+  const expl       = CUR_EXPL;
+  const std        = CUR_STD;
+  const ok         = SEL===correctIdx;
+
+  if (ok) { CORRECT++; flashScreen('ok'); }
+  else     { flashScreen('bad'); }
+
+  [0,1,2,3].forEach(i=>{const b=document.getElementById('ab'+i);if(b)b.disabled=true;});
+  const cf=document.getElementById('btn-confirm'); if(cf)cf.style.display='none';
+
+  const sel_btn = document.getElementById('ab'+SEL);
+  if (sel_btn) { sel_btn.classList.remove('sel'); sel_btn.classList.add(ok?'c':'w'); }
+  if (!ok) {
+    const cor_btn=document.getElementById('ab'+correctIdx);
+    if(cor_btn) cor_btn.classList.add('c');
+  }
+
+  const rat = document.getElementById('rat-box');
+  if (rat && expl) { rat.textContent=expl; rat.className='rationale-box show '+(ok?'ok':'bad'); }
+
+  const fb = document.getElementById('ctrl-fb');
+  if (fb) { fb.textContent=ok?'Correct! Well done.':'Incorrect — review the rationale above.'; fb.className='ctrl-fb '+(ok?'ok':'bad'); }
+
+  const nx = document.getElementById('btn-next'); if(nx) nx.style.display='';
+
+  // Track per-domain for results
+  if (!RESULTS_DATA[std]) RESULTS_DATA[std]={correct:0,total:0,dok:{1:{c:0,t:0},2:{c:0,t:0},3:{c:0,t:0}}};
+  RESULTS_DATA[std].total++;
+  const q = QUESTIONS[QI];
+  RESULTS_DATA[std].dok[q.dok].t++;
+  if (ok) { RESULTS_DATA[std].correct++; RESULTS_DATA[std].dok[q.dok].c++; }
+}
+
+function nextQ() { QI++; loadQ(); }
+
+// ── FLASH SCREEN ──────────────────────────────────────────────
+function flashScreen(type) {
+  const f=document.getElementById('sf'); if(!f)return;
+  f.className='screen-flash '+type; f.style.opacity='1';
+  setTimeout(()=>f.style.opacity='0', 300);
+}
+
+// ── CONFETTI ──────────────────────────────────────────────────
+function confetti(n=40) {
+  const cols=['#002855','#cc2529','#f5a623','#15803d','#2563eb','#fff'];
+  for(let i=0;i<n;i++){
+    const d=document.createElement('div'); d.className='cf';
+    const dur=1.2+Math.random()*2,dl=Math.random()*.8;
+    d.style.cssText=`left:${Math.random()*100}vw;background:${cols[Math.floor(Math.random()*cols.length)]};width:${4+Math.random()*8}px;height:${4+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${dur}s;animation-delay:${dl}s`;
+    document.body.appendChild(d); setTimeout(()=>d.remove(),(dur+dl+.5)*1000);
+  }
+}
+
+// ── SHUFFLE ───────────────────────────────────────────────────
+function shuffle(a) { for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+// ── SHOW RESULTS ─────────────────────────────────────────────
+function showResults() {
+  stopTimer();
+  const total  = QUESTIONS.length;
+  const pct    = Math.round(CORRECT/total*100);
+  const mins   = Math.floor(ELAPSED_S/60);
+  const secs   = ELAPSED_S%60;
+  const timeStr= `${mins}m ${secs}s`;
+
+  if (pct >= 80) confetti(60);
+
+  const gradeClass = pct>=80?'pass':pct>=65?'warn':'fail';
+  const gradeLabel = pct>=80?'✓ Strong Performance':pct>=65?'⚠ Approaching Proficiency':'✗ Needs Improvement';
+
+  // DOK breakdown
+  const dokData = {1:{c:0,t:0},2:{c:0,t:0},3:{c:0,t:0}};
+  QUESTIONS.forEach((q,i)=>{
+    const answered_correct = (i < QI); // we have all answers now
+    dokData[q.dok].t++;
+  });
+  Object.values(RESULTS_DATA).forEach(r=>{
+    [1,2,3].forEach(d=>{
+      dokData[d].c += r.dok[d].c;
+      dokData[d].t += r.dok[d].t;
+    });
+  });
+
+  const dokRowsHTML = [1,2,3].map(d=>{
+    const {c,t}=dokData[d];
+    const p = t>0?Math.round(c/t*100):0;
+    const col = p>=80?'#15803d':p>=65?'#ca8a04':'#b91c1c';
+    return `<div class="dok-row">
+      <div class="dr-label dok-${d}" style="min-width:70px">${DOK_LABELS[d].split('—')[0].trim()}</div>
+      <div class="dr-track"><div class="dr-fill" style="width:${p}%;background:${col}"></div></div>
+      <div class="dr-score" style="color:${col}">${c}/${t} (${p}%)</div>
+    </div>`;
+  }).join('');
+
+  // Domain breakdown
+  const domainRowsHTML = STD_ORDER.map(k=>{
+    const m = STD_META[k];
+    const r = RESULTS_DATA[k]||{correct:0,total:0};
+    if (!r.total) return '';
+    const p = Math.round(r.correct/r.total*100);
+    const col = p>=80?'var(--correct)':p>=65?'var(--gold)':'var(--wrong)';
+    return `<div class="domain-result-row">
+      <div class="drr-code" style="color:${m.color}">${m.code}</div>
+      <div class="drr-name">${m.name}</div>
+      <div class="drr-bar-wrap"><div class="drr-bar"><div class="drr-fill" style="width:${p}%;background:${col}"></div></div></div>
+      <div class="drr-score" style="color:${col}">${r.correct}/${r.total}</div>
+    </div>`;
+  }).join('');
+
+  // Recommendations
+  const weak = STD_ORDER
+    .filter(k=>{const r=RESULTS_DATA[k]; return r&&r.total>0&&Math.round(r.correct/r.total*100)<70;})
+    .map(k=>STD_META[k]);
+
+  const recoHTML = weak.length===0
+    ? '<div class="reco-item">Excellent work across all domains! Focus on any DOK Level 3 questions you missed to push for exam excellence.</div>'
+    : weak.slice(0,4).map(m=>`<div class="reco-item"><strong>${m.code} — ${m.name}</strong> (${m.pct}% of exam): Review key concepts, vocabulary, and exam tips for this standard. Pay special attention to DOK 2 and 3 question types.</div>`).join('');
+
+  // DIAGNOSTIC-SPECIFIC: domain map
+  let diagMapHTML = '';
+  if (MODE === 'diagnostic') {
+    const ICONS = {std1:'📋',std2:'🧠',std3:'🩹',std4:'⛑️',std5:'🍎',std6:'⚖️',std7:'🦵',std8:'⚡',std9:'💪',std10:'🏋️',std11:'🚑',std12:'🏥'};
+    diagMapHTML = `
+    <div class="domain-results">
+      <div class="ds-title">📊 Your Domain Performance Map</div>
+      <div class="diag-map">` +
+      STD_ORDER.map(k=>{
+        const m=STD_META[k];
+        const r=RESULTS_DATA[k]||{correct:0,total:0};
+        const p=r.total>0?Math.round(r.correct/r.total*100):0;
+        const status=p>=80?'strong':p>=50?'review':'focus';
+        const statusLabel=p>=80?'Strong':'Needs Review';
+        const col=p>=80?'var(--correct)':p>=65?'var(--gold)':'var(--wrong)';
+        return `<div class="diag-domain-card" style="--dc:${m.color}">
+          <div class="ddc-icon">${ICONS[k]||'📌'}</div>
+          <div class="ddc-code">${m.code}</div>
+          <div class="ddc-name">${m.name}</div>
+          <div class="ddc-score" style="color:${col}">${r.total>0?p+'%':'—'}</div>
+          <div class="ddc-bar"><div class="ddc-fill" style="width:${p}%;background:${col}"></div></div>
+          <div class="ddc-status ${status}">${r.total>0?statusLabel:'Not tested'}</div>
+        </div>`;
+      }).join('') +
+      `</div></div>`;
+  }
+
+  const isMode = MODE==='diagnostic';
+
+  document.getElementById('results-screen').innerHTML = `
+    <div style="padding:16px 0 0">
+
+      <div class="score-hero">
+        <div class="sh-label">${isMode?'Diagnostic Results':'Practice Test Results'}</div>
+        <div class="sh-score">${CORRECT}<span>/${total}</span></div>
+        <div class="sh-pct">${pct}% Correct · ${timeStr}</div>
+        <div class="sh-grade ${gradeClass}">${gradeLabel}</div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="sc-val">${pct}%</div><div class="sc-lbl">Score</div></div>
+        <div class="stat-card"><div class="sc-val">${CORRECT}</div><div class="sc-lbl">Correct</div></div>
+        <div class="stat-card"><div class="sc-val">${total-CORRECT}</div><div class="sc-lbl">Incorrect</div></div>
+        <div class="stat-card"><div class="sc-val">${Object.keys(RESULTS_DATA).length}</div><div class="sc-lbl">Standards</div></div>
+        <div class="stat-card"><div class="sc-val">${timeStr}</div><div class="sc-lbl">Time</div></div>
+        <div class="stat-card"><div class="sc-val">${pct>=80?'🏆':pct>=65?'📈':'📚'}</div><div class="sc-lbl">Status</div></div>
+      </div>
+
+      ${diagMapHTML}
+
+      <div class="dok-section">
+        <div class="ds-title">🎯 Performance by DOK Level</div>
+        ${dokRowsHTML}
+        <div style="font-size:11px;color:var(--text3);margin-top:12px;font-weight:600">
+          DOK 1 = Recall facts &nbsp;·&nbsp; DOK 2 = Apply concepts &nbsp;·&nbsp; DOK 3 = Analyze scenarios
+        </div>
+      </div>
+
+      ${!diagMapHTML ? `
+      <div class="domain-results">
+        <div class="ds-title">📚 Performance by Domain</div>
+        ${domainRowsHTML || '<div style="color:var(--text3);font-size:13px">Answer questions to see domain breakdown.</div>'}
+      </div>` : ''}
+
+      <div class="reco-section">
+        <div class="reco-title">💡 Study Recommendations</div>
+        ${recoHTML}
+      </div>
+
+      <div class="result-actions" id="result-actions">
+      </div>
+
+    </div>`;
+
+  showSection('results');
+  const ra = document.getElementById('result-actions');
+  if (ra) {
+    const retakeLabel = MODE==='diagnostic' ? 'Retake Diagnostic' : 'Retake Practice Test';
+    const switchLabel = MODE==='diagnostic' ? '📝 Take Practice Test' : '🎯 Take Diagnostic';
+    const switchFn    = MODE==='diagnostic' ? 'startPractice()' : 'startDiagnostic()';
+    const retakeFn    = MODE==='diagnostic' ? 'startDiagnostic()' : 'startPractice()';
+    ra.innerHTML =
+      '<button class="ra-btn primary" onclick="'+retakeFn+'">↺ '+retakeLabel+'</button>' +
+      '<button class="ra-btn" onclick="'+switchFn+'">'+switchLabel+'</button>' +
+      '<button class="ra-btn" onclick="goHome()">🏠 Back to Home</button>';
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+showSection('home');
+</script>
+</body>
+</html>

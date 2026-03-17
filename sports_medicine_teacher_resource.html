@@ -1,0 +1,3051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sports Medicine EOPA 701 — Teacher Resource Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   SPORTS MEDICINE EOPA — TEACHER RESOURCE PACK
+   Three tools in one: Study Guide · Flashcards · Review
+   Design: Clean academic / medical journal aesthetic
+   Light background, deep navy text, vivid standard colors
+═══════════════════════════════════════════════════════ */
+:root {
+  --bg:       #f7f7f5;
+  --surface:  #ffffff;
+  --border:   #e2e2da;
+  --border2:  #ccccc0;
+  --text:     #17170f;
+  --text2:    #55554a;
+  --text3:    #99998a;
+  --navy:     #0f2044;
+  --gold:     #92620a;
+  --correct:  #166534;
+  --r:        8px;
+}
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  background:var(--bg);
+  font-family:'Source Sans 3',sans-serif;
+  color:var(--text);
+  font-size:14px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ══════════════ PRINT STYLES ══════════════ */
+@media print {
+  .no-print, .sidebar, .tab-nav, .flash-hint, .flash-back,
+  .tab-panel:not(.active) { display:none !important; }
+  body { font-size:10pt; background:#fff; }
+  .main-wrap { margin:0 !important; }
+  .std-block { page-break-inside:avoid; break-inside:avoid; margin-bottom:24pt; }
+  .flash-card { page-break-inside:avoid; break-inside:avoid; }
+  .cover-section { page-break-after:always; }
+  a { color:inherit; text-decoration:none; }
+  .q-block { page-break-inside:avoid; }
+}
+
+/* ══════════════ SHELL ══════════════ */
+.shell { display:flex; min-height:100vh; }
+
+/* Sidebar */
+.sidebar {
+  width:220px; flex-shrink:0;
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  background:var(--navy);
+  display:flex; flex-direction:column;
+  padding:0 0 24px;
+}
+.sb-brand {
+  padding:22px 18px 18px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  margin-bottom:8px;
+}
+.sb-logo {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem; color:#fff; line-height:1.25; margin-bottom:4px;
+}
+.sb-logo em { font-style:normal; color:#fbbf24; }
+.sb-sub { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4); font-weight:600; }
+
+.sb-section-lbl {
+  padding:10px 18px 4px;
+  font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+.nav-link {
+  display:flex; align-items:center; gap:8px;
+  padding:6px 14px 6px 18px;
+  text-decoration:none; color:rgba(255,255,255,.6);
+  font-size:12px; font-weight:600;
+  border-left:3px solid transparent;
+  transition:all .15s;
+}
+.nav-link:hover, .nav-link.active {
+  background:rgba(255,255,255,.07);
+  border-left-color:var(--col, #fbbf24);
+  color:#fff;
+}
+.nl-code {
+  font-family:'Source Code Pro',monospace;
+  font-size:10px; color:var(--col,#fbbf24);
+  flex-shrink:0; min-width:34px;
+}
+.nl-name { flex:1; font-size:11px; }
+.nl-pct {
+  font-size:10px; color:rgba(255,255,255,.3);
+  font-family:'Source Code Pro',monospace;
+}
+
+.sb-tools {
+  margin-top:auto; padding:16px 18px 0;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.sb-tool-btn {
+  display:block; width:100%; padding:8px 12px; margin-bottom:6px;
+  border-radius:6px; border:1.5px solid rgba(255,255,255,.15);
+  background:transparent; color:rgba(255,255,255,.7);
+  font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase; cursor:pointer;
+  transition:all .15s; text-align:center;
+}
+.sb-tool-btn:hover { background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.3); }
+.sb-tool-btn.primary { background:#fbbf24; color:#000; border-color:#fbbf24; }
+.sb-tool-btn.primary:hover { background:#fde68a; }
+
+/* Main area */
+.main-wrap { flex:1; min-width:0; }
+
+/* ══════════════ TAB NAVIGATION ══════════════ */
+.tab-nav {
+  position:sticky; top:0; z-index:100;
+  background:var(--surface);
+  border-bottom:2px solid var(--border);
+  display:flex; align-items:center; gap:0;
+  padding:0 32px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.tab-btn {
+  padding:14px 20px; border:none; background:transparent;
+  font-family:'Source Sans 3',sans-serif; font-size:13px; font-weight:700;
+  color:var(--text2); cursor:pointer; letter-spacing:.03em;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
+  transition:all .15s; white-space:nowrap;
+}
+.tab-btn:hover { color:var(--navy); }
+.tab-btn.active { color:var(--navy); border-bottom-color:var(--navy); }
+.tab-spacer { flex:1; }
+.tab-print-btn {
+  font-size:11px; font-weight:600; letter-spacing:.06em;
+  padding:7px 16px; border-radius:6px;
+  border:1.5px solid var(--border2);
+  background:var(--bg); color:var(--text2);
+  cursor:pointer; transition:all .15s; white-space:nowrap;
+}
+.tab-print-btn:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
+
+/* Tab panels */
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* ══════════════ COVER ══════════════ */
+.cover-section {
+  background:var(--navy); padding:56px 48px 48px; position:relative; overflow:hidden;
+}
+.cover-section::before {
+  content:'';
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(251,191,36,.08) 0%, transparent 50%),
+    repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,.012) 60px, rgba(255,255,255,.012) 61px);
+}
+.cover-eyebrow {
+  font-family:'Source Code Pro',monospace;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.45); margin-bottom:14px; position:relative;
+}
+.cover-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5vw,3.8rem); color:#fff;
+  line-height:1.1; position:relative; margin-bottom:8px;
+}
+.cover-title em { font-style:normal; color:#fbbf24; }
+.cover-sub {
+  font-size:15px; color:rgba(255,255,255,.65); max-width:520px;
+  line-height:1.7; position:relative; margin-bottom:32px;
+}
+.cover-stats {
+  display:flex; gap:32px; position:relative; flex-wrap:wrap;
+}
+.cstat { text-align:center; }
+.cstat-num {
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem; color:#fbbf24; line-height:1;
+}
+.cstat-lbl {
+  font-size:11px; color:rgba(255,255,255,.4);
+  text-transform:uppercase; letter-spacing:.1em; font-weight:600;
+}
+.cover-copyright {
+  position:relative; margin-top:28px; padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.12);
+  font-size:11px; color:rgba(255,255,255,.3); font-style:italic;
+}
+
+/* ══════════════ EXAM WEIGHT CHART ══════════════ */
+.weight-section {
+  padding:36px 40px;
+  border-bottom:2px solid var(--border);
+  background:var(--surface);
+}
+.section-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem; color:var(--navy); margin-bottom:5px;
+}
+.section-sub { font-size:12px; color:var(--text3); font-weight:600; margin-bottom:22px; letter-spacing:.04em; }
+
+.wbar { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.wbar-label {
+  font-family:'Source Code Pro',monospace; font-size:10px; font-weight:600;
+  width:40px; flex-shrink:0; letter-spacing:.06em;
+}
+.wbar-track {
+  flex:1; height:22px; background:var(--bg);
+  border-radius:4px; overflow:hidden; border:1.5px solid var(--border);
+}
+.wbar-fill {
+  height:100%; display:flex; align-items:center; padding-left:8px;
+  min-width:40px; transition:width .6s ease;
+}
+.wbar-name { font-size:11px; font-weight:600; color:#fff; white-space:nowrap; }
+.wbar-pct {
+  font-family:'Source Code Pro',monospace; font-size:11px;
+  color:var(--text2); width:32px; text-align:right; flex-shrink:0;
+}
+
+/* ══════════════ QUICK REFERENCE ══════════════ */
+.qr-section { padding:36px 40px; border-bottom:2px solid var(--border); }
+.qr-table { width:100%; border-collapse:collapse; margin-top:4px; }
+.qr-table thead th {
+  background:var(--navy); color:#fff; padding:9px 13px;
+  font-family:'Source Code Pro',monospace; font-size:10px;
+  letter-spacing:.12em; text-transform:uppercase; text-align:left;
+  font-weight:600;
+}
+.qr-table tbody tr { border-bottom:1px solid var(--border); }
+.qr-table tbody tr:hover { background:var(--bg); }
+.qr-table tbody tr:last-child { border:none; }
+.qr-term {
+  font-family:'Source Code Pro',monospace; font-size:12px;
+  font-weight:600; color:var(--navy); padding:8px 13px;
+  white-space:nowrap; vertical-align:top;
+}
+.qr-cat {
+  font-size:11px; color:var(--text2); font-weight:600;
+  padding:8px 13px; white-space:nowrap; vertical-align:top;
+}
+.qr-def { font-size:12.5px; color:var(--text); padding:8px 13px; line-height:1.5; vertical-align:top; }
+
+/* ══════════════ STANDARD REVIEW SECTIONS ══════════════ */
+.std-block {
+  padding:36px 40px;
+  border-bottom:2px solid var(--border);
+  scroll-margin-top:60px;
+}
+.std-header {
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:14px; margin-bottom:22px;
+  padding-bottom:16px;
+  border-bottom:3px solid;
+}
+.std-hdr-left { display:flex; align-items:center; gap:14px; }
+.std-icon { font-size:2rem; flex-shrink:0; }
+.std-code {
+  font-family:'Source Code Pro',monospace; font-size:10px;
+  font-weight:600; letter-spacing:.12em; text-transform:uppercase; margin-bottom:3px;
+}
+.std-name {
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem; color:var(--text); line-height:1.2;
+}
+.std-badge {
+  color:#fff; border-radius:50px; padding:5px 16px;
+  font-family:'Source Code Pro',monospace; font-size:11px;
+  font-weight:600; letter-spacing:.06em; white-space:nowrap; flex-shrink:0;
+}
+
+.std-content-grid {
+  display:grid; grid-template-columns:1fr 260px; gap:24px; margin-bottom:28px;
+}
+@media(max-width:740px) {
+  .std-content-grid { grid-template-columns:1fr; }
+  .sidebar { display:none; }
+  .main-wrap { margin-left:0!important; }
+  .cover-section,.weight-section,.qr-section,.std-block { padding:24px 18px; }
+}
+
+.subsection-title {
+  font-family:'Source Code Pro',monospace; font-size:10px;
+  font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  margin-bottom:10px; padding-bottom:5px;
+  border-bottom:1.5px solid var(--border);
+}
+
+/* Concepts list */
+.concepts-list { list-style:none; display:flex; flex-direction:column; gap:5px; margin-bottom:18px; }
+.concept-item {
+  display:flex; gap:8px; align-items:flex-start;
+  font-size:12.5px; line-height:1.55; color:var(--text);
+}
+.c-num {
+  font-family:'Source Code Pro',monospace; font-size:9px;
+  flex-shrink:0; margin-top:3px;
+  color:#fff; border-radius:3px;
+  padding:1px 4px; min-width:22px; text-align:center;
+  /* background set inline */
+}
+
+/* Vocab cloud */
+.vocab-cloud { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:16px; }
+.v-chip {
+  font-family:'Source Code Pro',monospace; font-size:10px;
+  padding:3px 10px; border-radius:4px;
+  border:1.5px solid var(--border); background:var(--bg);
+  color:var(--text2); transition:all .15s; cursor:default;
+  white-space:nowrap;
+}
+.v-chip:hover { border-color:var(--border2); color:var(--text); }
+
+/* Exam tip */
+.exam-tip-box {
+  background:rgba(146,98,10,.06);
+  border:1.5px solid rgba(146,98,10,.2);
+  border-left:4px solid var(--gold);
+  border-radius:var(--r); padding:13px 15px;
+}
+.tip-eyebrow {
+  font-family:'Source Code Pro',monospace; font-size:9px;
+  font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:5px;
+}
+.tip-body { font-size:12.5px; line-height:1.65; color:var(--text); }
+
+/* Notes box */
+.notes-box {
+  background:var(--bg); border:1.5px solid var(--border);
+  border-radius:var(--r); padding:12px 14px;
+}
+.notes-label {
+  font-family:'Source Code Pro',monospace; font-size:9px;
+  font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text3); margin-bottom:10px;
+}
+.note-line {
+  height:1px; background:var(--border);
+  margin-bottom:20px;
+}
+.note-line:last-child { margin-bottom:0; }
+
+/* Sample questions */
+.sample-qs {
+  background:var(--bg); border:2px solid var(--border);
+  border-radius:var(--r); padding:18px 20px;
+}
+.q-block { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+.q-block:last-child { margin-bottom:0; padding-bottom:0; border:none; }
+.q-num {
+  font-family:'Source Code Pro',monospace; font-size:10px;
+  font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--text3); margin-bottom:5px;
+}
+.q-text {
+  font-size:13.5px; font-weight:600; color:var(--text);
+  line-height:1.55; margin-bottom:10px;
+}
+.opts-list { list-style:none; display:flex; flex-direction:column; gap:5px; margin-bottom:10px; }
+.opt {
+  display:flex; align-items:flex-start; gap:8px;
+  font-size:12.5px; line-height:1.45; color:var(--text2);
+  padding:6px 10px; border-radius:5px;
+  border:1.5px solid transparent;
+}
+.opt.correct {
+  color:var(--correct); background:rgba(22,101,52,.07);
+  border-color:rgba(22,101,52,.3); font-weight:600;
+}
+.opt-letter {
+  font-family:'Source Code Pro',monospace; font-size:11px; font-weight:600;
+  flex-shrink:0; min-width:18px;
+}
+.correct-mark {
+  margin-left:auto; flex-shrink:0;
+  font-size:13px; color:var(--correct);
+}
+.rationale {
+  font-size:12px; color:var(--text2); line-height:1.6;
+  background:var(--surface); border-radius:5px;
+  border-left:3px solid var(--gold); padding:8px 11px;
+}
+.rat-label {
+  font-family:'Source Code Pro',monospace; font-size:9px;
+  font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gold); margin-right:6px;
+}
+
+/* ══════════════ FLASHCARDS ══════════════ */
+.flashcard-section { padding:32px 40px; }
+.fc-controls {
+  display:flex; align-items:center; gap:10px; margin-bottom:24px; flex-wrap:wrap;
+}
+.fc-filter {
+  font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600;
+  padding:7px 14px; border-radius:50px; border:1.5px solid var(--border);
+  background:var(--surface); color:var(--text2); cursor:pointer;
+  transition:all .15s; letter-spacing:.03em;
+}
+.fc-filter:hover { border-color:var(--border2); color:var(--text); }
+.fc-filter.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+.fc-count { font-size:12px; color:var(--text3); font-weight:600; margin-left:auto; }
+
+.flashcards-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+  gap:12px;
+}
+@media print {
+  .flashcards-grid { grid-template-columns:repeat(3,1fr); gap:8pt; }
+}
+
+.flash-card {
+  background:var(--surface); border:2px solid var(--border);
+  border-top:4px solid var(--card-col,var(--navy));
+  border-radius:var(--r); padding:16px 14px;
+  cursor:pointer; transition:all .2s; position:relative; min-height:110px;
+  display:flex; flex-direction:column;
+}
+.flash-card:hover { border-color:var(--card-col,var(--navy)); box-shadow:0 4px 16px rgba(0,0,0,.1); transform:translateY(-2px); }
+.flash-card.flipped .flash-front { display:none; }
+.flash-card.flipped .flash-back  { display:flex; }
+.flash-card:not(.flipped) .flash-back { display:none; }
+
+.flash-front { display:flex; flex-direction:column; flex:1; }
+.flash-std {
+  font-family:'Source Code Pro',monospace; font-size:9px;
+  font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  margin-bottom:8px;
+}
+.flash-term {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem; color:var(--text); line-height:1.3; flex:1;
+}
+.flash-hint {
+  font-size:10px; color:var(--text3); margin-top:10px;
+  font-weight:600; letter-spacing:.06em;
+}
+
+.flash-back {
+  flex-direction:column; flex:1;
+  align-items:flex-start; justify-content:center;
+}
+.flash-def {
+  font-size:12px; line-height:1.6; color:var(--text);
+  flex:1;
+}
+.flash-flip-btn {
+  display:inline-block; margin-top:10px; font-size:10px;
+  color:var(--text3); font-weight:600; letter-spacing:.06em;
+  text-transform:uppercase; cursor:pointer;
+}
+
+/* Footer */
+.page-footer {
+  padding:20px 40px; border-top:2px solid var(--border);
+  background:var(--surface);
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:11px; color:var(--text3);
+}
+.footer-copy { font-weight:700; color:var(--text2); }
+.footer-notice { font-style:italic; max-width:420px; text-align:right; line-height:1.5; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ════════════ SIDEBAR ════════════ -->
+<nav class="sidebar no-print">
+  <div class="sb-brand">
+    <div class="sb-logo">Sports <em>Medicine</em><br>EOPA 701</div>
+    <div class="sb-sub">Teacher Resource Pack</div>
+  </div>
+
+  <div class="sb-section-lbl">Navigation</div>
+  <a href="#" onclick="switchTab('guide');return false;" class="nav-link" onclick="switchTab('guide')" style="--col:#fbbf24">
+    <span class="nl-code">📖</span><span class="nl-name">Study Guide</span>
+  </a>
+  <a href="#" onclick="switchTab('cards');return false;" class="nav-link" onclick="switchTab('guide')" style="--col:#fbbf24">
+    <span class="nl-code">🃏</span><span class="nl-name">Flashcards</span>
+  </a>
+
+  <div class="sb-section-lbl" style="margin-top:8px">Jump to Standard</div>
+<a href="#review-std1" class="nav-link" onclick="switchTab('guide')" style="--col:#4f46e5"><span class="nl-code">FUND</span><span class="nl-name">Fundamentals</span><span class="nl-pct">6%</span></a><a href="#review-std2" class="nav-link" onclick="switchTab('guide')" style="--col:#7c3aed"><span class="nl-code">PSYC</span><span class="nl-name">Sports Psychology</span><span class="nl-pct">4%</span></a><a href="#review-std3" class="nav-link" onclick="switchTab('guide')" style="--col:#dc2626"><span class="nl-code">HEAL</span><span class="nl-name">Injury & Healing Process</span><span class="nl-pct">12%</span></a><a href="#review-std4" class="nav-link" onclick="switchTab('guide')" style="--col:#ea580c"><span class="nl-code">HEAD</span><span class="nl-name">Head & Neck Injuries</span><span class="nl-pct">8%</span></a><a href="#review-std5" class="nav-link" onclick="switchTab('guide')" style="--col:#ca8a04"><span class="nl-code">NUTR</span><span class="nl-name">Sports Nutrition</span><span class="nl-pct">4%</span></a><a href="#review-std6" class="nav-link" onclick="switchTab('guide')" style="--col:#16a34a"><span class="nl-code">BODY</span><span class="nl-name">Body Composition</span><span class="nl-pct">4%</span></a><a href="#review-std7" class="nav-link" onclick="switchTab('guide')" style="--col:#0369a1"><span class="nl-code">LOEX</span><span class="nl-name">Lower Extremity Injuries</span><span class="nl-pct">19%</span></a><a href="#review-std8" class="nav-link" onclick="switchTab('guide')" style="--col:#0891b2"><span class="nl-code">PERF</span><span class="nl-name">Performance Enhancement</span><span class="nl-pct">8%</span></a><a href="#review-std9" class="nav-link" onclick="switchTab('guide')" style="--col:#7e22ce"><span class="nl-code">STRN</span><span class="nl-name">Strength & Ergogenic Aids</span><span class="nl-pct">8%</span></a><a href="#review-std10" class="nav-link" onclick="switchTab('guide')" style="--col:#be185d"><span class="nl-code">UPEX</span><span class="nl-name">Upper Extremity Injuries</span><span class="nl-pct">9%</span></a><a href="#review-std11" class="nav-link" onclick="switchTab('guide')" style="--col:#15803d"><span class="nl-code">INJR</span><span class="nl-name">Common Injuries & First Aid</span><span class="nl-pct">9%</span></a><a href="#review-std12" class="nav-link" onclick="switchTab('guide')" style="--col:#0e7490"><span class="nl-code">REHB</span><span class="nl-name">Rehabilitation & Modalities</span><span class="nl-pct">9%</span></a>
+
+  <div class="sb-tools">
+    <button class="sb-tool-btn primary" onclick="window.print()">🖨 Print / PDF</button>
+    <button class="sb-tool-btn" onclick="switchTab('cards')">🃏 Flashcards</button>
+  </div>
+</nav>
+
+<!-- ════════════ MAIN ════════════ -->
+<div class="main-wrap">
+
+  <!-- TAB NAV -->
+  <div class="tab-nav no-print">
+    <button class="tab-btn active" onclick="switchTab('guide')">📖 Study Guide &amp; Review</button>
+    <button class="tab-btn" onclick="switchTab('cards')">🃏 Vocabulary Flashcards</button>
+    <div class="tab-spacer"></div>
+    <button class="tab-print-btn" onclick="window.print()">🖨 Print / Save PDF</button>
+  </div>
+
+  <!-- ════ TAB 1: STUDY GUIDE ════ -->
+  <div class="tab-panel active" id="tab-guide">
+
+    <!-- COVER -->
+    <div class="cover-section">
+      <div class="cover-eyebrow">CTE Health Science · Sports Medicine Pathway · EOPA Exam 701</div>
+      <div class="cover-title">Sports <em>Medicine</em><br>Teacher Resource Pack</div>
+      <div class="cover-sub">A complete classroom companion covering all 12 EOPA standards — study guide, sample questions with answer keys, vocabulary, exam tips, and student note-taking space. Print-ready and digital-friendly.</div>
+      <div class="cover-stats">
+        <div class="cstat"><div class="cstat-num">12</div><div class="cstat-lbl">Standards</div></div>
+        <div class="cstat"><div class="cstat-num">36</div><div class="cstat-lbl">Sample Qs</div></div>
+        <div class="cstat"><div class="cstat-num">166</div><div class="cstat-lbl">Vocab Terms</div></div>
+        <div class="cstat"><div class="cstat-num">18</div><div class="cstat-lbl">Quick Refs</div></div>
+      </div>
+      <div class="cover-copyright">
+        © Your Name Here · All rights reserved · Licensed for classroom use only ·
+        Unauthorized reproduction or resale is strictly prohibited.
+      </div>
+    </div>
+
+    <!-- EXAM WEIGHT CHART -->
+    <div class="weight-section" id="weight-chart">
+      <div class="section-title">Exam Weight by Standard</div>
+      <div class="section-sub">Bars scaled relative to Standard 7 (19% — the largest). Prioritize accordingly.</div>
+<div class="wbar">
+  <div class="wbar-label" style="color:#4f46e5">FUND</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:31.6%;background:#4f46e5">
+      <span class="wbar-name">Fundamentals</span>
+    </div>
+  </div>
+  <div class="wbar-pct">6%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#7c3aed">PSYC</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:21.1%;background:#7c3aed">
+      <span class="wbar-name">Sports Psychology</span>
+    </div>
+  </div>
+  <div class="wbar-pct">4%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#dc2626">HEAL</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:63.2%;background:#dc2626">
+      <span class="wbar-name">Injury & Healing Process</span>
+    </div>
+  </div>
+  <div class="wbar-pct">12%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#ea580c">HEAD</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:42.1%;background:#ea580c">
+      <span class="wbar-name">Head & Neck Injuries</span>
+    </div>
+  </div>
+  <div class="wbar-pct">8%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#ca8a04">NUTR</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:21.1%;background:#ca8a04">
+      <span class="wbar-name">Sports Nutrition</span>
+    </div>
+  </div>
+  <div class="wbar-pct">4%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#16a34a">BODY</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:21.1%;background:#16a34a">
+      <span class="wbar-name">Body Composition</span>
+    </div>
+  </div>
+  <div class="wbar-pct">4%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#0369a1">LOEX</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:100.0%;background:#0369a1">
+      <span class="wbar-name">Lower Extremity Injuries</span>
+    </div>
+  </div>
+  <div class="wbar-pct">19%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#0891b2">PERF</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:42.1%;background:#0891b2">
+      <span class="wbar-name">Performance Enhancement</span>
+    </div>
+  </div>
+  <div class="wbar-pct">8%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#7e22ce">STRN</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:42.1%;background:#7e22ce">
+      <span class="wbar-name">Strength & Ergogenic Aids</span>
+    </div>
+  </div>
+  <div class="wbar-pct">8%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#be185d">UPEX</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:47.4%;background:#be185d">
+      <span class="wbar-name">Upper Extremity Injuries</span>
+    </div>
+  </div>
+  <div class="wbar-pct">9%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#15803d">INJR</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:47.4%;background:#15803d">
+      <span class="wbar-name">Common Injuries & First Aid</span>
+    </div>
+  </div>
+  <div class="wbar-pct">9%</div>
+</div><div class="wbar">
+  <div class="wbar-label" style="color:#0e7490">REHB</div>
+  <div class="wbar-track">
+    <div class="wbar-fill" style="width:47.4%;background:#0e7490">
+      <span class="wbar-name">Rehabilitation & Modalities</span>
+    </div>
+  </div>
+  <div class="wbar-pct">9%</div>
+</div>
+    </div>
+
+    <!-- QUICK REFERENCE TABLE -->
+    <div class="qr-section" id="quick-ref">
+      <div class="section-title">Quick Reference — Mnemonics &amp; Formulas</div>
+      <div class="section-sub">High-frequency content — these appear on nearly every EOPA administration. Great for a weekly warm-up or exit ticket.</div>
+      <table class="qr-table">
+        <thead>
+          <tr>
+            <th>Term / Formula</th>
+            <th>Category</th>
+            <th>Definition / Breakdown</th>
+          </tr>
+        </thead>
+        <tbody><tr><td class="qr-term">SHARP</td><td class="qr-cat">Signs of Inflammation</td><td class="qr-def">Swelling · Heat · Altered function · Redness · Pain</td></tr><tr><td class="qr-term">RICE</td><td class="qr-cat">Acute Injury Care</td><td class="qr-def">Rest · Ice · Compression · Elevation</td></tr><tr><td class="qr-term">HIPS</td><td class="qr-cat">Assessment Order</td><td class="qr-def">History → Inspection → Palpation → Special Tests</td></tr><tr><td class="qr-term">SOAP</td><td class="qr-cat">Clinical Documentation</td><td class="qr-def">Subjective → Objective → Assessment → Plan</td></tr><tr><td class="qr-term">SITS</td><td class="qr-cat">Rotator Cuff</td><td class="qr-def">Supraspinatus · Infraspinatus · Teres minor · Subscapularis</td></tr><tr><td class="qr-term">DABDA</td><td class="qr-cat">Injury Grief Stages</td><td class="qr-def">Denial → Anger → Bargaining → Depression → Acceptance</td></tr><tr><td class="qr-term">SMART</td><td class="qr-cat">Goal Setting</td><td class="qr-def">Specific · Measurable · Achievable · Relevant · Time-bound</td></tr><tr><td class="qr-term">SAID</td><td class="qr-cat">Training Principle</td><td class="qr-def">Specific Adaptation to Imposed Demands</td></tr><tr><td class="qr-term">CO = HR × SV</td><td class="qr-cat">Cardiac Output</td><td class="qr-def">At rest ~5 L/min; elite athletes up to 40 L/min</td></tr><tr><td class="qr-term">4 – 4 – 9</td><td class="qr-cat">Macronutrient kcal</td><td class="qr-def">Carbs=4 · Protein=4 · Fat=9 kcal per gram</td></tr><tr><td class="qr-term">Grade I/II/III</td><td class="qr-cat">Injury Severity</td><td class="qr-def">Mild/microscopic · Partial tear · Complete rupture</td></tr><tr><td class="qr-term">EAP</td><td class="qr-cat">Emergency Action Plan</td><td class="qr-def">Contacts · AED location · 911 protocol · Roles · Evacuation</td></tr><tr><td class="qr-term">Phase I/II/III</td><td class="qr-cat">Rehab Phases</td><td class="qr-def">Pain control · Restore function · Return to sport</td></tr><tr><td class="qr-term">ATF</td><td class="qr-cat">First Ankle Ligament</td><td class="qr-def">Anterior Talofibular — most commonly sprained first</td></tr><tr><td class="qr-term">ACL Function</td><td class="qr-cat">Knee Stability</td><td class="qr-def">Prevents anterior tibial translation (tibia sliding forward)</td></tr><tr><td class="qr-term">Wolff's Law</td><td class="qr-cat">Bone Adaptation</td><td class="qr-def">Bone remodels in response to mechanical stress placed on it</td></tr><tr><td class="qr-term">Gate Control</td><td class="qr-cat">Pain Theory</td><td class="qr-def">Non-painful input (rubbing) can close the gate on pain signals</td></tr><tr><td class="qr-term">Brachial Plexus</td><td class="qr-cat">Origin Levels</td><td class="qr-def">C5 through T1 — innervates the entire upper extremity</td></tr></tbody>
+      </table>
+    </div>
+
+    <!-- ALL 12 STANDARD REVIEW SECTIONS -->
+
+<section class="std-block" id="review-std1">
+  <div class="std-header" style="border-color:#4f46e5">
+    <div class="std-hdr-left">
+      <span class="std-icon">📋</span>
+      <div>
+        <div class="std-code" style="color:#4f46e5">Standard 1 · FUND</div>
+        <div class="std-name">Fundamentals</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#4f46e5">6% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#4f46e5">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>Primary sports medicine team members: Coach, Athlete, Parents, Team Physician, Certified Athletic Trainer (AT), Allied Health Professionals</li><li class="concept-item"><span class="c-num">02</span>Negligence requires 4 elements: Duty of care, Breach of duty, Damage/injury occurred, Proximate cause</li><li class="concept-item"><span class="c-num">03</span>HIPAA protects athlete Protected Health Information (PHI) — cannot share without consent</li><li class="concept-item"><span class="c-num">04</span>Preparticipation Physical Examination (PPE) identifies conditions that may disqualify or predispose to injury</li><li class="concept-item"><span class="c-num">05</span>Assumption of Risk: athletes accept inherent dangers of sport — does NOT cover staff negligence</li><li class="concept-item"><span class="c-num">06</span>Informed consent: patient understands risks, benefits, alternatives BEFORE agreeing to treatment</li><li class="concept-item"><span class="c-num">07</span>Good Samaritan Law: protects good-faith emergency responders from liability</li><li class="concept-item"><span class="c-num">08</span>Title IX (1972): prohibits sex discrimination in federally funded educational programs</li><li class="concept-item"><span class="c-num">09</span>Scope of practice: what an AT is legally permitted to do — defined by state practice acts</li><li class="concept-item"><span class="c-num">10</span>Emergency Action Plan (EAP): contacts, AED location, 911 protocol, roles, evacuation routes</li><li class="concept-item"><span class="c-num">11</span>Risk classification: Collision > Contact > Limited Contact > Non-contact</li><li class="concept-item"><span class="c-num">12</span>Standard of care: level of care a reasonable professional would provide in same circumstances</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">Know all 4 elements of negligence and be able to distinguish between the different legal terms. The AT's scope of practice is a frequent test question.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#4f46e5">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">Negligence</span><span class="v-chip">HIPAA</span><span class="v-chip">PPE</span><span class="v-chip">Assumption of Risk</span><span class="v-chip">Informed Consent</span><span class="v-chip">Good Samaritan</span><span class="v-chip">Title IX</span><span class="v-chip">Scope of Practice</span><span class="v-chip">EAP</span><span class="v-chip">Malpractice</span><span class="v-chip">Liability</span><span class="v-chip">Standard of Care</span><span class="v-chip">Battery</span><span class="v-chip">Omission</span><span class="v-chip">Commission</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#4f46e5">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">Which of the following is considered a PRIMARY member of the sports medicine team?</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Certified Athletic Trainer (AT)<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>School principal</li><li class="opt "><span class="opt-letter">C</span>Team sponsor</li><li class="opt "><span class="opt-letter">D</span>Insurance adjuster</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Primary members: Coach, Athlete, Parents, Team Physician, Certified Athletic Trainer (AT), and Allied Health Professionals. AT is the core clinical professional on the team.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">'Assumption of Risk' in sports law means:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Athletes voluntarily accept the inherent risks associated with participating in a sport<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>The school assumes all financial liability for athlete injuries</li><li class="opt "><span class="opt-letter">C</span>Athletes waive their right to any medical treatment</li><li class="opt "><span class="opt-letter">D</span>Coaches assume responsibility for all player decisions</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Assumption of Risk: participants accept inherent dangers of a sport. Does NOT cover negligence by staff. Example: a football player assumes risk of contact, not risk of an untreated injury.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">The Good Samaritan Law protects:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Individuals who provide reasonable emergency assistance in good faith from liability<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Athletic trainers only when performing surgical procedures</li><li class="opt "><span class="opt-letter">C</span>Team physicians from malpractice claims during games</li><li class="opt "><span class="opt-letter">D</span>Coaches who provide first aid without formal training</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Good Samaritan laws protect bystanders who assist in emergencies in good faith and without gross negligence. Encourages people to help without fear of liability. Varies by state.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std2">
+  <div class="std-header" style="border-color:#7c3aed">
+    <div class="std-hdr-left">
+      <span class="std-icon">🧠</span>
+      <div>
+        <div class="std-code" style="color:#7c3aed">Standard 2 · PSYC</div>
+        <div class="std-name">Sports Psychology</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#7c3aed">4% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#7c3aed">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>5 psychological phases after injury (DABDA): Denial → Anger → Bargaining → Depression → Acceptance</li><li class="concept-item"><span class="c-num">02</span>SMART goals: Specific, Measurable, Achievable, Relevant, Time-bound</li><li class="concept-item"><span class="c-num">03</span>Intrinsic motivation: internal drive (fun, mastery) vs Extrinsic: external rewards (trophies, praise)</li><li class="concept-item"><span class="c-num">04</span>Burnout vs Staleness: Burnout = chronic exhaustion + withdrawal; Staleness = temporary performance plateau</li><li class="concept-item"><span class="c-num">05</span>Progressive Muscle Relaxation (PMR): tense then release muscle groups to reduce anxiety</li><li class="concept-item"><span class="c-num">06</span>Visual imagery: mentally rehearsing skills to strengthen neural pathways — used in rehab AND performance</li><li class="concept-item"><span class="c-num">07</span>Overtraining interventions: time off, athlete autonomy, variety, reduced demands</li><li class="concept-item"><span class="c-num">08</span>Goal types: Process (technique) > Performance (personal PR) > Outcome (win/lose)</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">DABDA phases appear frequently — know the correct ORDER. Distinguish burnout (chronic, serious) from staleness (temporary, fixable with rest).</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#7c3aed">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">DABDA</span><span class="v-chip">SMART Goals</span><span class="v-chip">Intrinsic Motivation</span><span class="v-chip">Extrinsic Motivation</span><span class="v-chip">Burnout</span><span class="v-chip">Staleness</span><span class="v-chip">PMR</span><span class="v-chip">Visual Imagery</span><span class="v-chip">Overtraining</span><span class="v-chip">Process Goals</span><span class="v-chip">Outcome Goals</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#7c3aed">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">The five psychological phases an athlete experiences following an injury, in correct order, are:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Denial → Anger → Bargaining → Depression → Acceptance<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Anger → Denial → Acceptance → Depression → Bargaining</li><li class="opt "><span class="opt-letter">C</span>Depression → Denial → Bargaining → Anger → Acceptance</li><li class="opt "><span class="opt-letter">D</span>Acceptance → Anger → Denial → Bargaining → Depression</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Kübler-Ross grief model (DABDA) applied to athletic injury: Denial → Anger → Bargaining → Depression → Acceptance. Not always linear — athletes may cycle through stages.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">Visual imagery as a psychological performance technique involves:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Mentally rehearsing athletic skills and scenarios to strengthen neural pathways and improve execution<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Watching video footage of an opponent's previous performances</li><li class="opt "><span class="opt-letter">C</span>Using mirrors during practice to monitor and correct technique</li><li class="opt "><span class="opt-letter">D</span>Visualizing an opponent's weaknesses to create competitive advantage</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Mental imagery (visualization): creates or strengthens neurological motor patterns without physical movement. Used in rehabilitation AND performance. PETTLEP model guides effective imagery practice.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">Progressive muscle relaxation (PMR) as an anxiety management technique involves:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Systematically tensing and then releasing muscle groups throughout the body to reduce physical tension and anxiety<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Running at progressively increasing speeds to build cardiovascular confidence</li><li class="opt "><span class="opt-letter">C</span>Gradually adding weight to a strength training program over time</li><li class="opt "><span class="opt-letter">D</span>A series of dynamic warm-up movements performed before competition</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> PMR: tense a muscle group maximally for 5-10 seconds → release completely → notice the contrast. Progressively move through the body. Reduces somatic anxiety and promotes body awareness.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std3">
+  <div class="std-header" style="border-color:#dc2626">
+    <div class="std-hdr-left">
+      <span class="std-icon">🩹</span>
+      <div>
+        <div class="std-code" style="color:#dc2626">Standard 3 · HEAL</div>
+        <div class="std-name">Injury & Healing Process</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#dc2626">12% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#dc2626">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>5 cardinal signs of inflammation (SHARP): Swelling, Heat, Altered function, Redness, Pain</li><li class="concept-item"><span class="c-num">02</span>3 healing phases: Acute/Inflammation (0–72hrs) → Subacute/Repair (3 days–3 weeks) → Remodeling (3 weeks–2 years)</li><li class="concept-item"><span class="c-num">03</span>Vasodilation in acute phase: increases blood flow, delivers WBCs, oxygen, and nutrients to injury</li><li class="concept-item"><span class="c-num">04</span>Hypoxia causes secondary cell death — why RICE is critical in first 72 hours</li><li class="concept-item"><span class="c-num">05</span>Subacute phase: fibroblasts produce collagen → scar tissue formation</li><li class="concept-item"><span class="c-num">06</span>Remodeling phase: collagen reorganizes along lines of mechanical stress (Wolff's Law)</li><li class="concept-item"><span class="c-num">07</span>Wolff's Law: bone/tissue adapts its structure to the mechanical stresses placed upon it</li><li class="concept-item"><span class="c-num">08</span>HIPS assessment: History → Inspection → Palpation → Special Tests</li><li class="concept-item"><span class="c-num">09</span>Injury grades: Grade I = microscopic/mild; Grade II = partial tear/moderate; Grade III = complete rupture</li><li class="concept-item"><span class="c-num">10</span>Fracture types: Greenstick (children), Comminuted (shattered), Spiral (twisting), Transverse (straight), Longitudinal</li><li class="concept-item"><span class="c-num">11</span>Anatomical planes: Sagittal (L/R), Frontal/Coronal (front/back), Transverse (upper/lower)</li><li class="concept-item"><span class="c-num">12</span>SOAP Note: Subjective → Objective → Assessment → Plan</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and fracture types are guaranteed questions.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#dc2626">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">SHARP</span><span class="v-chip">Vasodilation</span><span class="v-chip">Hypoxia</span><span class="v-chip">Fibroblast</span><span class="v-chip">Collagen</span><span class="v-chip">Wolff's Law</span><span class="v-chip">HIPS</span><span class="v-chip">Ecchymosis</span><span class="v-chip">Effusion</span><span class="v-chip">Crepitus</span><span class="v-chip">Edema</span><span class="v-chip">Joint Laxity</span><span class="v-chip">Greenstick Fracture</span><span class="v-chip">Comminuted Fracture</span><span class="v-chip">SOAP Note</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#dc2626">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">What are the FIVE cardinal signs of the acute inflammatory response?</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Heat, Redness, Swelling, Pain, Loss of Function<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Heat, Redness, Bruising, Pain, Numbness</li><li class="opt "><span class="opt-letter">C</span>Swelling, Crepitus, Pain, Heat, Effusion</li><li class="opt "><span class="opt-letter">D</span>Redness, Pain, Atrophy, Heat, Edema</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> SHARP — Swelling, Heat, Altered function, Redness, Pain — are the 5 cardinal signs of inflammation.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">Hypoxia following acute injury leads to:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Secondary cell death in tissue surrounding the primary injury<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Immediate pain relief through endorphin release</li><li class="opt "><span class="opt-letter">C</span>Increased collagen production by fibroblasts</li><li class="opt "><span class="opt-letter">D</span>Faster removal of inflammatory mediators</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Reduced oxygen (hypoxia) in the injury zone causes secondary cell death — why ice and elevation are used to limit hypoxic spread.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">Which type of fracture involves the bone shattering into three or more fragments?</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Comminuted<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Spiral</li><li class="opt "><span class="opt-letter">C</span>Transverse</li><li class="opt "><span class="opt-letter">D</span>Longitudinal</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Comminuted = 'crushed' — multiple fragments. Spiral = twisting force. Transverse = straight across the shaft.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std4">
+  <div class="std-header" style="border-color:#ea580c">
+    <div class="std-hdr-left">
+      <span class="std-icon">⛑️</span>
+      <div>
+        <div class="std-code" style="color:#ea580c">Standard 4 · HEAD</div>
+        <div class="std-name">Head & Neck Injuries</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#ea580c">8% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#ea580c">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>Concussion = functional brain injury (NOT structural) — LOC occurs in <10% of cases</li><li class="concept-item"><span class="c-num">02</span>Subdural hematoma: bleeding BELOW the dura mater (venous, slower)</li><li class="concept-item"><span class="c-num">03</span>Epidural hematoma: bleeding ABOVE the dura mater (arterial, rapid) — 'talk and die' = EMERGENCY</li><li class="concept-item"><span class="c-num">04</span>Brachial plexus originates from C5–T1 (cervical 5 through thoracic 1)</li><li class="concept-item"><span class="c-num">05</span>Burner/Stinger: brachial plexus stretched when neck flexes away while shoulder depressed</li><li class="concept-item"><span class="c-num">06</span>NOCSAE: helmets must never be modified — voids certification and creates legal liability</li><li class="concept-item"><span class="c-num">07</span>SCM muscle: ipsilateral lateral flexion + contralateral rotation of head</li><li class="concept-item"><span class="c-num">08</span>Concussion RTP protocol: stepwise, symptom-free progression — physician clearance required</li><li class="concept-item"><span class="c-num">09</span>Skull bones: Frontal, Occipital, Parietal, Temporal, Mandible, Maxillae, Zygomatic, Nasal</li><li class="concept-item"><span class="c-num">10</span>Occipital bone contains the foramen magnum — where brainstem becomes spinal cord</li><li class="concept-item"><span class="c-num">11</span>Referred pain: perceived at location distant from actual injury site</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">Know subdural vs epidural — which is arterial (epidural, fast, emergency) vs venous (subdural, slower). Brachial plexus C5-T1 appears often. The 'lucid interval' = epidural hematoma.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#ea580c">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">Concussion</span><span class="v-chip">Subdural Hematoma</span><span class="v-chip">Epidural Hematoma</span><span class="v-chip">Brachial Plexus</span><span class="v-chip">Burner/Stinger</span><span class="v-chip">NOCSAE</span><span class="v-chip">SCM</span><span class="v-chip">Amnesia</span><span class="v-chip">Foramen Magnum</span><span class="v-chip">Referred Pain</span><span class="v-chip">Innervate</span><span class="v-chip">Point Tenderness</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#ea580c">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">A concussion is BEST defined as:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>A traumatic brain injury caused by a blow or jolt to the head that alters brain function — no loss of consciousness required<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>A skull fracture with bleeding between the dura and the brain</li><li class="opt "><span class="opt-letter">C</span>Permanent brain damage from a single impact</li><li class="opt "><span class="opt-letter">D</span>Loss of consciousness lasting more than 60 seconds after head trauma</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Concussion = functional brain injury, NOT structural. Loss of consciousness occurs in <10% of concussions. Any altered mental status (confusion, amnesia, slowed processing) = concussion.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">A 'burner' or 'stinger' injury in athletics is caused by:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Stretching or compression of the brachial plexus from neck lateral flexion away from the shoulder being depressed<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Direct blow to the occiput causing concussion</li><li class="opt "><span class="opt-letter">C</span>Hyperflexion of the cervical spine causing spinal cord compression</li><li class="opt "><span class="opt-letter">D</span>Rotation injury to the C1-C2 junction</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Stinger = neck laterally flexes AWAY while shoulder is DEPRESSED → brachial plexus is stretched. Results in burning/tingling radiating down the arm. Must be distinguished from cervical injury.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">The return-to-play protocol for concussion requires:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>A stepwise, symptom-free progression through activity levels before full return, cleared by a physician<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Immediate return once headache resolves, typically within 24 hours</li><li class="opt "><span class="opt-letter">C</span>Two weeks of rest regardless of symptom resolution</li><li class="opt "><span class="opt-letter">D</span>Return to play when the athlete subjectively feels ready</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Return to Play (RTP) protocol: 6 steps from complete rest to full contact practice. Each step = 24 hours minimum. ANY symptom return = back to previous step. Physician clearance required.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std5">
+  <div class="std-header" style="border-color:#ca8a04">
+    <div class="std-hdr-left">
+      <span class="std-icon">🍎</span>
+      <div>
+        <div class="std-code" style="color:#ca8a04">Standard 5 · NUTR</div>
+        <div class="std-name">Sports Nutrition</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#ca8a04">4% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#ca8a04">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>Macronutrient calories: Carbohydrates = 4 kcal/g, Proteins = 4 kcal/g, Fats = 9 kcal/g</li><li class="concept-item"><span class="c-num">02</span>Carbohydrates = primary fuel for high-intensity exercise; stored as glycogen in muscle and liver</li><li class="concept-item"><span class="c-num">03</span>Hyponatremia: low blood sodium from OVERDRINKING plain water — not dehydration</li><li class="concept-item"><span class="c-num">04</span>Carbohydrate loading: beneficial only for endurance events >90 minutes</li><li class="concept-item"><span class="c-num">05</span>Pre-event meal: 3–4 hours before — high carb, low fat/fiber, moderate protein</li><li class="concept-item"><span class="c-num">06</span>Post-exercise window: within 30–60 minutes — 3:1 to 4:1 CHO:protein ratio</li><li class="concept-item"><span class="c-num">07</span>Sports drinks (6–8% CHO + electrolytes): replace fluid, electrolytes, carbs in events >60 min</li><li class="concept-item"><span class="c-num">08</span>Dehydration: even 2% body weight loss impairs performance significantly</li><li class="concept-item"><span class="c-num">09</span>Water = most critical nutrient for thermoregulation via sweating/evaporative cooling</li><li class="concept-item"><span class="c-num">10</span>Protein role: tissue repair, enzymes, hormones, immune function — NOT primary energy source</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">The 3 macronutrient calorie values (4-4-9) are guaranteed questions. Hyponatremia = too MUCH water, not too little. Carb loading only helps for events >90 minutes.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#ca8a04">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">Glycogen</span><span class="v-chip">Hyponatremia</span><span class="v-chip">Carbohydrate Loading</span><span class="v-chip">Electrolytes</span><span class="v-chip">Dehydration</span><span class="v-chip">kcal</span><span class="v-chip">Macronutrient</span><span class="v-chip">Pre-event Meal</span><span class="v-chip">Post-exercise Window</span><span class="v-chip">Sports Drink</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#ca8a04">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">Which macronutrient provides 4 kcal per gram AND is the body's preferred and primary fuel source during exercise?</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Carbohydrates — stored as glycogen in muscle and liver<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Fats — stored as triglycerides in adipose tissue</li><li class="opt "><span class="opt-letter">C</span>Proteins — made of amino acid chains</li><li class="opt "><span class="opt-letter">D</span>Vitamins — required in small amounts for metabolic reactions</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Carbohydrates = 4 kcal/g. Proteins = 4 kcal/g. Fats = 9 kcal/g. Carbs are the primary fuel for high-intensity exercise. Glycogen depletion = 'hitting the wall.' Essential for sport performance.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">A pre-event meal should ideally be consumed approximately:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>3–4 hours before competition to allow digestion and reduce GI distress<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Immediately before competition for maximum energy availability</li><li class="opt "><span class="opt-letter">C</span>Only the night before to avoid any race-day eating</li><li class="opt "><span class="opt-letter">D</span>45 minutes before exercise for peak blood glucose</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Pre-event meal: 3-4 hours before = optimal. Focus: high carb, moderate protein, LOW fat and fiber (slow digestion = GI distress). Small snack (30-60g carb) OK at 30-60 min if needed.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">Which nutrient provides 9 kcal per gram — the highest energy density of any macronutrient?</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Fats (lipids) — triglycerides stored in adipose tissue<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Carbohydrates — stored as glycogen</li><li class="opt "><span class="opt-letter">C</span>Proteins — structural and functional molecules</li><li class="opt "><span class="opt-letter">D</span>Alcohol — technically provides 7 kcal/g</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Fat = 9 kcal/g. This is why fat is an efficient energy store. Primary fuel for low-intensity, long-duration exercise. Essential fatty acids (omega-3, omega-6) are required for inflammation regulation.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std6">
+  <div class="std-header" style="border-color:#16a34a">
+    <div class="std-hdr-left">
+      <span class="std-icon">⚖️</span>
+      <div>
+        <div class="std-code" style="color:#16a34a">Standard 6 · BODY</div>
+        <div class="std-name">Body Composition & Diseases</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#16a34a">4% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#16a34a">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>Body composition methods: Hydrostatic (water displacement), BIA (electrical current), Skinfold calipers, Bod Pod (air displacement), DEXA (gold standard)</li><li class="concept-item"><span class="c-num">02</span>DEXA = gold standard: measures fat mass, lean mass, AND bone mineral density simultaneously</li><li class="concept-item"><span class="c-num">03</span>Hydrostatic: fat floats (less dense), muscle sinks (more dense) — Archimedes principle</li><li class="concept-item"><span class="c-num">04</span>BIA: fat impedes electrical current; affected by hydration status</li><li class="concept-item"><span class="c-num">05</span>Female Athlete Triad: Low energy availability + Menstrual dysfunction + Low bone mineral density</li><li class="concept-item"><span class="c-num">06</span>Anorexia Nervosa: restriction, fear of weight gain, distorted body image — highest psychiatric mortality</li><li class="concept-item"><span class="c-num">07</span>Bulimia Nervosa: binge → purge cycles; body weight often appears normal</li><li class="concept-item"><span class="c-num">08</span>Muscle Dysmorphia: obsessive belief body is too small/not muscular enough</li><li class="concept-item"><span class="c-num">09</span>Safe weight loss: 0.5–1.0 lb/week to preserve lean muscle mass</li><li class="concept-item"><span class="c-num">10</span>BMI = least accurate body composition method (doesn't distinguish muscle from fat)</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">Know what each body composition METHOD uses (water, electricity, air, X-ray). Female Athlete Triad = 3 interconnected conditions. DEXA is the gold standard — but hydrostatic was the traditional criterion method.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#16a34a">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">Hydrostatic Weighing</span><span class="v-chip">BIA</span><span class="v-chip">DEXA</span><span class="v-chip">Bod Pod</span><span class="v-chip">Skinfold Calipers</span><span class="v-chip">Female Athlete Triad</span><span class="v-chip">Anorexia Nervosa</span><span class="v-chip">Bulimia Nervosa</span><span class="v-chip">Muscle Dysmorphia</span><span class="v-chip">Body Composition</span><span class="v-chip">BMI</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#16a34a">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">Which body composition assessment method uses the principle of Archimedes — measuring body density through underwater weighing?</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Hydrostatic (underwater) weighing — the reference standard method<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Bioelectrical Impedance Analysis (BIA) — sends electrical current through tissue</li><li class="opt "><span class="opt-letter">C</span>Skinfold calipers — measures subcutaneous fat thickness at specific sites</li><li class="opt "><span class="opt-letter">D</span>Bod Pod — measures air displacement in a sealed chamber</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Hydrostatic weighing: weight in water vs. on land. Fat floats (less dense), muscle sinks (more dense). Used as a criterion method. Limitations: cost, requires full submersion, breath control.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">Anorexia Nervosa is characterized by:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Extreme restriction of food intake, intense fear of weight gain, distorted body image, and significantly low body weight<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Recurrent binge eating followed by compensatory behaviors (purging, laxatives, fasting)</li><li class="opt "><span class="opt-letter">C</span>Obsessive pursuit of muscular physique through extreme diet and exercise</li><li class="opt "><span class="opt-letter">D</span>Disordered eating triggered only by the pressure of athletic competition</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Anorexia: restriction, fear of fatness, distorted body image, BMI <17.5. Highest mortality rate of any psychiatric disorder. Medical complications: cardiac arrhythmias, bone loss, refeeding syndrome.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">Skinfold calipers estimate body fat percentage by:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Measuring the thickness of subcutaneous fat at standardized anatomical sites — then applying prediction equations<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Sending electrical current through the body to measure tissue resistance</li><li class="opt "><span class="opt-letter">C</span>Measuring body weight before and after exercise to determine fat mass change</li><li class="opt "><span class="opt-letter">D</span>Comparing circumference measurements to height-weight tables</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Skinfold method: measures fat under the skin at 3-7+ sites (triceps, subscapular, suprailiac, etc.). Uses Jackson-Pollock or Durnin-Womersley equations. Error: 3-4% with trained technician. Cost-effective field method.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std7">
+  <div class="std-header" style="border-color:#0369a1">
+    <div class="std-hdr-left">
+      <span class="std-icon">🦵</span>
+      <div>
+        <div class="std-code" style="color:#0369a1">Standard 7 · LOEX</div>
+        <div class="std-name">Lower Extremity Injuries</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#0369a1">19% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#0369a1">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>ACL: prevents ANTERIOR translation of tibia on femur — most common serious knee injury</li><li class="concept-item"><span class="c-num">02</span>Inversion ankle sprain: most commonly injures ATF (Anterior Talofibular) ligament FIRST</li><li class="concept-item"><span class="c-num">03</span>MCL tested with VALGUS stress (force toward midline); LCL tested with VARUS stress</li><li class="concept-item"><span class="c-num">04</span>Medial meniscus torn more often — attached to MCL, less mobile</li><li class="concept-item"><span class="c-num">05</span>Medial Tibial Stress Syndrome (shin splints): overuse, training volume spike, overpronation</li><li class="concept-item"><span class="c-num">06</span>Dorsiflexion = foot toward shin; Plantarflexion = pointing toes down</li><li class="concept-item"><span class="c-num">07</span>Eversion = sole outward; Inversion = sole inward</li><li class="concept-item"><span class="c-num">08</span>Plantar fasciitis: heel pain WORST with first morning steps</li><li class="concept-item"><span class="c-num">09</span>Turf toe: hyperextension sprain of 1st metatarsophalangeal (MTP) joint</li><li class="concept-item"><span class="c-num">10</span>Achilles tendon: joins gastrocnemius + soleus to calcaneus — largest tendon in body</li><li class="concept-item"><span class="c-num">11</span>Q-angle: larger angle (common in females) increases lateral patellar tracking forces</li><li class="concept-item"><span class="c-num">12</span>Prophylactic taping: Stirrups run under heel from anchor to anchor — primary structural component</li><li class="concept-item"><span class="c-num">13</span>Pre-wrap: protects skin only — does NOT provide support</li><li class="concept-item"><span class="c-num">14</span>Patella: sesamoid bone within quadriceps tendon — increases mechanical advantage</li><li class="concept-item"><span class="c-num">15</span>Lower extremity bones: Femur, Tibia, Fibula, Patella, Talus, Calcaneus, Metatarsals, Phalanges</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">This is 19% of the exam — the LARGEST standard. ACL function, ATF as first ligament injured, valgus/varus stress tests, and taping terminology are tested repeatedly. Know your ankle movements cold.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#0369a1">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">ACL</span><span class="v-chip">MCL</span><span class="v-chip">LCL</span><span class="v-chip">PCL</span><span class="v-chip">ATF</span><span class="v-chip">Deltoid Ligament</span><span class="v-chip">Meniscus</span><span class="v-chip">Valgus</span><span class="v-chip">Varus</span><span class="v-chip">Dorsiflexion</span><span class="v-chip">Plantarflexion</span><span class="v-chip">Eversion</span><span class="v-chip">Inversion</span><span class="v-chip">Stirrup</span><span class="v-chip">Pre-wrap</span><span class="v-chip">Q-angle</span><span class="v-chip">Turf Toe</span><span class="v-chip">MTSS</span><span class="v-chip">Plantar Fasciitis</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#0369a1">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">The ACL (Anterior Cruciate Ligament) primarily functions to prevent:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Anterior translation of the tibia on the femur<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Posterior displacement of the tibia</li><li class="opt "><span class="opt-letter">C</span>Lateral (valgus) stress at the knee</li><li class="opt "><span class="opt-letter">D</span>Hyperextension of the hip</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> ACL = Anterior Cruciate Ligament. It resists anterior tibial translation (tibia sliding forward under femur). Most common serious knee injury in sports.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">Plantar fasciitis is characterized by:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Sharp, stabbing heel pain that is WORST with the first steps in the morning<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Lateral ankle pain following an inversion mechanism</li><li class="opt "><span class="opt-letter">C</span>Anterior knee pain that worsens with stair climbing</li><li class="opt "><span class="opt-letter">D</span>Diffuse calf pain during sustained running</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Classic plantar fasciitis: pain at the plantar calcaneus (heel), worse with first morning steps, improves with movement, worsens after long activity.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">The gastrocnemius and soleus share a common tendon called the:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Achilles (calcaneal) tendon<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Patellar tendon</li><li class="opt "><span class="opt-letter">C</span>Peroneal retinaculum</li><li class="opt "><span class="opt-letter">D</span>Plantar fascia</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> The Achilles tendon (calcaneal tendon) is the largest and strongest tendon in the body, connecting the calf muscles to the calcaneus.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std8">
+  <div class="std-header" style="border-color:#0891b2">
+    <div class="std-hdr-left">
+      <span class="std-icon">⚡</span>
+      <div>
+        <div class="std-code" style="color:#0891b2">Standard 8 · PERF</div>
+        <div class="std-name">Performance Enhancement</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#0891b2">8% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#0891b2">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>VO2max = maximum oxygen consumption during maximal exercise — gold standard of aerobic fitness</li><li class="concept-item"><span class="c-num">02</span>Cardiac output (CO) = Heart Rate (HR) × Stroke Volume (SV)</li><li class="concept-item"><span class="c-num">03</span>SPECIFICITY principle: body adapts specifically to the TYPE of stress placed on it (SAID)</li><li class="concept-item"><span class="c-num">04</span>Periodization: Macrocycle (year) → Mesocycles (months) → Microcycles (weeks)</li><li class="concept-item"><span class="c-num">05</span>Target Heart Rate: 60–85% of HRmax (HRmax = 220 − age)</li><li class="concept-item"><span class="c-num">06</span>Borg RPE Scale: 6 (no exertion) to 20 (maximal) — RPE × 10 ≈ heart rate</li><li class="concept-item"><span class="c-num">07</span>Fartlek training: unstructured spontaneous speed/intensity variation within continuous run</li><li class="concept-item"><span class="c-num">08</span>Aerobic: uses oxygen, 36–38 ATP/glucose, sustainable; Anaerobic: no oxygen, 2 ATP, brief, lactic acid</li><li class="concept-item"><span class="c-num">09</span>Long-term endurance adaptations: increased SV, decreased resting HR, increased VO2max</li><li class="concept-item"><span class="c-num">10</span>Conditioning principles: Adaptation, Overload, Specificity, Reversibility, Periodization</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">CO = HR × SV is a guaranteed formula question. Know the difference between aerobic (sustainable, O2, 36-38 ATP) and anaerobic (brief, no O2, 2 ATP, lactic acid). Fartlek = speed play in Swedish.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#0891b2">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">VO2max</span><span class="v-chip">Cardiac Output</span><span class="v-chip">Stroke Volume</span><span class="v-chip">Periodization</span><span class="v-chip">Fartlek</span><span class="v-chip">Borg Scale</span><span class="v-chip">Target Heart Rate</span><span class="v-chip">Aerobic</span><span class="v-chip">Anaerobic</span><span class="v-chip">Overload</span><span class="v-chip">Reversibility</span><span class="v-chip">Specificity</span><span class="v-chip">Tidal Volume</span><span class="v-chip">Vital Capacity</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#0891b2">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">VO2max is the gold standard measure of cardiovascular fitness because it measures:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Maximum oxygen consumption during maximal exercise — the ceiling of aerobic energy production<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Maximum heart rate achievable during graded exercise testing</li><li class="opt "><span class="opt-letter">C</span>The heart's maximum stroke volume at rest</li><li class="opt "><span class="opt-letter">D</span>Blood lactate concentration at anaerobic threshold</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> VO2max = maximum rate of oxygen consumption during maximal exercise. Higher VO2max = greater aerobic capacity. Measured in mL/kg/min. Influenced by training, genetics, altitude.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">The Borg Scale of Perceived Exertion (RPE) is used to:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Subjectively rate exercise intensity based on how hard the effort FEELS, correlating with heart rate<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Objectively measure blood lactate concentration during exercise</li><li class="opt "><span class="opt-letter">C</span>Calculate maximum heart rate and target training zones</li><li class="opt "><span class="opt-letter">D</span>Assess anaerobic threshold through ventilatory measurements</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Borg RPE: 6 (no exertion) to 20 (maximal). RPE × 10 ≈ heart rate. Useful when heart rate monitoring unavailable. Valid, reliable tool for prescribing exercise intensity.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">Fartlek training is BEST described as:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Unstructured interval training that varies speed and intensity spontaneously throughout a continuous run<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Running at a fixed, constant pace for a predetermined distance</li><li class="opt "><span class="opt-letter">C</span>Alternating high-intensity intervals with complete rest periods</li><li class="opt "><span class="opt-letter">D</span>Circuit training combining cardiovascular and strength exercises</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Fartlek (Swedish: 'speed play') = informal, spontaneous variation of intensity within a continuous run. Example: sprint to next tree, jog to corner, stride the hill. Great for developing aerobic AND anaerobic systems.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std9">
+  <div class="std-header" style="border-color:#7e22ce">
+    <div class="std-hdr-left">
+      <span class="std-icon">💪</span>
+      <div>
+        <div class="std-code" style="color:#7e22ce">Standard 9 · STRN</div>
+        <div class="std-name">Strength, Flexibility & Ergogenic Aids</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#7e22ce">8% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#7e22ce">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>Sliding filament theory: myosin heads pull actin toward center → sarcomere shortens → muscle contracts</li><li class="concept-item"><span class="c-num">02</span>Eccentric contraction: muscle LENGTHENS under load (most force, most DOMS)</li><li class="concept-item"><span class="c-num">03</span>Concentric contraction: muscle shortens while producing force</li><li class="concept-item"><span class="c-num">04</span>Type I fibers (slow-twitch): oxidative, fatigue-resistant — endurance activities</li><li class="concept-item"><span class="c-num">05</span>Type II fibers (fast-twitch): glycolytic, fatigue quickly — power/sprint activities</li><li class="concept-item"><span class="c-num">06</span>PNF stretching: contract muscle BEFORE stretching → autogenic inhibition → greater ROM</li><li class="concept-item"><span class="c-num">07</span>Static stretching BEST after exercise when muscles are warm (may reduce power if done before)</li><li class="concept-item"><span class="c-num">08</span>Plyometrics: stretch-shortening cycle — eccentric pre-load → immediate concentric release = power</li><li class="concept-item"><span class="c-num">09</span>Creatine: increases phosphocreatine stores → rapid ATP regeneration for 3–15 sec maximal efforts</li><li class="concept-item"><span class="c-num">10</span>Anabolic steroids dangers: liver damage, LVH, hormonal disruption, premature growth plate closure</li><li class="concept-item"><span class="c-num">11</span>EPO/Blood doping: artificially increases RBCs → more O2 delivery; risk of thrombosis, stroke, death</li><li class="concept-item"><span class="c-num">12</span>Ballistic stretching: bouncing at end range (activates stretch reflex — AVOID); Dynamic = controlled</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">Sliding filament = actin slides over myosin (filaments don't shorten). PNF = contract THEN stretch. Distinguish static (after), dynamic (before), ballistic (avoid). Anabolic steroid dangers are a common test question.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#7e22ce">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">Sarcomere</span><span class="v-chip">Actin</span><span class="v-chip">Myosin</span><span class="v-chip">Sliding Filament</span><span class="v-chip">Eccentric</span><span class="v-chip">Concentric</span><span class="v-chip">Isometric</span><span class="v-chip">Isokinetic</span><span class="v-chip">Type I Fiber</span><span class="v-chip">Type II Fiber</span><span class="v-chip">PNF</span><span class="v-chip">Plyometrics</span><span class="v-chip">Creatine</span><span class="v-chip">EPO</span><span class="v-chip">Anabolic Steroids</span><span class="v-chip">DOMS</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#7e22ce">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">In the sliding filament theory of muscle contraction, shortening of the sarcomere occurs when:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Actin (thin filaments) slide over myosin (thick filaments) toward the center of the sarcomere<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Myosin filaments physically shorten in length during contraction</li><li class="opt "><span class="opt-letter">C</span>Both actin and myosin decrease in length simultaneously</li><li class="opt "><span class="opt-letter">D</span>ATP breaks the actin-myosin cross-bridge preventing further contraction</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Sliding filament: myosin heads attach to actin → pull actin toward center → sarcomere shortens → MUSCLE CONTRACTS. The filaments themselves do NOT shorten — only their overlap increases.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">PNF (Proprioceptive Neuromuscular Facilitation) stretching works on the principle of:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Contracting the target muscle BEFORE stretching it to trigger autogenic inhibition, allowing greater flexibility gains<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Rapidly bouncing in and out of a stretch to activate muscle spindles</li><li class="opt "><span class="opt-letter">C</span>Holding a static stretch for 60+ seconds without any contraction</li><li class="opt "><span class="opt-letter">D</span>Passive stretching by a partner without any voluntary muscle activation</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> PNF: Contract-relax technique — isometrically contract the muscle → relax → stretch. The contraction activates Golgi tendon organs → inhibits muscle spindles → greater relaxation = more flexibility.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">Static stretching is BEST performed:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>After activity (cool-down) when muscles are warm and pliable, held 20–30 seconds per stretch<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Immediately before high-intensity activity as the ONLY warm-up</li><li class="opt "><span class="opt-letter">C</span>During strength training sets between maximum effort exercises</li><li class="opt "><span class="opt-letter">D</span>During competition to prevent muscle cramps</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Static stretching BEFORE exercise may temporarily reduce power output (acute stretch weakness). Best AFTER exercise when muscles are warm. Pre-exercise: dynamic stretching is preferred.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std10">
+  <div class="std-header" style="border-color:#be185d">
+    <div class="std-hdr-left">
+      <span class="std-icon">🏋️</span>
+      <div>
+        <div class="std-code" style="color:#be185d">Standard 10 · UPEX</div>
+        <div class="std-name">Upper Extremity Injuries</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#be185d">9% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#be185d">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>SITS rotator cuff: Supraspinatus (abduction), Infraspinatus (ext. rotation), Teres minor (ext. rotation), Subscapularis (int. rotation)</li><li class="concept-item"><span class="c-num">02</span>Supraspinatus most commonly injured RTC — passes through subacromial space</li><li class="concept-item"><span class="c-num">03</span>Shoulder impingement: supraspinatus tendon compressed under acromion during elevation</li><li class="concept-item"><span class="c-num">04</span>95% of shoulder dislocations = ANTERIOR (arm abducted + externally rotated)</li><li class="concept-item"><span class="c-num">05</span>AC separation graded by AC + coracoclavicular ligament integrity (Grade I–VI)</li><li class="concept-item"><span class="c-num">06</span>Clavicle fractures at middle third (80%) — weakest point; FOOSH mechanism</li><li class="concept-item"><span class="c-num">07</span>Lateral epicondylitis (tennis elbow): wrist EXTENSOR tendons at lateral epicondyle</li><li class="concept-item"><span class="c-num">08</span>Medial epicondylitis (Little Leaguer's): wrist FLEXOR/pronator tendons at medial epicondyle</li><li class="concept-item"><span class="c-num">09</span>Glenoid labrum: deepens glenoid fossa by 50% — tears cause instability (Bankart lesion)</li><li class="concept-item"><span class="c-num">10</span>Supination = palm UP (soup); Pronation = palm DOWN</li><li class="concept-item"><span class="c-num">11</span>Abduction = arm AWAY from midline; Adduction = toward midline</li><li class="concept-item"><span class="c-num">12</span>Upper extremity bones: Scapula, Clavicle, Humerus, Radius, Ulna, Carpals, Metacarpals, Phalanges</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">SITS mnemonic is a guaranteed question. Know lateral (extensor tendons) vs medial (flexor tendons) epicondylitis. Anterior dislocation = 95% of cases. Supination = palm UP.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#be185d">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">SITS</span><span class="v-chip">Supraspinatus</span><span class="v-chip">Impingement</span><span class="v-chip">AC Joint</span><span class="v-chip">Glenohumeral</span><span class="v-chip">Glenoid Labrum</span><span class="v-chip">Bankart Lesion</span><span class="v-chip">Lateral Epicondylitis</span><span class="v-chip">Medial Epicondylitis</span><span class="v-chip">Supination</span><span class="v-chip">Pronation</span><span class="v-chip">Abduction</span><span class="v-chip">Adduction</span><span class="v-chip">FOOSH</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#be185d">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">The rotator cuff SITS muscles are:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Supraspinatus, Infraspinatus, Teres minor, Subscapularis<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Supraspinatus, Infraspinatus, Trapezius, Serratus anterior</li><li class="opt "><span class="opt-letter">C</span>Subscapularis, Iliacus, Teres major, Supraspinatus</li><li class="opt "><span class="opt-letter">D</span>Supraspinatus, Infraspinatus, Triceps, Subclavius</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> SITS mnemonic: Supraspinatus (abduction), Infraspinatus (external rotation), Teres minor (external rotation), Subscapularis (internal rotation).</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">An acromioclavicular (AC) joint separation is graded based on:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>The degree of tearing of the AC and coracoclavicular ligaments<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>The amount of glenohumeral capsule damage</li><li class="opt "><span class="opt-letter">C</span>The number of rotator cuff tendons involved</li><li class="opt "><span class="opt-letter">D</span>The presence or absence of a glenoid labrum tear</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> AC separation grades I-VI based on ligament integrity: Grade I = AC ligament sprain only. Grade III = CC ligament torn + clavicle elevated. Grade VI = rare, severe.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">The glenoid labrum functions primarily to:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Deepen the glenoid fossa to improve glenohumeral joint stability<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Protect the subacromial bursa from friction</li><li class="opt "><span class="opt-letter">C</span>Connect the clavicle to the acromion</li><li class="opt "><span class="opt-letter">D</span>Serve as the origin of the biceps short head</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> The labrum deepens the shallow glenoid by 50%, significantly improving joint congruency and shoulder stability. Tears → instability (Bankart lesion).</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std11">
+  <div class="std-header" style="border-color:#15803d">
+    <div class="std-hdr-left">
+      <span class="std-icon">🚑</span>
+      <div>
+        <div class="std-code" style="color:#15803d">Standard 11 · INJR</div>
+        <div class="std-name">Common Injuries & First Aid</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#15803d">9% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#15803d">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>RICE method: Rest, Ice, Compression, Elevation — applied immediately post-injury</li><li class="concept-item"><span class="c-num">02</span>Heat stroke: hot DRY skin + altered mental status = LIFE-THREATENING — call 911, cold water immersion</li><li class="concept-item"><span class="c-num">03</span>Heat exhaustion: heavy sweating, normal/elevated temp, weakness — rest, fluids, cooling</li><li class="concept-item"><span class="c-num">04</span>Shock signs: pale, cool, clammy skin; rapid weak pulse; confusion; low blood pressure</li><li class="concept-item"><span class="c-num">05</span>External bleeding: direct pressure FIRST → pressure dressing → tourniquet (last resort)</li><li class="concept-item"><span class="c-num">06</span>Fracture immobilization: splint joint ABOVE and joint BELOW the fracture — do NOT reduce</li><li class="concept-item"><span class="c-num">07</span>Crutch fitting: axillary pad 2 finger-widths below armpit; hand grip = elbow 15–20° flexion</li><li class="concept-item"><span class="c-num">08</span>Anaphylaxis: epinephrine (EpiPen) FIRST → call 911 → transport; antihistamines are adjunct only</li><li class="concept-item"><span class="c-num">09</span>MRSA: methicillin-resistant staph — spreads by contact; looks like spider bite; do NOT drain in field</li><li class="concept-item"><span class="c-num">10</span>Sprain = LIGAMENT injury; Strain = MUSCLE or TENDON injury</li><li class="concept-item"><span class="c-num">11</span>Spinal injury: maintain in-line stabilization — monitor ABCs; do NOT move unless airway compromised</li><li class="concept-item"><span class="c-num">12</span>Contusion = bruise (no skin break); Laceration = cut; Abrasion = skin scraped; Avulsion = torn away</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">Sprain vs Strain is guaranteed every year. Heat STROKE = hot DRY skin (sweating stops). Fracture rule = joint ABOVE and BELOW. Direct pressure is ALWAYS first for bleeding.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#15803d">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">RICE</span><span class="v-chip">Heat Stroke</span><span class="v-chip">Heat Exhaustion</span><span class="v-chip">Shock</span><span class="v-chip">Anaphylaxis</span><span class="v-chip">MRSA</span><span class="v-chip">Sprain</span><span class="v-chip">Strain</span><span class="v-chip">Contusion</span><span class="v-chip">Laceration</span><span class="v-chip">Avulsion</span><span class="v-chip">Tourniquet</span><span class="v-chip">Cyanosis</span><span class="v-chip">Subluxation</span><span class="v-chip">Dislocation</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#15803d">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">The R.I.C.E. method for acute injury management stands for:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Rest, Ice, Compression, Elevation<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Run, Ice, Cool, Examine</li><li class="opt "><span class="opt-letter">C</span>Rest, Immobilize, Compress, Exercise</li><li class="opt "><span class="opt-letter">D</span>Reduce, Ice, Compress, Elevate</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> R.I.C.E. = Rest (stop activity), Ice (vasoconstrict, reduce swelling), Compression (limit edema), Elevation (drain fluid via gravity). Applied immediately post-injury.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">When fitting crutches, the axillary pad should be positioned:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>2 finger-widths below the armpit with the crutch tips 2 in. front and 4 in. to the side<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Snug against the armpit for maximum support</li><li class="opt "><span class="opt-letter">C</span>4 inches below the armpit to prevent nerve damage</li><li class="opt "><span class="opt-letter">D</span>Touching the shoulder with the elbow fully extended</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Key measurements: axillary pad = 2 finger-widths below armpit. Hand grip = elbow at 15-20° flexion. Tips = 2" in front, 4" to side of toes.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">MRSA is a concern in athletic settings because it is:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>A methicillin-resistant Staphylococcus aureus skin infection spread by direct contact<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>A viral respiratory illness spread by airborne droplets during training</li><li class="opt "><span class="opt-letter">C</span>A fungal infection exclusive to the feet (athlete's foot)</li><li class="opt "><span class="opt-letter">D</span>A nutritional deficiency causing skin breakdown</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> MRSA = antibiotic-resistant staph. Spreads through skin contact, shared equipment, towels. Looks like spider bite. Requires antibiotic treatment — do NOT drain in field setting.</div>
+</div>
+  </div>
+</section>
+<section class="std-block" id="review-std12">
+  <div class="std-header" style="border-color:#0e7490">
+    <div class="std-hdr-left">
+      <span class="std-icon">🏥</span>
+      <div>
+        <div class="std-code" style="color:#0e7490">Standard 12 · REHB</div>
+        <div class="std-name">Rehabilitation & Modalities</div>
+      </div>
+    </div>
+    <div class="std-badge" style="background:#0e7490">9% of exam</div>
+  </div>
+
+  <div class="std-content-grid">
+    <div class="std-col-main">
+      <h3 class="subsection-title" style="color:#0e7490">Key Concepts</h3>
+      <ul class="concepts-list"><li class="concept-item"><span class="c-num">01</span>Gate Control Theory: non-painful input (rubbing) can close the 'gate' on pain signals at spinal cord</li><li class="concept-item"><span class="c-num">02</span>Phase I: control pain/swelling, maintain CV fitness, begin early ROM</li><li class="concept-item"><span class="c-num">03</span>Phase II: restore full ROM, strength/power/endurance, begin proprioception</li><li class="concept-item"><span class="c-num">04</span>Phase III: functional/sport-specific skills, balance, return-to-sport criteria met</li><li class="concept-item"><span class="c-num">05</span>SAID principle: Specific Adaptation to Imposed Demands — rehab must mirror sport demands</li><li class="concept-item"><span class="c-num">06</span>Cryotherapy: vasoconstriction → reduced blood flow/swelling; 20–30 minutes per session</li><li class="concept-item"><span class="c-num">07</span>Thermotherapy: vasodilation → increased blood flow — CONTRAINDICATED in acute phase (0–72 hrs)</li><li class="concept-item"><span class="c-num">08</span>Ultrasound: thermal (deep heating) + non-thermal (cavitation) effects on tissue</li><li class="concept-item"><span class="c-num">09</span>Manual therapy: massage, cupping, IASTM/scraping (Graston technique)</li><li class="concept-item"><span class="c-num">10</span>Compression wrap: start at metatarsal heads (most distal), work proximally — figure-8 pattern</li><li class="concept-item"><span class="c-num">11</span>Overload principle: progressively increase demands to drive adaptation</li><li class="concept-item"><span class="c-num">12</span>Common rehab mistakes: treating symptoms not cause, ignoring contralateral side, poor posture assessment</li></ul>
+      <div class="exam-tip-box">
+        <div class="tip-eyebrow">⚡ Exam Tip</div>
+        <div class="tip-body">Gate Control Theory appears on almost every EOPA. Know all 3 rehab PHASES and what each focuses on. Cryotherapy = 20–30 min MAX. SAID = specific adaptation — rehabilitation must be sport-specific.</div>
+      </div>
+    </div>
+    <div class="std-col-side">
+      <h3 class="subsection-title" style="color:#0e7490">Vocabulary</h3>
+      <div class="vocab-cloud"><span class="v-chip">Gate Control Theory</span><span class="v-chip">Phase I/II/III</span><span class="v-chip">SAID Principle</span><span class="v-chip">Cryotherapy</span><span class="v-chip">Thermotherapy</span><span class="v-chip">Ultrasound</span><span class="v-chip">IASTM</span><span class="v-chip">Proprioception</span><span class="v-chip">Modality</span><span class="v-chip">Analgesic</span><span class="v-chip">Contraindicate</span><span class="v-chip">Vasoconstrictor</span><span class="v-chip">Vasodilator</span><span class="v-chip">Overload</span></div>
+      <div class="notes-box">
+        <div class="notes-label">Notes</div>
+        <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-qs">
+    <h3 class="subsection-title" style="color:#0e7490">Sample Practice Questions</h3>
+    
+<div class="q-block">
+  <div class="q-num">Q1</div>
+  <div class="q-text">The Gate Control Theory of pain management proposes that:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Non-painful nerve input (like rubbing) can 'close the gate' on pain signals at the spinal cord level<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Pain signals can only be blocked by pharmaceutical analgesics</li><li class="opt "><span class="opt-letter">C</span>All pain signals travel directly to the brain without modulation</li><li class="opt "><span class="opt-letter">D</span>Greater injury always equals proportionally greater perceived pain</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Gate Control Theory (Melzack & Wall, 1965): Large-diameter fibers (touch/vibration) can inhibit transmission of small-diameter pain fibers at the dorsal horn 'gate.' Explains why rubbing an injury helps.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q2</div>
+  <div class="q-text">The recommended duration for ice application to an acute injury is:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>20–30 minutes per session<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>5–10 minutes per session</li><li class="opt "><span class="opt-letter">C</span>45–60 minutes per session</li><li class="opt "><span class="opt-letter">D</span>Until the skin becomes completely numb and remains so</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> 20–30 minutes = optimal ice time. Less = insufficient vasoconstriction. More = risk of frostbite, rebound vasodilation. Always use barrier (towel) between ice and skin.</div>
+</div>
+<div class="q-block">
+  <div class="q-num">Q3</div>
+  <div class="q-text">Ultrasound as a therapeutic modality works by:</div>
+  <ol class="opts-list"><li class="opt correct"><span class="opt-letter">A</span>Converting sound waves to heat energy deep within tissues to increase circulation and promote healing<span class=correct-mark>✓</span></li><li class="opt "><span class="opt-letter">B</span>Sending direct electrical current through tissue to reduce pain</li><li class="opt "><span class="opt-letter">C</span>Using cold ultrasound waves to reduce swelling in acute injuries</li><li class="opt "><span class="opt-letter">D</span>Providing mechanical compression to the injury site</li></ol>
+  <div class="rationale"><span class="rat-label">Rationale:</span> Therapeutic ultrasound = thermal and non-thermal effects. Thermal: deep heating (increases tissue extensibility). Non-thermal: cavitation, streaming (speeds healing).</div>
+</div>
+  </div>
+</section>
+
+    <div class="page-footer">
+      <div class="footer-copy">Sports Medicine EOPA 701 · Teacher Resource Pack</div>
+      <div class="footer-notice">Proprietary content. Licensed for single-classroom use only. Not for redistribution, resale, or sharing outside the purchasing institution.</div>
+    </div>
+
+  </div><!-- end tab-guide -->
+
+  <!-- ════ TAB 2: FLASHCARDS ════ -->
+  <div class="tab-panel" id="tab-cards">
+    <div class="flashcard-section">
+      <div class="section-title">Vocabulary Flashcards</div>
+      <div class="section-sub">166 terms across all 12 standards. Click any card to reveal the definition. Use filters to study one standard at a time.</div>
+
+      <div class="fc-controls">
+        <button class="fc-filter active" onclick="filterCards('all',this)">All Standards</button>
+<button class="fc-filter" onclick="filterCards('std1',this)" style="--col:#4f46e5">FUND</button><button class="fc-filter" onclick="filterCards('std2',this)" style="--col:#7c3aed">PSYC</button><button class="fc-filter" onclick="filterCards('std3',this)" style="--col:#dc2626">HEAL</button><button class="fc-filter" onclick="filterCards('std4',this)" style="--col:#ea580c">HEAD</button><button class="fc-filter" onclick="filterCards('std5',this)" style="--col:#ca8a04">NUTR</button><button class="fc-filter" onclick="filterCards('std6',this)" style="--col:#16a34a">BODY</button><button class="fc-filter" onclick="filterCards('std7',this)" style="--col:#0369a1">LOEX</button><button class="fc-filter" onclick="filterCards('std8',this)" style="--col:#0891b2">PERF</button><button class="fc-filter" onclick="filterCards('std9',this)" style="--col:#7e22ce">STRN</button><button class="fc-filter" onclick="filterCards('std10',this)" style="--col:#be185d">UPEX</button><button class="fc-filter" onclick="filterCards('std11',this)" style="--col:#15803d">INJR</button><button class="fc-filter" onclick="filterCards('std12',this)" style="--col:#0e7490">REHB</button>
+        <span class="fc-count" id="fc-count">166 cards</span>
+      </div>
+
+      <div class="flashcards-grid" id="fc-grid">
+
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Negligence</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Negligence requires 4 elements: Duty of care, Breach of duty, Damage/injury occurred, Proximate cause</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">HIPAA</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">HIPAA protects athlete Protected Health Information (PHI) — cannot share without consent</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">PPE</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Preparticipation Physical Examination (PPE) identifies conditions that may disqualify or predispose to injury</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Assumption of Risk</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Assumption of Risk: athletes accept inherent dangers of sport — does NOT cover staff negligence</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Informed Consent</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Informed consent: patient understands risks, benefits, alternatives BEFORE agreeing to treatment</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Good Samaritan</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Good Samaritan Law: protects good-faith emergency responders from liability</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Title IX</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Title IX (1972): prohibits sex discrimination in federally funded educational programs</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Scope of Practice</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Scope of practice: what an AT is legally permitted to do — defined by state practice acts</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">EAP</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Emergency Action Plan (EAP): contacts, AED location, 911 protocol, roles, evacuation routes</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Malpractice</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know all 4 elements of negligence and be able to distinguish between the different legal terms. The AT's scope of practi...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Liability</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Good Samaritan Law: protects good-faith emergency responders from liability</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Standard of Care</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Standard of care: level of care a reasonable professional would provide in same circumstances</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Battery</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know all 4 elements of negligence and be able to distinguish between the different legal terms. The AT's scope of practi...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Omission</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know all 4 elements of negligence and be able to distinguish between the different legal terms. The AT's scope of practi...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std1" style="--card-col:#4f46e5">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#4f46e5">FUND</div>
+    <div class="flash-term">Commission</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know all 4 elements of negligence and be able to distinguish between the different legal terms. The AT's scope of practi...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">DABDA</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">5 psychological phases after injury (DABDA): Denial → Anger → Bargaining → Depression → Acceptance</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">SMART Goals</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SMART goals: Specific, Measurable, Achievable, Relevant, Time-bound</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Intrinsic Motivation</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Intrinsic motivation: internal drive (fun, mastery) vs Extrinsic: external rewards (trophies, praise)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Extrinsic Motivation</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">DABDA phases appear frequently — know the correct ORDER. Distinguish burnout (chronic, serious) from staleness (temporar...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Burnout</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Burnout vs Staleness: Burnout = chronic exhaustion + withdrawal; Staleness = temporary performance plateau</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Staleness</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Burnout vs Staleness: Burnout = chronic exhaustion + withdrawal; Staleness = temporary performance plateau</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">PMR</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Progressive Muscle Relaxation (PMR): tense then release muscle groups to reduce anxiety</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Visual Imagery</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Visual imagery: mentally rehearsing skills to strengthen neural pathways — used in rehab AND performance</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Overtraining</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Overtraining interventions: time off, athlete autonomy, variety, reduced demands</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Process Goals</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">DABDA phases appear frequently — know the correct ORDER. Distinguish burnout (chronic, serious) from staleness (temporar...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std2" style="--card-col:#7c3aed">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7c3aed">PSYC</div>
+    <div class="flash-term">Outcome Goals</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">DABDA phases appear frequently — know the correct ORDER. Distinguish burnout (chronic, serious) from staleness (temporar...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">SHARP</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">5 cardinal signs of inflammation (SHARP): Swelling, Heat, Altered function, Redness, Pain</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Vasodilation</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Vasodilation in acute phase: increases blood flow, delivers WBCs, oxygen, and nutrients to injury</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Hypoxia</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Hypoxia causes secondary cell death — why RICE is critical in first 72 hours</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Fibroblast</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Subacute phase: fibroblasts produce collagen → scar tissue formation</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Collagen</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Subacute phase: fibroblasts produce collagen → scar tissue formation</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Wolff's Law</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">HIPS</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">HIPS assessment: History → Inspection → Palpation → Special Tests</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Ecchymosis</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Effusion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Crepitus</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Edema</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Joint Laxity</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Greenstick Fracture</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">Comminuted Fracture</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 12% of the exam — know it deeply. Healing phase TIMELINES are tested heavily. Wolff's Law, HIPS components, and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std3" style="--card-col:#dc2626">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#dc2626">HEAL</div>
+    <div class="flash-term">SOAP Note</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SOAP Note: Subjective → Objective → Assessment → Plan</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Concussion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Concussion = functional brain injury (NOT structural) — LOC occurs in <10% of cases</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Subdural Hematoma</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Subdural hematoma: bleeding BELOW the dura mater (venous, slower)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Epidural Hematoma</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Epidural hematoma: bleeding ABOVE the dura mater (arterial, rapid) — 'talk and die' = EMERGENCY</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Brachial Plexus</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Brachial plexus originates from C5–T1 (cervical 5 through thoracic 1)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Burner/Stinger</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Burner/Stinger: brachial plexus stretched when neck flexes away while shoulder depressed</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">NOCSAE</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">NOCSAE: helmets must never be modified — voids certification and creates legal liability</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">SCM</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SCM muscle: ipsilateral lateral flexion + contralateral rotation of head</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Amnesia</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know subdural vs epidural — which is arterial (epidural, fast, emergency) vs venous (subdural, slower). Brachial plexus ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Foramen Magnum</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Occipital bone contains the foramen magnum — where brainstem becomes spinal cord</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Referred Pain</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Referred pain: perceived at location distant from actual injury site</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Innervate</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know subdural vs epidural — which is arterial (epidural, fast, emergency) vs venous (subdural, slower). Brachial plexus ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std4" style="--card-col:#ea580c">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ea580c">HEAD</div>
+    <div class="flash-term">Point Tenderness</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know subdural vs epidural — which is arterial (epidural, fast, emergency) vs venous (subdural, slower). Brachial plexus ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Glycogen</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Carbohydrates = primary fuel for high-intensity exercise; stored as glycogen in muscle and liver</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Hyponatremia</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Hyponatremia: low blood sodium from OVERDRINKING plain water — not dehydration</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Carbohydrate Loading</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Carbohydrate loading: beneficial only for endurance events >90 minutes</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Electrolytes</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sports drinks (6–8% CHO + electrolytes): replace fluid, electrolytes, carbs in events >60 min</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Dehydration</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Hyponatremia: low blood sodium from OVERDRINKING plain water — not dehydration</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">kcal</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Macronutrient calories: Carbohydrates = 4 kcal/g, Proteins = 4 kcal/g, Fats = 9 kcal/g</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Macronutrient</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Macronutrient calories: Carbohydrates = 4 kcal/g, Proteins = 4 kcal/g, Fats = 9 kcal/g</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Pre-event Meal</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Pre-event meal: 3–4 hours before — high carb, low fat/fiber, moderate protein</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Post-exercise Window</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Post-exercise window: within 30–60 minutes — 3:1 to 4:1 CHO:protein ratio</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std5" style="--card-col:#ca8a04">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#ca8a04">NUTR</div>
+    <div class="flash-term">Sports Drink</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sports drinks (6–8% CHO + electrolytes): replace fluid, electrolytes, carbs in events >60 min</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Hydrostatic Weighing</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Know what each body composition METHOD uses (water, electricity, air, X-ray). Female Athlete Triad = 3 interconnected co...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">BIA</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Body composition methods: Hydrostatic (water displacement), BIA (electrical current), Skinfold calipers, Bod Pod (air displacement), DEXA (gold standard)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">DEXA</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Body composition methods: Hydrostatic (water displacement), BIA (electrical current), Skinfold calipers, Bod Pod (air displacement), DEXA (gold standard)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Bod Pod</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Body composition methods: Hydrostatic (water displacement), BIA (electrical current), Skinfold calipers, Bod Pod (air displacement), DEXA (gold standard)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Skinfold Calipers</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Body composition methods: Hydrostatic (water displacement), BIA (electrical current), Skinfold calipers, Bod Pod (air displacement), DEXA (gold standard)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Female Athlete Triad</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Female Athlete Triad: Low energy availability + Menstrual dysfunction + Low bone mineral density</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Anorexia Nervosa</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Anorexia Nervosa: restriction, fear of weight gain, distorted body image — highest psychiatric mortality</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Bulimia Nervosa</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Bulimia Nervosa: binge → purge cycles; body weight often appears normal</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Muscle Dysmorphia</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Muscle Dysmorphia: obsessive belief body is too small/not muscular enough</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">Body Composition</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Body composition methods: Hydrostatic (water displacement), BIA (electrical current), Skinfold calipers, Bod Pod (air displacement), DEXA (gold standard)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std6" style="--card-col:#16a34a">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#16a34a">BODY</div>
+    <div class="flash-term">BMI</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">BMI = least accurate body composition method (doesn't distinguish muscle from fat)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">ACL</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">ACL: prevents ANTERIOR translation of tibia on femur — most common serious knee injury</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">MCL</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">MCL tested with VALGUS stress (force toward midline); LCL tested with VARUS stress</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">LCL</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">MCL tested with VALGUS stress (force toward midline); LCL tested with VARUS stress</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">PCL</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 19% of the exam — the LARGEST standard. ACL function, ATF as first ligament injured, valgus/varus stress tests, ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">ATF</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Inversion ankle sprain: most commonly injures ATF (Anterior Talofibular) ligament FIRST</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Deltoid Ligament</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 19% of the exam — the LARGEST standard. ACL function, ATF as first ligament injured, valgus/varus stress tests, ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Meniscus</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Medial meniscus torn more often — attached to MCL, less mobile</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Valgus</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">MCL tested with VALGUS stress (force toward midline); LCL tested with VARUS stress</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Varus</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">MCL tested with VALGUS stress (force toward midline); LCL tested with VARUS stress</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Dorsiflexion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Dorsiflexion = foot toward shin; Plantarflexion = pointing toes down</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Plantarflexion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Dorsiflexion = foot toward shin; Plantarflexion = pointing toes down</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Eversion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Eversion = sole outward; Inversion = sole inward</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Inversion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Inversion ankle sprain: most commonly injures ATF (Anterior Talofibular) ligament FIRST</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Stirrup</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Prophylactic taping: Stirrups run under heel from anchor to anchor — primary structural component</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Pre-wrap</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Pre-wrap: protects skin only — does NOT provide support</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Q-angle</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Q-angle: larger angle (common in females) increases lateral patellar tracking forces</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Turf Toe</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Turf toe: hyperextension sprain of 1st metatarsophalangeal (MTP) joint</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">MTSS</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">This is 19% of the exam — the LARGEST standard. ACL function, ATF as first ligament injured, valgus/varus stress tests, ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std7" style="--card-col:#0369a1">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0369a1">LOEX</div>
+    <div class="flash-term">Plantar Fasciitis</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Plantar fasciitis: heel pain WORST with first morning steps</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">VO2max</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">VO2max = maximum oxygen consumption during maximal exercise — gold standard of aerobic fitness</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Cardiac Output</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Cardiac output (CO) = Heart Rate (HR) × Stroke Volume (SV)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Stroke Volume</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Cardiac output (CO) = Heart Rate (HR) × Stroke Volume (SV)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Periodization</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Periodization: Macrocycle (year) → Mesocycles (months) → Microcycles (weeks)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Fartlek</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Fartlek training: unstructured spontaneous speed/intensity variation within continuous run</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Borg Scale</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">CO = HR × SV is a guaranteed formula question. Know the difference between aerobic (sustainable, O2, 36-38 ATP) and anae...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Target Heart Rate</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Target Heart Rate: 60–85% of HRmax (HRmax = 220 − age)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Aerobic</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">VO2max = maximum oxygen consumption during maximal exercise — gold standard of aerobic fitness</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Anaerobic</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Aerobic: uses oxygen, 36–38 ATP/glucose, sustainable; Anaerobic: no oxygen, 2 ATP, brief, lactic acid</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Overload</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Conditioning principles: Adaptation, Overload, Specificity, Reversibility, Periodization</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Reversibility</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Conditioning principles: Adaptation, Overload, Specificity, Reversibility, Periodization</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Specificity</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SPECIFICITY principle: body adapts specifically to the TYPE of stress placed on it (SAID)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Tidal Volume</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">CO = HR × SV is a guaranteed formula question. Know the difference between aerobic (sustainable, O2, 36-38 ATP) and anae...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std8" style="--card-col:#0891b2">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0891b2">PERF</div>
+    <div class="flash-term">Vital Capacity</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">CO = HR × SV is a guaranteed formula question. Know the difference between aerobic (sustainable, O2, 36-38 ATP) and anae...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Sarcomere</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sliding filament theory: myosin heads pull actin toward center → sarcomere shortens → muscle contracts</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Actin</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sliding filament theory: myosin heads pull actin toward center → sarcomere shortens → muscle contracts</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Myosin</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sliding filament theory: myosin heads pull actin toward center → sarcomere shortens → muscle contracts</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Sliding Filament</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sliding filament theory: myosin heads pull actin toward center → sarcomere shortens → muscle contracts</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Eccentric</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Eccentric contraction: muscle LENGTHENS under load (most force, most DOMS)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Concentric</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Concentric contraction: muscle shortens while producing force</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Isometric</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sliding filament = actin slides over myosin (filaments don't shorten). PNF = contract THEN stretch. Distinguish static (...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Isokinetic</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sliding filament = actin slides over myosin (filaments don't shorten). PNF = contract THEN stretch. Distinguish static (...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Type I Fiber</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Type I fibers (slow-twitch): oxidative, fatigue-resistant — endurance activities</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Type II Fiber</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Type II fibers (fast-twitch): glycolytic, fatigue quickly — power/sprint activities</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">PNF</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">PNF stretching: contract muscle BEFORE stretching → autogenic inhibition → greater ROM</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Plyometrics</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Plyometrics: stretch-shortening cycle — eccentric pre-load → immediate concentric release = power</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Creatine</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Creatine: increases phosphocreatine stores → rapid ATP regeneration for 3–15 sec maximal efforts</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">EPO</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">EPO/Blood doping: artificially increases RBCs → more O2 delivery; risk of thrombosis, stroke, death</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">Anabolic Steroids</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Anabolic steroids dangers: liver damage, LVH, hormonal disruption, premature growth plate closure</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std9" style="--card-col:#7e22ce">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#7e22ce">STRN</div>
+    <div class="flash-term">DOMS</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Eccentric contraction: muscle LENGTHENS under load (most force, most DOMS)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">SITS</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SITS rotator cuff: Supraspinatus (abduction), Infraspinatus (ext. rotation), Teres minor (ext. rotation), Subscapularis (int. rotation)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Supraspinatus</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SITS rotator cuff: Supraspinatus (abduction), Infraspinatus (ext. rotation), Teres minor (ext. rotation), Subscapularis (int. rotation)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Impingement</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Shoulder impingement: supraspinatus tendon compressed under acromion during elevation</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">AC Joint</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SITS mnemonic is a guaranteed question. Know lateral (extensor tendons) vs medial (flexor tendons) epicondylitis. Anteri...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Glenohumeral</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SITS mnemonic is a guaranteed question. Know lateral (extensor tendons) vs medial (flexor tendons) epicondylitis. Anteri...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Glenoid Labrum</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Glenoid labrum: deepens glenoid fossa by 50% — tears cause instability (Bankart lesion)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Bankart Lesion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Glenoid labrum: deepens glenoid fossa by 50% — tears cause instability (Bankart lesion)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Lateral Epicondylitis</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Lateral epicondylitis (tennis elbow): wrist EXTENSOR tendons at lateral epicondyle</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Medial Epicondylitis</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Medial epicondylitis (Little Leaguer's): wrist FLEXOR/pronator tendons at medial epicondyle</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Supination</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Supination = palm UP (soup); Pronation = palm DOWN</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Pronation</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Supination = palm UP (soup); Pronation = palm DOWN</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Abduction</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SITS rotator cuff: Supraspinatus (abduction), Infraspinatus (ext. rotation), Teres minor (ext. rotation), Subscapularis (int. rotation)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">Adduction</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Abduction = arm AWAY from midline; Adduction = toward midline</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std10" style="--card-col:#be185d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#be185d">UPEX</div>
+    <div class="flash-term">FOOSH</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Clavicle fractures at middle third (80%) — weakest point; FOOSH mechanism</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">RICE</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">RICE method: Rest, Ice, Compression, Elevation — applied immediately post-injury</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Heat Stroke</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Heat stroke: hot DRY skin + altered mental status = LIFE-THREATENING — call 911, cold water immersion</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Heat Exhaustion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Heat exhaustion: heavy sweating, normal/elevated temp, weakness — rest, fluids, cooling</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Shock</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Shock signs: pale, cool, clammy skin; rapid weak pulse; confusion; low blood pressure</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Anaphylaxis</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Anaphylaxis: epinephrine (EpiPen) FIRST → call 911 → transport; antihistamines are adjunct only</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">MRSA</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">MRSA: methicillin-resistant staph — spreads by contact; looks like spider bite; do NOT drain in field</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Sprain</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sprain = LIGAMENT injury; Strain = MUSCLE or TENDON injury</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Strain</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sprain = LIGAMENT injury; Strain = MUSCLE or TENDON injury</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Contusion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Contusion = bruise (no skin break); Laceration = cut; Abrasion = skin scraped; Avulsion = torn away</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Laceration</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Contusion = bruise (no skin break); Laceration = cut; Abrasion = skin scraped; Avulsion = torn away</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Avulsion</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Contusion = bruise (no skin break); Laceration = cut; Abrasion = skin scraped; Avulsion = torn away</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Tourniquet</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">External bleeding: direct pressure FIRST → pressure dressing → tourniquet (last resort)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Cyanosis</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sprain vs Strain is guaranteed every year. Heat STROKE = hot DRY skin (sweating stops). Fracture rule = joint ABOVE and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Subluxation</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sprain vs Strain is guaranteed every year. Heat STROKE = hot DRY skin (sweating stops). Fracture rule = joint ABOVE and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std11" style="--card-col:#15803d">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#15803d">INJR</div>
+    <div class="flash-term">Dislocation</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Sprain vs Strain is guaranteed every year. Heat STROKE = hot DRY skin (sweating stops). Fracture rule = joint ABOVE and ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Gate Control Theory</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Gate Control Theory: non-painful input (rubbing) can close the 'gate' on pain signals at spinal cord</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Phase I/II/III</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Gate Control Theory appears on almost every EOPA. Know all 3 rehab PHASES and what each focuses on. Cryotherapy = 20–30 ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">SAID Principle</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">SAID principle: Specific Adaptation to Imposed Demands — rehab must mirror sport demands</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Cryotherapy</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Cryotherapy: vasoconstriction → reduced blood flow/swelling; 20–30 minutes per session</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Thermotherapy</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Thermotherapy: vasodilation → increased blood flow — CONTRAINDICATED in acute phase (0–72 hrs)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Ultrasound</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Ultrasound: thermal (deep heating) + non-thermal (cavitation) effects on tissue</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">IASTM</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Manual therapy: massage, cupping, IASTM/scraping (Graston technique)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Proprioception</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Phase II: restore full ROM, strength/power/endurance, begin proprioception</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Modality</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Gate Control Theory appears on almost every EOPA. Know all 3 rehab PHASES and what each focuses on. Cryotherapy = 20–30 ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Analgesic</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Gate Control Theory appears on almost every EOPA. Know all 3 rehab PHASES and what each focuses on. Cryotherapy = 20–30 ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Contraindicate</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Thermotherapy: vasodilation → increased blood flow — CONTRAINDICATED in acute phase (0–72 hrs)</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Vasoconstrictor</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Gate Control Theory appears on almost every EOPA. Know all 3 rehab PHASES and what each focuses on. Cryotherapy = 20–30 ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Vasodilator</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Gate Control Theory appears on almost every EOPA. Know all 3 rehab PHASES and what each focuses on. Cryotherapy = 20–30 ...</div>
+  </div>
+</div>
+<div class="flash-card" data-std="std12" style="--card-col:#0e7490">
+  <div class="flash-front">
+    <div class="flash-std" style="color:#0e7490">REHB</div>
+    <div class="flash-term">Overload</div>
+    <div class="flash-hint">Click to reveal</div>
+  </div>
+  <div class="flash-back">
+    <div class="flash-def">Overload principle: progressively increase demands to drive adaptation</div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div><!-- end tab-cards -->
+
+</div><!-- end main-wrap -->
+</div><!-- end shell -->
+
+<script>
+// ── Tab switching ────────────────────────────────────────────
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('tab-' + id);
+  if (panel) panel.classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.textContent.toLowerCase().includes(id === 'guide' ? 'study' : 'flash')) b.classList.add('active');
+  });
+}
+
+// ── Flashcard flip ───────────────────────────────────────────
+document.addEventListener('click', e => {
+  const card = e.target.closest('.flash-card');
+  if (card) card.classList.toggle('flipped');
+});
+
+// ── Flashcard filter ─────────────────────────────────────────
+function filterCards(std, btn) {
+  document.querySelectorAll('.fc-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('.flash-card');
+  let visible = 0;
+  cards.forEach(c => {
+    const match = std === 'all' || c.dataset.std === std;
+    c.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  const counter = document.getElementById('fc-count');
+  if (counter) counter.textContent = visible + ' card' + (visible !== 1 ? 's' : '');
+}
+
+// ── Sidebar active state on scroll ───────────────────────────
+const sections = document.querySelectorAll('.std-block');
+const links = document.querySelectorAll('.nav-link[href*="review-"]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { threshold:0.2, rootMargin:'-60px 0px 0px 0px' });
+sections.forEach(s => observer.observe(s));
+
+// ── Smooth scroll ────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href.length > 1) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
